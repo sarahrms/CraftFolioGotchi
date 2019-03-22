@@ -2,10 +2,11 @@
 <html>
 <head>
 	<title>CraftFolioGotchi</title>
-	<link rel="stylesheet" href="estilo.css">
+	<link rel="stylesheet" href="estilo-tela-inicial.css">
 	<link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Germania+One|Roboto+Condensed" rel="stylesheet">
+	<script type="text/javascript" src="logar-cadastrar.js"></script>
 </head>
 <body>
 	<header>
@@ -14,10 +15,10 @@
 
 	<main>
 		<div id="sobre">
-			<p>O CraftFolioGotchi® é um sistema Web que dá a seus usuários a (a) possibilidade de criar e personalizar uma (e apenas uma)
+			O CraftFolioGotchi® é um sistema Web que dá a seus usuários a (a) possibilidade de criar e personalizar uma (e apenas uma)
 				página/mundo. Nela, ele pode colocar (b) textos e galerias de imagens mostrando os seus trabalhos, ou seja, seu portfolio.
 				Além disso, cada usuário possui (a,c) um personagem/avatar que pode ser controlado por ele e pode: andar no seu próprio mundo
-				ou visitar o mundo de outros usuários.</p>
+				ou visitar o mundo de outros usuários.
 		</div>
 
 		<div id="logar" class="exibir">
@@ -28,6 +29,9 @@
 				<input id="senha" type="password" name="senha">
 			  	<button type="submit" >Logar</button>
 			</form>
+			<span id="esqueci-senha" >
+				<a href="#">Esqueci minha senha</a>
+			</span>
 			<span id="quer-cadastrar" >
 				Não tem uma conta?
 				<button type="cadastrar" >Cadastrar</button>
@@ -36,6 +40,8 @@
 
 		<div id="cadastrar" class="nao-exibir">
 			<form action="" >
+				<label for="email">E-mail</label>
+				<input id="email" type="email" name="email">
 				<label for="usuario" >Usuario</label>
 				<input id="usuario" type="text"  name="usuario">
 				<label for="senha">Senha</label>
@@ -43,6 +49,10 @@
 
 			  <button type="submit" >Cadastrar</button>
 			</form>
+			<span id="tem-cadastro" >
+				Já tem uma conta?
+				<button type="logar" >Logar</button>
+			</span>
 		</div>
 	</main>
 
