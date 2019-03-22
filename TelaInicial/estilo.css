@@ -69,14 +69,17 @@ form button{
    border-radius: 10px;
 }
 
-#cadastrar{
+#quer-cadastrar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 300px;
   margin: 10px auto;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-#cadastrar button{
-   height: 35px;
+#quer-cadastrar button{
+  height: 35px;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
   border-radius: 10px;
@@ -87,4 +90,12 @@ footer #chao{
   height: 20px;
   margin-top: 200px;
   background-color: brown;
+}
+
+.exibir{
+  display: block;
+}
+
+.nao-exibir{
+  display: none;
 }

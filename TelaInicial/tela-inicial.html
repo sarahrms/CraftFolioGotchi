@@ -14,10 +14,13 @@
 
 	<main>
 		<div id="sobre">
-			<p>O CraftFolioGotchi® é um sistema Web que dá a seus usuários a (a) possibilidade de criar e personalizar uma (e apenas uma) página/mundo. Nela, ele pode colocar (b) textos e galerias de imagens mostrando os seus trabalhos, ou seja, seu portfolio. Além disso, cada usuário possui (a,c) um personagem/avatar que pode ser controlado por ele e pode: andar no seu próprio mundo ou visitar o mundo de outros usuários.</p>
+			<p>O CraftFolioGotchi® é um sistema Web que dá a seus usuários a (a) possibilidade de criar e personalizar uma (e apenas uma)
+				página/mundo. Nela, ele pode colocar (b) textos e galerias de imagens mostrando os seus trabalhos, ou seja, seu portfolio.
+				Além disso, cada usuário possui (a,c) um personagem/avatar que pode ser controlado por ele e pode: andar no seu próprio mundo
+				ou visitar o mundo de outros usuários.</p>
 		</div>
 
-		<div id="logar">
+		<div id="logar" class="exibir">
 			<form action="" >
 				<label for="usuario" >Usuario</label>
 				<input id="usuario" type="text"  name="usuario">
@@ -25,10 +28,21 @@
 				<input id="senha" type="password" name="senha">
 			  	<button type="submit" >Logar</button>
 			</form>
-			<div id="cadastrar">
+			<span id="quer-cadastrar" >
 				Não tem uma conta?
 				<button type="cadastrar" >Cadastrar</button>
-			</div>
+			</span>
+		</div>
+
+		<div id="cadastrar" class="nao-exibir">
+			<form action="" >
+				<label for="usuario" >Usuario</label>
+				<input id="usuario" type="text"  name="usuario">
+				<label for="senha">Senha</label>
+				<input id="senha" type="password" name="senha">
+
+			  <button type="submit" >Cadastrar</button>
+			</form>
 		</div>
 	</main>
 
