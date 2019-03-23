@@ -8,48 +8,82 @@ html{
     overflow: hidden;
     margin: 0;
     background: grey;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    button{
+      height: 35px;
+      font-size: 15px;
+      border-radius: 10%;
+      margin: 10px;
+    }
 
     #mundo{
+      position: relative;
       width: $tamanho;
       height: $tamanho;
-      perspective: $tamanho;
-      position: relative;
-      top: 50%;
-      left: 15%;
-      transform: translateY(-50%);
+      top: 25%;
+      transform: translateY(-20%);
       margin: auto;
 
-      .face-mundo{
-        position: absolute;
+      #faces{
         width: $tamanho;
         height: $tamanho;
-        opacity: 0.5;
+        perspective: $tamanho*1.25;
+        transition: transform 1s;
+
+
+        .face-mundo{
+          position: absolute;
+          width: $tamanho;
+          height: $tamanho;
+          opacity: 0.5;
+        }
+
+        #face-atras{
+          transform: rotateY(180deg) translateZ($tamanho/2);
+          background: red;
+        }
+
+        #face-esquerda{
+          transform: rotateY(-90deg) translateZ($tamanho/2);
+          background: yellow;
+        }
+
+        #face-direita{
+          transform: rotateY(90deg) translateZ($tamanho/2);
+          background: blue;
+        }
+
+        #face-cima{
+          transform: rotateX(90deg) translateZ($tamanho/2);
+          background: green;
+        }
+
+        #face-embaixo{
+          transform: rotateX(-90deg) translateZ($tamanho/2);
+          background: pink;
+        }
       }
 
-      #face-atras{
-        transform: rotateY(180deg) translateZ($tamanho/2);
-        background: red;
+      #seta-direita{
+        position: absolute;
+        left: -37%;
+        top: 37%
       }
 
-      #face-esquerda{
-        transform: rotateY(-90deg) translateZ($tamanho/2);
-        background: yellow;
-      }
-
-      #face-direita{
-        transform: rotateY(90deg) translateZ($tamanho/2);
-        background: blue;
-      }
-
-      #face-cima{
-        transform: rotateX(90deg) translateZ($tamanho/2);
-        background: green;
-      }
-
-      #face-embaixo{
-        transform: rotateX(-90deg) translateZ($tamanho/2);
-        background: pink;
+      #seta-esquerda{
+        position: absolute;
+        right:-37%;
+        top: 37%;
       }
     }
   }
+}
+
+.girar-esquerda{
+  transform: rotateY(-90deg);
+}
+
+.girar-direita{
+  transform: rotateY(-90deg);
 }
