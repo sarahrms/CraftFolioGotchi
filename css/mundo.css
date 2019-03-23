@@ -1,0 +1,45 @@
+html {
+  height: 100%;
+}
+html body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  background: grey;
+}
+html body #mundo {
+  width: 550px;
+  height: 550px;
+  perspective: 550px;
+  position: relative;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  margin: auto;
+}
+html body #mundo .face-mundo {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  opacity: 0.5;
+}
+html body #mundo #face-atras {
+  transform: rotateY(180deg) translateZ(275px);
+  background: red;
+}
+html body #mundo #face-esquerda {
+  transform: rotateY(-90deg) translateZ(275px);
+  background: yellow;
+}
+html body #mundo #face-direita {
+  transform: rotateY(90deg) translateZ(275px);
+  background: blue;
+}
+html body #mundo #face-cima {
+  transform: rotateX(90deg) translateZ(275px);
+  background: green;
+}
+html body #mundo #face-embaixo {
+  transform: rotateX(-90deg) translateZ(275px);
+  background: pink;
+}

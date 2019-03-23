@@ -1,0 +1,96 @@
+html{
+  body{
+    background-color: khaki;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    header{
+      h1{
+        font-family: 'Germania One', cursive;
+        font-size: 70px;
+        margin: 2%;
+      }
+    }
+
+    main{
+      display: flex;
+      #sobre{
+        flex: 1;
+        border-radius: 5%;
+        height: 100%;
+        padding: 5%;
+        background-color: white;
+        font-size: 20px;
+        text-align: justify;
+      }
+
+      #logar{
+        flex: 1;
+        form{
+          background-color: cornflowerblue;
+        }
+        #esqueci-senha{
+          display: table;
+          margin: auto;
+        }
+        #quer-cadastrar{
+          display: table;
+          margin: 5% auto;
+        }
+      }
+
+      #cadastrar{
+        flex: 1;
+        form{
+          background-color: mediumseagreen;
+        }
+        #tem-cadastro{
+          display: table;
+          margin: 5% auto;
+        }
+      }
+    }
+    footer{
+      position: absolute;
+      width:80%;
+      bottom: 0px;
+      height: 3%;
+      background-color: brown;
+    }
+  }
+}
+
+form{
+  width: 60%;
+  padding: 5%;
+  border-radius: 5%;
+  margin: auto;
+
+  label{
+    font-size: 20px;
+  }
+
+  input{
+    display: block;
+    height: 25px;
+    width: 100%;
+    margin-bottom: 5%;
+    border-radius: 5%;
+  }
+}
+
+button{
+  height: 35px;
+  font-size: 15px;
+  border-radius: 10%;
+}
+
+.exibir{
+  display: block;
+}
+
+.nao-exibir{
+  display: none;
+}

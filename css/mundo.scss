@@ -1,0 +1,55 @@
+$tamanho: 550px;
+
+html{
+    height: 100%;
+
+  body{
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    background: grey;
+
+    #mundo{
+      width: $tamanho;
+      height: $tamanho;
+      perspective: $tamanho;
+      position: relative;
+      top: 50%;
+      left: 15%;
+      transform: translateY(-50%);
+      margin: auto;
+
+      .face-mundo{
+        position: absolute;
+        width: $tamanho;
+        height: $tamanho;
+        opacity: 0.5;
+      }
+
+      #face-atras{
+        transform: rotateY(180deg) translateZ($tamanho/2);
+        background: red;
+      }
+
+      #face-esquerda{
+        transform: rotateY(-90deg) translateZ($tamanho/2);
+        background: yellow;
+      }
+
+      #face-direita{
+        transform: rotateY(90deg) translateZ($tamanho/2);
+        background: blue;
+      }
+
+      #face-cima{
+        transform: rotateX(90deg) translateZ($tamanho/2);
+        background: green;
+      }
+
+      #face-embaixo{
+        transform: rotateX(-90deg) translateZ($tamanho/2);
+        background: pink;
+      }
+    }
+  }
+}
