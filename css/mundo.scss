@@ -1,4 +1,4 @@
-$tamanho:600px;
+$tamanho:80vh;
 body{
   font-family: 'Roboto Condensed', sans-serif;
   height: 100%;
@@ -75,19 +75,19 @@ body{
 
 button{
   position: relative;
-  top:10px;
-  left: 10px;
-  height: 35px;
-  font-size: 15px;
-  border-radius: 10%;
+  top:1vh;
+  left: 1vh;
+  height: 3.5vh;
+  font-size: 2vh;
+  border-radius: 1vh;
 }
 
 #seta-esquerda {
   position: absolute;
-  left: -12%;
+  left: -5vh;
 }
 
 #seta-direita{
   position: absolute;
-  right:-12%;
+  right:-5vh;
 }

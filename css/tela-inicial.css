@@ -1,25 +1,25 @@
 html body {
   background-color: khaki;
-  width: 80%;
+  width: 150vh;
   margin-left: auto;
   margin-right: auto;
   font-family: "Roboto Condensed", sans-serif;
 }
 html body header h1 {
   font-family: "Germania One", cursive;
-  font-size: 70px;
-  margin: 2%;
+  font-size: 10vh;
+  margin: 1vh;
 }
 html body main {
   display: flex;
 }
 html body main #sobre {
   flex: 1;
-  border-radius: 5%;
+  border-radius: 3vh;
   height: 100%;
-  padding: 5%;
+  padding: 3vh;
   background-color: white;
-  font-size: 20px;
+  font-size: 3vh;
   text-align: justify;
 }
 html body main #logar {
@@ -34,7 +34,7 @@ html body main #logar #esqueci-senha {
 }
 html body main #logar #quer-cadastrar {
   display: table;
-  margin: 5% auto;
+  margin: 3vh auto;
 }
 html body main #cadastrar {
   flex: 1;
@@ -44,37 +44,37 @@ html body main #cadastrar form {
 }
 html body main #cadastrar #tem-cadastro {
   display: table;
-  margin: 5% auto;
+  margin: 3vh auto;
 }
 html body footer {
   position: absolute;
-  width: 80%;
+  width: 150vh;
   bottom: 0px;
-  height: 3%;
+  height: 2vh;
   background-color: brown;
 }
 
 form {
-  width: 60%;
-  padding: 5%;
-  border-radius: 5%;
+  width: 40vh;
+  padding: 3vh;
+  border-radius: 3vh;
   margin: auto;
 }
 form label {
-  font-size: 20px;
+  font-size: 3vh;
 }
 form input {
   display: block;
-  height: 25px;
+  height: 3vh;
   width: 100%;
-  margin-bottom: 5%;
-  border-radius: 5%;
+  margin-bottom: 3vh;
+  border-radius: 3vh;
 }
 
 button {
-  height: 35px;
-  font-size: 15px;
-  border-radius: 10%;
+  height: 3.5vh;
+  font-size: 2vh;
+  border-radius: 3vh;
 }
 
 .exibir {
@@ -84,3 +84,5 @@ button {
 .nao-exibir {
   display: none;
 }
+
+/*# sourceMappingURL=tela-inicial.css.map */
