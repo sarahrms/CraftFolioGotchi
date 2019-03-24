@@ -78,3 +78,27 @@ button{
   font-size: 2vh;
   border-radius: 1vh;
 }
+
+
+.exibir{
+  display: block;
+}
+
+.nao-exibir{
+  display: none;
+}
+
+
+table{
+  border-collapse: collapse;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+
+td, th{
+  height: 13vh;
+ 	text-align: center;
+ 	border: 2px solid #c0c0c0;
+ }
+}
