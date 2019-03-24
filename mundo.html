@@ -4,22 +4,26 @@
 	<title></title>
 	<link rel="stylesheet" href="css/mundo.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<script type="text/javascript" src="js/girar-mundo.js"></script>
-		<script type="text/javascript" src="js/modo-edicao.js"></script>
+	<script type="text/javascript" src="js/girar-mundo.js"></script>
+	<script type="text/javascript" src="js/modo-edicao.js"></script>
 </head>
 <body>
 	<button id="modo-exibicao">Modo Edição</button>
-	<div id="mundo">
-		<div id="faces">
-			<div class="face-mundo"  id="face-atras"></div>
-			<div class="face-mundo"  id="face-esquerda"></div>
-			<div class="face-mundo"  id="face-direita"></div>
-			<div class="face-mundo"  id="face-cima"></div>
-			<div class="face-mundo" id="face-embaixo"></div>
-		</div>
-
-		<i class="material-icons" id="seta-esquerda">arrow_back</i>
-		<i class="material-icons" id="seta-direita">arrow_forward</i>
- </div>
+	<div class="page">
+	  <div class="container">
+	    <div class="box-wrapper">
+	      <div class="box-faces">
+					<div id="localizacao" hidden>CENTRO</div>
+	        <div class="box-face box-face--is-back"></div>
+	        <div class="box-face box-face--is-top"></div>
+	        <div class="box-face box-face--is-bottom"></div>
+	        <div class="box-face box-face--is-left"></div>
+	        <div class="box-face box-face--is-right"></div>
+	      </div>
+				<i class="material-icons" id="seta-esquerda">arrow_back</i>
+				<i class="material-icons" id="seta-direita">arrow_forward</i>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>
