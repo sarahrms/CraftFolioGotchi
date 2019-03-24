@@ -5,8 +5,7 @@ body{
   overflow: hidden;
   margin: 0;
 }
-.page {
-  color: #222;
+.centralizador{
   display: flex;
   align-items: center;
   align-content: center;
@@ -14,22 +13,20 @@ body{
   height: 90vh;
   text-align: center;
 }
-.container {
-  margin-top: -$tamanho;
-}
 
-.box-wrapper {
+#mundo {
+  margin-top: -$tamanho;
   perspective: $tamanho*4;
   perspective-origin: 50% $tamanho/2;
 }
 
-.box-faces {
+#faces{
   position: relative;
   width: $tamanho;
   transform-style: preserve-3d;
 }
 
-.box-face {
+.face{
   outline: 1px solid #999;
   position: absolute;
   width: $tamanho;
@@ -38,37 +35,37 @@ body{
   box-shadow: inset 0px 0px $tamanho/2 #555;
 }
 
-.box-face--is-back {
+#face-tras{
   transform: translateZ(-$tamanho/2) rotateY(180deg);
   background-color: #eee;
 }
-.box-face--is-right {
+#face-direita{
   transform: rotateY(-270deg) translateX($tamanho/2);
   transform-origin: top right;
   background-color: #ddd;
 }
-.box-face--is-left {
+#face-esquerda {
   transform: rotateY(270deg) translateX(-$tamanho/2);
   transform-origin: center left;
   background-color: #ddd;
 }
-.box-face--is-top {
+#face-cima{
   transform: rotateX(-90deg) translateY(-$tamanho/2);
   transform-origin: top center;
   background-color: #fafafa;
 }
-.box-face--is-bottom {
+#face-baixo {
   transform: rotateX(90deg) translateY($tamanho/2);
   transform-origin: bottom center;
   background-color: #bbb;
 }
 
-@keyframes spin-esquerdo {
+@keyframes gira-esquerda {
   from { transform: rotateY(0); }
   to { transform: rotateY(-40deg); }
 }
 
-@keyframes spin-direito{
+@keyframes gira-direita{
   from { transform: rotateY(0); }
   to { transform: rotateY(40deg); }
 }
@@ -80,14 +77,4 @@ button{
   height: 3.5vh;
   font-size: 2vh;
   border-radius: 1vh;
-}
-
-#seta-esquerda {
-  position: absolute;
-  left: -5vh;
-}
-
-#seta-direita{
-  position: absolute;
-  right:-5vh;
 }
