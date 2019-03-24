@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 	var botao_modo = document.querySelector("#modo-exibicao");
-  var mundo = document.querySelector(".centralizar");
+  var mundo = document.querySelector(".centralizador");
 
   botao_modo.addEventListener('click', function(e){
     if(botao_modo.innerHTML == "Modo Edição"){
