@@ -1,21 +1,26 @@
 document.addEventListener("DOMContentLoaded", function(e) {
-	var botao_modo = document.querySelector("#modo-exibicao");
+var botao_modo = document.querySelector("#modo-exibicao");
   var mundo = document.querySelector("#mundo");
-  var widgets = document.querySelector("#widgets");
+  var widgets = document.querySelectorAll(".widgets");
+  var dragDrop = document.querySelectorAll(".drag-drop");
 
   botao_modo.addEventListener('click', function(e){
     if(botao_modo.innerHTML == "Modo Edição"){
       botao_modo.innerHTML = "Modo Visualização";
-			widgets.classList.remove("nao-exibir");
-			widgets.classList.add("exibir");
-			widgets.style.flex="1 1 auto";
-			mundo.style.flex="1 0 auto";
+		for (var i = 0; i < dragDrop.length; i++) {
+			if (!dragDrop[i].classList.contains("exibir")) {
+				dragDrop[i].style.display = "none";
+			}
+		}
+		widgets[0].style.backgroundColor = "khaki";
+		widgets[1].style.backgroundColor = "khaki";
     }else{
       botao_modo.innerHTML = "Modo Edição";
-			widgets.classList.remove("exibir");
-			widgets.classList.add("nao-exibir");
-			widgets.style.flex="none";
-			mundo.style.flex="none";
+		for (var i = 0; i < dragDrop.length; i++) {
+				dragDrop[i].style.display = "block";			
+		}
+		widgets[0].style.backgroundColor = "cornflowerblue"
+		widgets[1].style.backgroundColor = "cornflowerblue"
     }
 
   });

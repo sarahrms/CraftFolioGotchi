@@ -24,6 +24,7 @@ interact('.dropzone').dropzone({
   },
   ondrop: function (event) {
     event.relatedTarget.textContent = 'Dropped'
+    event.relatedTarget.classList.add('exibir')
   },
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
