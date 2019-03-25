@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mundo</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/mundo.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script type="text/javascript" src="js/girar-mundo.js"></script>
+	<script type="text/javascript" src="js/modo-edicao.js"></script>
+</head>
+<body>
+	<button id="modo-exibicao">Modo Edição</button>
+	<div class="centralizador">
+		<div id="widgets" class="nao-exibir">
+			<span class="close">&times;</span>
+			<h2>Widget's</h2>
+			<table>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>6</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>10</td>
+				</tr>
+			</table>
+
+		</div>
+	  <div id="mundo">
+	      <div id="faces">
+					<div id="localizacao" hidden>CENTRO</div>
+	        <div class="face" id="face-tras"></div>
+	        <div class="face" id="face-cima"></div>
+	        <div class="face" id="face-baixo"></div>
+	        <div class="face" id="face-esquerda"></div>
+	        <div class="face" id="face-direita"></div>
+	      </div>
+	  </div>
+	</div>
+	<i class="material-icons" id="seta-esquerda">arrow_back</i>
+	<i class="material-icons" id="seta-direita">arrow_forward</i>
+</body>
+</html>
