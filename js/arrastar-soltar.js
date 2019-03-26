@@ -1,9 +1,6 @@
-// enable draggables to be dropped into this
-interact('.dropzone').dropzone({
-  // Require a 75% element overlap for a drop to be possible
-  overlap: 0.75,
 
-  // listen for drop related events:
+interact('.dropzone').dropzone({
+  overlap: 0.75,
 
   ondropactivate: function (event) {
     // add active dropzone feedback
@@ -13,28 +10,27 @@ interact('.dropzone').dropzone({
     var draggableElement = event.relatedTarget;
     var dropzoneElement = event.target;
 
-    // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
   },
   ondragleave: function (event) {
-    // remove the drop feedback style
     event.target.classList.remove('drop-target')
     event.relatedTarget.textContent = 'Dragged out'
     event.relatedTarget.classList.remove('resize')
     event.relatedTarget.classList.remove('exibir')
   },
   ondrop: function (event) {
-  
     event.relatedTarget.classList.add('exibir')
     event.relatedTarget.classList.add('resize')
 
-    if (event.relatedTarget.classList.contains("texto")) {
+  },
+  ondropdeactivate: function (event) {
+    event.target.classList.remove('drop-active')
+    event.target.classList.remove('drop-target')
+
+     if (event.relatedTarget.classList.contains("texto")) {
         event.relatedTarget.innerHTML = '<input type="text">'
     }else if (event.relatedTarget.classList.contains("foto")) {
-       var elem= document.querySelector('.modal');
-        var instance = M.Modal.init(elem);
-        instance.open();
-        event.relatedTarget.innerHTML = '<img class="dentro" src="Sprites\\alien_blue\\blue__0018_hurt_1.png">'
+      openModal("titulo","Url da imagem:", event.relatedTarget);
     }else if (event.relatedTarget.classList.contains("video")) {
         event.relatedTarget.innerHTML = '<video>  </video>'
     }else if (event.relatedTarget.classList.contains("musica")) {
@@ -44,12 +40,6 @@ interact('.dropzone').dropzone({
     }else if (event.relatedTarget.classList.contains("poligono")) {
         event.relatedTarget.innerHTML = ''
     }
-
-  },
-  ondropdeactivate: function (event) {
-    // remove active dropzone feedback
-    event.target.classList.remove('drop-active')
-    event.target.classList.remove('drop-target')
   }
 });
 
@@ -73,7 +63,6 @@ interact('.resize')
 
     inertia: true
   })
-
   .on('resizemove', function (event) {
     var target = event.target,
         x = (parseFloat(target.getAttribute('data-x')) || 0),
@@ -124,4 +113,20 @@ interact('.drag-drop')
     target.setAttribute('data-y', y);
   }
 
+
+function openModal(titulo,texto,target){
+  var modal= document.querySelector('.modal');
+  var instance = M.Modal.init(modal, {onCloseEnd: onModalClose(target)});
+  var modal_titulo = document.querySelector("#modal-1 > div.modal-content > h4");
+  var modal_texto = document.querySelector("#modal-1 > div.modal-content > p");
+  modal_titulo.innerHTML = titulo;
+  modal_texto.innerHTML = texto;
+  instance.open();
+}
+
+function onModalClose(target){
+  var modal_url = document.querySelector("#modal-1 > div.modal-content > input");
+  console.log(modal_url.value)
+  target.innerHTML = '<img class="dentro" src="Sprites\\alien_blue\\'+modal_url.value+'.png">'
+}
 
