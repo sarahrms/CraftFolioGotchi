@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 var botao_modo = document.querySelector("#modo-exibicao");
   var mundo = document.querySelector("#mundo");
-  var widgets = document.querySelectorAll(".widgets");
+  var widgets = document.querySelector("#widgets");
   var dragDrop = document.querySelectorAll(".drag-drop");
 
 	for (var i = 0; i < dragDrop.length; i++) {
@@ -15,12 +15,12 @@ var botao_modo = document.querySelector("#modo-exibicao");
 		if (aux_classList!=null) {
 			dragDrop[i].classList = aux_classList;
 		}
-    if (aux_height!=null) {
+	    if (aux_height!=null) {
 			dragDrop[i].style.height = aux_height;
 		}
-    if (aux_width!=null) {
-      dragDrop[i].style.width = aux_width;
-    }
+	    if (aux_width!=null) {
+	      	dragDrop[i].style.width = aux_width;
+	    }
 
 	}
 
@@ -37,15 +37,13 @@ var botao_modo = document.querySelector("#modo-exibicao");
 				dragDrop[i].style.display = "none";
 			}
 		}
-		widgets[0].style.backgroundColor = "khaki";
-		widgets[1].style.backgroundColor = "khaki";
+		widgets.style.backgroundColor = "khaki";
     }else{
       botao_modo.innerHTML = "Modo Edição";
 		for (var i = 0; i < dragDrop.length; i++) {
 				dragDrop[i].style.display = "block";
 		}
-		widgets[0].style.backgroundColor = "cornflowerblue"
-		widgets[1].style.backgroundColor = "cornflowerblue"
+		widgets.style.backgroundColor = "cornflowerblue"
     }
 
   });

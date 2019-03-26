@@ -15,16 +15,36 @@ interact('.dropzone').dropzone({
 
     // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
-    draggableElement.textContent = 'Dragged in'
   },
   ondragleave: function (event) {
     // remove the drop feedback style
     event.target.classList.remove('drop-target')
     event.relatedTarget.textContent = 'Dragged out'
+    event.relatedTarget.classList.remove('resize')
+    event.relatedTarget.classList.remove('exibir')
   },
   ondrop: function (event) {
-    event.relatedTarget.textContent = 'Dropped'
+  
     event.relatedTarget.classList.add('exibir')
+    event.relatedTarget.classList.add('resize')
+
+    if (event.relatedTarget.classList.contains("texto")) {
+        event.relatedTarget.innerHTML = '<input type="text">'
+    }else if (event.relatedTarget.classList.contains("foto")) {
+       var elem= document.querySelector('.modal');
+        var instance = M.Modal.init(elem);
+        instance.open();
+        event.relatedTarget.innerHTML = '<img class="dentro" src="Sprites\\alien_blue\\blue__0018_hurt_1.png">'
+    }else if (event.relatedTarget.classList.contains("video")) {
+        event.relatedTarget.innerHTML = '<video>  </video>'
+    }else if (event.relatedTarget.classList.contains("musica")) {
+          event.relatedTarget.innerHTML = '<audio>  </audio>'
+    }else if (event.relatedTarget.classList.contains("gif")) {
+        event.relatedTarget.innerHTML = ''
+    }else if (event.relatedTarget.classList.contains("poligono")) {
+        event.relatedTarget.innerHTML = ''
+    }
+
   },
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
@@ -33,19 +53,7 @@ interact('.dropzone').dropzone({
   }
 });
 
-interact('.drag-drop')
-  .draggable({
-    inertia: true,
-    modifiers: [
-      interact.modifiers.restrict({
-        endOnly: true,
-        elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-      })
-    ],
-    autoScroll: true,
-    // dragMoveListener from the dragging demo above
-    onmove: dragMoveListener
-  })
+interact('.resize')
   .resizable({
     // resize from all edges and corners
     edges: { left: true, right: true, bottom: true, top: true },
@@ -65,6 +73,7 @@ interact('.drag-drop')
 
     inertia: true
   })
+
   .on('resizemove', function (event) {
     var target = event.target,
         x = (parseFloat(target.getAttribute('data-x')) || 0),
@@ -83,8 +92,22 @@ interact('.drag-drop')
 
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
-    target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height);
   });
+
+interact('.drag-drop')
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrict({
+        endOnly: true,
+        elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+      })
+    ],
+    autoScroll: true,
+    // dragMoveListener from the dragging demo above
+    onmove: dragMoveListener
+  });
+
   function dragMoveListener (event) {
     var target = event.target,
         // keep the dragged position in the data-x/data-y attributes
@@ -100,3 +123,5 @@ interact('.drag-drop')
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
   }
+
+
