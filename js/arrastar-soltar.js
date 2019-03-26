@@ -3,7 +3,6 @@ interact('.dropzone').dropzone({
   overlap: 0.75,
 
   ondropactivate: function (event) {
-    // add active dropzone feedback
     event.target.classList.add('drop-active')
   },
   ondragenter: function (event) {
@@ -27,10 +26,10 @@ interact('.dropzone').dropzone({
     event.target.classList.remove('drop-active')
     event.target.classList.remove('drop-target')
 
-     if (event.relatedTarget.classList.contains("texto")) {
+    if (event.relatedTarget.classList.contains("texto")) {
         event.relatedTarget.innerHTML = '<input type="text">'
     }else if (event.relatedTarget.classList.contains("foto")) {
-      openModal("titulo","Url da imagem:", event.relatedTarget);
+      openModal("Imagem","Url da imagem:", event.relatedTarget);
     }else if (event.relatedTarget.classList.contains("video")) {
         event.relatedTarget.innerHTML = '<video>  </video>'
     }else if (event.relatedTarget.classList.contains("musica")) {
@@ -45,17 +44,12 @@ interact('.dropzone').dropzone({
 
 interact('.resize')
   .resizable({
-    // resize from all edges and corners
     edges: { left: true, right: true, bottom: true, top: true },
-
     modifiers: [
-      // keep the edges inside the parent
       interact.modifiers.restrictEdges({
         outer: 'parent',
         endOnly: true,
       }),
-
-      // minimum size
       interact.modifiers.restrictSize({
         min: { width: 100, height: 50 },
       }),
@@ -68,11 +62,9 @@ interact('.resize')
         x = (parseFloat(target.getAttribute('data-x')) || 0),
         y = (parseFloat(target.getAttribute('data-y')) || 0);
 
-    // update the element's style
     target.style.width  = event.rect.width + 'px';
     target.style.height = event.rect.height + 'px';
 
-    // translate when resizing from top or left edges
     x += event.deltaRect.left;
     y += event.deltaRect.top;
 
@@ -93,22 +85,16 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
     onmove: dragMoveListener
   });
 
   function dragMoveListener (event) {
     var target = event.target,
-        // keep the dragged position in the data-x/data-y attributes
         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    // translate the element
     target.style.webkitTransform =
     target.style.transform =
       'translate(' + x + 'px, ' + y + 'px)';
-
-    // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
   }
@@ -126,7 +112,10 @@ function openModal(titulo,texto,target){
 
 function onModalClose(target){
   var modal_url = document.querySelector("#modal-1 > div.modal-content > input");
-  console.log(modal_url.value)
-  target.innerHTML = '<img class="dentro" src="Sprites\\alien_blue\\'+modal_url.value+'.png">'
+  var botao = document.querySelector("#modal-1 > div.modal-footer > a");
+  var id = target.id;
+  botao.addEventListener('click', function(e){
+    var widget = document.querySelector("#"+id);
+    widget.innerHTML = '<img class="dentro" src="Sprites\\alien_blue\\'+modal_url.value+'.png">';
+  });
 }
-
