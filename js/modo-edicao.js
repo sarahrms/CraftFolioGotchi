@@ -12,6 +12,7 @@ var botao_modo = document.querySelector("#modo-exibicao");
 			localStorage.setItem("dragDrop_"+i+"_classList",dragDrop[i].classList);
 			localStorage.setItem("dragDrop_"+i+"_height",dragDrop[i].style.height);
 			localStorage.setItem("dragDrop_"+i+"_width",dragDrop[i].style.width);
+			localStorage.setItem("dragDrop_"+i+"_innerHTML",dragDrop[i].innerHTML);
       
 			if (!dragDrop[i].classList.contains("exibir")) {
 				dragDrop[i].style.display = "none";
