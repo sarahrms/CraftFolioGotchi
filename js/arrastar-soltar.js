@@ -1,4 +1,5 @@
-
+//------------------------------------------------------------------------------
+//DRAG AND DROP
 interact('.dropzone').dropzone({
   overlap: 0.75,
 
@@ -26,19 +27,23 @@ interact('.dropzone').dropzone({
     event.target.classList.remove('drop-active')
     event.target.classList.remove('drop-target')
 
-    if (event.relatedTarget.classList.contains("texto")) {
-          event.relatedTarget.innerHTML = '<textarea class="resize-drag"></textarea>'
-    }else if (event.relatedTarget.classList.contains("imagem")) {
-        openModal(event.relatedTarget,"Imagem","URL da imagem:", '<img class="resize-drag" src="','">');
-    }else if (event.relatedTarget.classList.contains("video")) {
-        openModal(event.relatedTarget,"Video","URL do video:", '<video class="resize-drag" controls><source src="','"></video>');
-        '<video class="resize-drag" controls><source src="'+modal_url.value+'"></video>'
-    }else if (event.relatedTarget.classList.contains("musica")) {
-      openModal(event.relatedTarget,"Musica","URL da musica:", '<audio class="resize-drag" controls><source src="','"></audio>');
+    if(localStorage.getItem("dragDrop_"+event.relatedTarget.id+"_criado")!="sim"){
+      if (event.relatedTarget.classList.contains("texto")) {
+            event.relatedTarget.innerHTML = '<textarea class="resize-drag"></textarea>'
+      }else if (event.relatedTarget.classList.contains("imagem")) {
+          openModal(event.relatedTarget,"Imagem","URL da imagem:", '<img class="resize-drag" src="','">');
+      }else if (event.relatedTarget.classList.contains("video")) {
+          openModal(event.relatedTarget,"Video","URL do video:", '<video class="resize-drag" controls><source src="','"></video>');
+          '<video class="resize-drag" controls><source src="'+modal_url.value+'"></video>'
+      }else if (event.relatedTarget.classList.contains("musica")) {
+        openModal(event.relatedTarget,"Musica","URL da musica:", '<audio class="resize-drag" controls><source src="','"></audio>');
+      }
+      localStorage.setItem("dragDrop_"+event.relatedTarget.id+"_criado","sim");
     }
   }
 });
-
+//------------------------------------------------------------------------------
+//RESIZE
 interact('.resize')
   .resizable({
     edges: { left: true, right: true, bottom: true, top: true },
@@ -70,6 +75,8 @@ interact('.resize')
     target.setAttribute('data-y', y);
   });
 
+//------------------------------------------------------------------------------
+//DRAG AND DROP
 interact('.drag-drop')
   .draggable({
     inertia: true,
@@ -83,16 +90,18 @@ interact('.drag-drop')
     onmove: dragMoveListener
   });
 
-  function dragMoveListener (event) {
-    var target = event.target,
-        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-    target.style.webkitTransform =
-    target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)';
-    target.setAttribute('data-x', x);
-    target.setAttribute('data-y', y);
-  }
+//------------------------------------------------------------------------------
+//FUNÇÕES
+function dragMoveListener (event) {
+  var target = event.target,
+      x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+      y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+  target.style.webkitTransform =
+  target.style.transform =
+    'translate(' + x + 'px, ' + y + 'px)';
+  target.setAttribute('data-x', x);
+  target.setAttribute('data-y', y);
+}
 
 
 //Sprites\alien_blue\blue__0016_run_5.png
