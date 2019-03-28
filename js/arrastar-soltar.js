@@ -29,13 +29,12 @@ interact('.dropzone').dropzone({
     if (event.relatedTarget.classList.contains("texto")) {
           event.relatedTarget.innerHTML = '<textarea class="resize-drag"></textarea>'
     }else if (event.relatedTarget.classList.contains("imagem")) {
-        openModalImage(event.relatedTarget);
+        openModal(event.relatedTarget,"Imagem","URL da imagem:", '<img class="resize-drag" src="','">');
     }else if (event.relatedTarget.classList.contains("video")) {
-        openModalVideo(event.relatedTarget);
+        openModal(event.relatedTarget,"Video","URL do video:", '<video class="resize-drag" controls><source src="','"></video>');
+        '<video class="resize-drag" controls><source src="'+modal_url.value+'"></video>'
     }else if (event.relatedTarget.classList.contains("musica")) {
-        openModalMusica(event.relatedTarget);
-    }else if (event.relatedTarget.classList.contains("poligono")) {
-        event.relatedTarget.innerHTML = ''
+      openModal(event.relatedTarget,"Musica","URL da musica:", '<audio class="resize-drag" controls><source src="','"></audio>');
     }
   }
 });
@@ -48,7 +47,7 @@ interact('.resize')
         outer: 'parent',
         endOnly: true,
       }),
-      
+
     ],
 
     inertia: true
@@ -98,43 +97,21 @@ interact('.drag-drop')
 
 //Sprites\alien_blue\blue__0016_run_5.png
 //Sprites\alien_blue\blue__0026_dead_5.png
-function openModalImage(target){
-  var modal= document.querySelector('#modal-imagem');
-  var instance = M.Modal.init(modal, {onCloseEnd: 
+function openModal(target,titulo,texto,innerHTML_inicio, innnerHTML_final){
+  var modal= document.querySelector('.modal');
+  var modal_titulo= document.querySelector('.modal > div.modal-content > h4');
+  var modal_texto= document.querySelector('.modal > div.modal-content > p');
+
+  modal_titulo.innerHTML=titulo;
+  modal_texto.innerHTML=texto;
+
+  var instance = M.Modal.init(modal, {onCloseEnd:
       function (event){
-        var modal_url = document.querySelector("#modal-imagem > div.modal-content > input[type='text']");
+        var modal_url = document.querySelector(".modal > div.modal-content > input[type='text']");
         var botao = document.querySelector("#modal-close");
         console.log(modal_url.value);
         console.log(target.id);
-        target.innerHTML = '<img class="resize-drag" src="'+modal_url.value+'">';
-      }
-  });
-  instance.open();
-}
-
-function openModalVideo(target){
-  var modal= document.querySelector('#modal-video');
-  var instance = M.Modal.init(modal, {onCloseEnd: 
-      function (event){
-        var modal_url = document.querySelector("#modal-video > div.modal-content > input[type='text']");
-        var botao = document.querySelector("#modal-close-video");
-        console.log(modal_url.value);
-        console.log(target.id);
-        target.innerHTML = '<video class="resize-drag" controls><source src="'+modal_url.value+'"></video>';
-      }
-  });
-  instance.open();
-}
-
-function openModalMusica(target){
-  var modal= document.querySelector('#modal-musica');
-  var instance = M.Modal.init(modal, {onCloseEnd: 
-      function (event){
-        var modal_url = document.querySelector("#modal-musica > div.modal-content > input[type='text']");
-        var botao = document.querySelector("#modal-close-musica");
-        console.log(modal_url.value);
-        console.log(target.id);
-        target.innerHTML = '<audio class="resize-drag" controls><source src="'+modal_url.value+'"></audio>';
+        target.innerHTML = innerHTML_inicio+modal_url.value+innnerHTML_final;
       }
   });
   instance.open();
