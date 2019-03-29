@@ -22,11 +22,6 @@ interact('.dropzone').dropzone({
     event.relatedTarget.classList.add('exibir')
     event.relatedTarget.classList.add('resize')
 
-  },
-  ondropdeactivate: function (event) {
-    event.target.classList.remove('drop-active')
-    event.target.classList.remove('drop-target')
-
     if(localStorage.getItem("dragDrop_"+event.relatedTarget.id+"_criado")!="sim"){
       if (event.relatedTarget.classList.contains("texto")) {
             event.relatedTarget.innerHTML = '<textarea class="resize-drag"></textarea>'
@@ -38,8 +33,12 @@ interact('.dropzone').dropzone({
       }else if (event.relatedTarget.classList.contains("musica")) {
         openModal(event.relatedTarget,"Musica","URL da musica:", '<audio class="resize-drag" controls><source src="','"></audio>');
       }
-      localStorage.setItem("dragDrop_"+event.relatedTarget.id+"_criado","sim");
     }
+
+  },
+  ondropdeactivate: function (event) {
+    event.target.classList.remove('drop-active')
+    event.target.classList.remove('drop-target')
   }
 });
 //------------------------------------------------------------------------------
@@ -110,18 +109,16 @@ function openModal(target,titulo,texto,innerHTML_inicio, innnerHTML_final){
   var modal= document.querySelector('.modal');
   var modal_titulo= document.querySelector('.modal > div.modal-content > h4');
   var modal_texto= document.querySelector('.modal > div.modal-content > p');
-
+  var botao = document.querySelector("#modal-close");
   modal_titulo.innerHTML=titulo;
   modal_texto.innerHTML=texto;
-
-  var instance = M.Modal.init(modal, {onCloseEnd:
-      function (event){
+  modal.style.display = "block";
+  botao.addEventListener('click', function(e){
+      if(localStorage.getItem("dragDrop_"+target.id+"_criado")!="sim"){
+        modal.style.display = "none";
         var modal_url = document.querySelector(".modal > div.modal-content > input[type='text']");
-        var botao = document.querySelector("#modal-close");
-        console.log(modal_url.value);
-        console.log(target.id);
+        localStorage.setItem("dragDrop_"+target.id+"_criado","sim");
         target.innerHTML = innerHTML_inicio+modal_url.value+innnerHTML_final;
       }
   });
-  instance.open();
 }
