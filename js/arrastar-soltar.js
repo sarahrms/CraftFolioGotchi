@@ -28,8 +28,7 @@ interact('.dropzone').dropzone({
       }else if (event.relatedTarget.classList.contains("imagem")) {
           openModal(event.relatedTarget,"Imagem","URL da imagem:", '<img class="resize-drag" src="','">');
       }else if (event.relatedTarget.classList.contains("video")) {
-          openModal(event.relatedTarget,"Video","URL do video:", '<video class="resize-drag" controls><source src="','"></video>');
-          '<video class="resize-drag" controls><source src="'+modal_url.value+'"></video>'
+          openModal(event.relatedTarget,"Video","URL do video:", '<iframe class="resize-drag" width="420" height="315" src="','"></iframe>');
       }else if (event.relatedTarget.classList.contains("musica")) {
         openModal(event.relatedTarget,"Musica","URL da musica:", '<audio class="resize-drag" controls><source src="','"></audio>');
       }

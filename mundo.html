@@ -4,6 +4,7 @@
 	<title>Mundo</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css/comum.css">
 	<link rel="stylesheet" href="css/mundo.css">
 	<script src="https://cdn.jsdelivr.net/npm/interactjs@next/dist/interact.min.js"></script>
 	<script type="text/javascript" src="js/modo-edicao.js"></script>
@@ -11,16 +12,11 @@
 	<script type="text/javascript" src="js/recuperar-dados.js"></script>
 	<script type="text/javascript" src="js/abrir-propriedades.js"></script>
 </head>
-<body id="outer-dropzone" >
+<body id="fora">
 	<button id="modo-exibicao">Modo Edição</button>
-	<div class="flex-box">
-		<div id="outros">
-			<div id="propriedades"></div>
-		</div>
-		<div id="mundo">
-			<main id="inner-dropzone" class="dropzone"></main>
-			<div id="chao"></div>
-		</div>
+	<main>
+		<div id="propriedades"></div>
+		<div id="mundo" class="dropzone"></div>
 		<div id="widgets">
 			<div class="conteiner">
 				<span id="texto-1" class="drag-drop texto"><i class="material-icons">text_fields</i></span>
@@ -53,7 +49,10 @@
 				<span id="poligono-3" class="drag-drop poligono"><i class="material-icons">crop_din</i></span>
 			</div>
 		</div>
-	</div>
+	</main>
+	<footer>
+		<div id="chao"></div>
+	</footer>
 
 	<div class="modal">
 		<div class="modal-content">
