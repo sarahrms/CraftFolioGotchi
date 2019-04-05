@@ -2,15 +2,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
   var dragDrop = document.querySelectorAll(".drag-drop");
   var propriedades = document.querySelector("#propriedades");
   var dropzone = document.querySelector("#mundo");
- 
+  var formulario = document.querySelector("#formulario-propriedades");
   var fora = document.querySelector("#fora");
 
 	for (var i = 0; i < dragDrop.length; i++) {
       	dragDrop[i].addEventListener('click', function(e){
 	      	if (this.classList.contains("texto")) {
 		    }else{
-
-		    	propriedades.innerHTML='<form>'+
+		    	formulario.innerHTML=
 		    	'<input type="hidden" name="id" value="'+this.id+'">'+
 				'<label for="url" >URL:</label>'+
 				'<input id="url" type="text"  name="url">'+
@@ -19,28 +18,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
 				'<label for="largura">Largura:</label>'+
 				'<input id="largura" type="number" name="largura">'+
 				'<button id="alterar" type="submit" class="botao-propriedades">Alterar</button>'+
-				'<button id="excluir" type="submit" class="botao-propriedades">Excluir</button>'+
-				'</form>'; 
-
-				/*var botao = document.querySelector("#alterar");
-				botao.addEventListener('click', function(e){
-			    	var id = document.querySelector("#propriedades > form > input[type='hidden']:nth-child(1)").value;
-			    	var altura = document.querySelector("#altura").value;
-			    	var largura = document.querySelector("#largura").value;
-			    	var url = document.querySelector("#url").value;
-			    	var objeto =  document.querySelector("#"+id);
-
-			    	console.log(objeto);
-
-			    	objeto.style.widght = largura+"px";
-			    	objeto.style.hight = altura+"px";
-
-			  	});*/
-		        
+				'<button id="excluir" type="submit" class="botao-propriedades">Excluir</button>';
 		    }
-
       	});
-
 	}
 
   	
@@ -53,6 +33,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
 				'</form>'; 
   	});
 
-  	
-
+  	formulario.addEventListener('submit', function(e){
+    	var id = document.querySelector("#propriedades > form > input[type='hidden']:nth-child(1)").value;
+    	var altura = document.querySelector("#altura").value;
+    	var largura = document.querySelector("#largura").value;
+    	var url = document.querySelector("#url").value;
+    	var objeto =  document.querySelector("#"+id);
+    	objeto.style.widght = largura+"px";
+    	objeto.style.hight = altura+"px";
+  	});
 });

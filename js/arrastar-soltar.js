@@ -22,7 +22,7 @@ interact('.dropzone').dropzone({
     event.relatedTarget.classList.add('exibir')
     event.relatedTarget.classList.add('resize')
 
-    if(localStorage.getItem("dragDrop_"+event.relatedTarget.id+"_criado")!="sim"){
+    if(localStorage.getItem(event.relatedTarget.id+"_criado")!="sim"){
       if (event.relatedTarget.classList.contains("texto")) {
             event.relatedTarget.innerHTML = '<textarea class="resize-drag"></textarea>'
       }else if (event.relatedTarget.classList.contains("imagem")) {
@@ -113,10 +113,10 @@ function openModal(target,titulo,texto,innerHTML_inicio, innnerHTML_final){
   modal_texto.innerHTML=texto;
   modal.style.display = "block";
   botao.addEventListener('click', function(e){
-      if(localStorage.getItem("dragDrop_"+target.id+"_criado")!="sim"){
+      if(localStorage.getItem(target.id+"_criado")!="sim"){
         modal.style.display = "none";
         var modal_url = document.querySelector(".modal > div.modal-content > input[type='text']");
-        localStorage.setItem("dragDrop_"+target.id+"_criado","sim");
+        localStorage.setItem(target.id+"_criado","sim");
         target.innerHTML = innerHTML_inicio+modal_url.value+innnerHTML_final;
       }
   });
