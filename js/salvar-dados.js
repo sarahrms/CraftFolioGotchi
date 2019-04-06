@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(e) {
-var botao_modo = document.querySelector("#modo-exibicao");
+  var botao_modo = document.querySelector("#modo-exibicao");
   var mundo = document.querySelector("#mundo");
+  var chao = document.querySelector("#chao");
   var conteiner_widgets = document.querySelector("#widgets");
   var propriedades = document.querySelector("#propriedades");
   var widget = document.querySelectorAll(".widget");
@@ -18,6 +19,8 @@ var botao_modo = document.querySelector("#modo-exibicao");
 			objeto[i].classList.remove("resize-drag")
 			localStorage.setItem(objeto[i].id+"_html",objeto[i].outerHTML);
 		}
+		localStorage.setItem("mundo_html",mundo.outerHTML);
+		localStorage.setItem("chao_html",chao.outerHTML);
 
 		conteiner_widgets.style.backgroundColor = "khaki";
 		propriedades.style.backgroundColor = "khaki";
