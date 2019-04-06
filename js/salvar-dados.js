@@ -7,7 +7,7 @@ var botao_modo = document.querySelector("#modo-exibicao");
   var formulario = document.querySelector("#formulario-propriedades");
 
   botao_modo.addEventListener('click', function(e){
-  	var objeto = document.querySelectorAll(".resize-drag");
+  	var objeto = document.querySelectorAll(".objeto");
     if(botao_modo.innerHTML == "Sair"){
       	botao_modo.innerHTML = "Editar";
 		for (var i = 0; i < widget.length; i++) {
@@ -15,6 +15,7 @@ var botao_modo = document.querySelector("#modo-exibicao");
 		}
 		for (var i = 0; i < objeto.length; i++) {
 			objeto[i].innerHTML	= objeto[i].value;
+			objeto[i].classList.remove("resize-drag")
 			localStorage.setItem(objeto[i].id+"_html",objeto[i].outerHTML);
 		}
 
@@ -25,6 +26,10 @@ var botao_modo = document.querySelector("#modo-exibicao");
       botao_modo.innerHTML = "Sair";
 		for (var i = 0; i < widget.length; i++) {
 				widget[i].style.display = "flex";
+		}
+
+		for (var i = 0; i < objeto.length; i++) {
+			objeto[i].classList.add("resize-drag");
 		}
 		formulario.style.display = "block";
 		conteiner_widgets.style.backgroundColor = "cornflowerblue"

@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
     localStorage.setItem("num_textos",x);
     objeto.classList.add("resize-drag");
+    objeto.classList.add("objeto");
     objeto.id="texto-"+x;
     objeto.style.width="100px";
     objeto.style.height="100px";
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         var objeto = document.createElement("img");
         objeto.classList.add("resize-drag");
         objeto.id="imagem-"+x;
+        objeto.classList.add("objeto");
         objeto.src=document.querySelector("#modal-imagem > div > form > input").value;
         objeto.style.width="100px";
         objeto.style.height="100px";
@@ -80,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         objeto.id="video-"+x;
         objeto.src=document.querySelector("#modal-video > div > form > input").value;
         objeto.controls = true;
+        objeto.classList.add("objeto");
         objeto.style.width="100px";
         objeto.style.height="100px";
         mundo.appendChild(objeto);
@@ -105,6 +108,7 @@ formulario_musica.addEventListener('submit', function(event){
         objeto.id="musica-"+x;
         objeto.src=document.querySelector("#modal-musica > div > form > input").value;
         objeto.controls = true;
+        objeto.classList.add("objeto");
         objeto.style.width="100px";
         objeto.style.height="100px";
         mundo.appendChild(objeto);

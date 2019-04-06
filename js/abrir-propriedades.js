@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(e) {
-  var objeto = document.querySelectorAll(".resize-drag");
+window.addEventListener("DOMContentLoaded", function(e) {
+  var objeto = document.querySelectorAll(".objeto");
   var propriedades = document.querySelector("#propriedades");
   var mundo = document.querySelector("#mundo");
   var formulario = document.querySelector("#formulario-propriedades");
@@ -11,9 +11,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
       	objeto[i].addEventListener('click', function(e){
       		e.stopPropagation();
 	      	var id = this.id
-	      	var valor_id = document.querySelector("#formulario-propriedades > input[name='id']");	
+	      		var no = document.querySelector("#formulario-propriedades").firstElementChild;
+	      		
+				while (no.tagName!="BUTTON") {
+					var x = no;
+				    no = no.nextElementSibling;
+				    formulario.removeChild(x);
+				}
 
-	      	if(valor_id	== null ||  valor_id.value != id){
 	      		if(id.startsWith("imagem")){
 	      			var input_id = document.createElement("input");
 	      			input_id.name="id";
@@ -44,9 +49,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 	      			excluir.classList.remove("nao-exibir");
 	      			alterar.classList.remove("nao-exibir");
-
 			    }
-			}
       	});
 	}
 
