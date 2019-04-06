@@ -24,7 +24,7 @@ var botao_modo = document.querySelector("#modo-exibicao");
     }else{
       botao_modo.innerHTML = "Sair";
 		for (var i = 0; i < widget.length; i++) {
-				widget[i].style.display = "block";
+				widget[i].style.display = "flex";
 		}
 		formulario.style.display = "block";
 		conteiner_widgets.style.backgroundColor = "cornflowerblue"
