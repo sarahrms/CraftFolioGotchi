@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="css/comum.css">
 	<link rel="stylesheet" href="css/mundo.css">
 	<script src="https://cdn.jsdelivr.net/npm/interactjs@next/dist/interact.min.js"></script>
-	<script type="text/javascript" src="js/modo-edicao.js"></script>
-	<script type="text/javascript" src="js/arrastar-soltar.js"></script>
+	<script type="text/javascript" src="js/salvar-dados.js"></script>
+	<script type="text/javascript" src="js/redimensionar.js"></script>
+	<script type="text/javascript" src="js/criar-elemento.js"></script>
 	<script type="text/javascript" src="js/recuperar-dados.js"></script>
 	<script type="text/javascript" src="js/abrir-propriedades.js"></script>
 </head>
@@ -18,50 +19,51 @@
 		<div id="propriedades">
 			<form id="formulario-propriedades"></form>
 		</div>
-		<div id="mundo" class="dropzone"></div>
+		<div id="mundo" class="resize-container"></div>
 		<div id="widgets">
-			<div class="conteiner">
-				<span id="texto-1" class="drag-drop texto"><i class="material-icons">text_fields</i></span>
-				<span id="texto-2" class="drag-drop texto"><i class="material-icons">text_fields</i></span>
-				<span id="texto-3" class="drag-drop texto"><i class="material-icons">text_fields</i></span>
-			</div>
-			<div class="conteiner">
-				<span id="imagem-1" class="drag-drop imagem"><i class="material-icons">photo</i></span>
-				<span id="imagem-2" class="drag-drop imagem"><i class="material-icons">photo</i></span>
-				<span id="imagem-3" class="drag-drop imagem"><i class="material-icons">photo</i></span>
-			</div>
-			<div class="conteiner">
-				<span id="video-1" class="drag-drop video"><i class="material-icons">movie_creation</i></span>
-				<span id="video-2" class="drag-drop video"><i class="material-icons">movie_creation</i></span>
-				<span id="video-3" class="drag-drop video"><i class="material-icons">movie_creation</i></span>
-			</div>
-			<div class="conteiner">
-				<span id="musica-1" class="drag-drop musica"><i class="material-icons">music_note</i></span>
-				<span id="musica-2" class="drag-drop musica"><i class="material-icons">music_note</i></span>
-				<span id="musica-3" class="drag-drop musica"><i class="material-icons">music_note</i></span>
-			</div>
-			<div class="conteiner">
-				<span id="gif-1" class="drag-drop gif"><i class="material-icons">gif</i></span>
-				<span id="gif-2" class="drag-drop gif"><i class="material-icons">gif</i></span>
-				<span id="gif-3" class="drag-drop gif"><i class="material-icons">gif</i></span>
-			</div>
-			<div class="conteiner">
-				<span id="poligono-1" class="drag-drop poligono"><i class="material-icons">crop_din</i></span>
-				<span id="poligono-2" class="drag-drop poligono"><i class="material-icons">crop_din</i></span>
-				<span id="poligono-3" class="drag-drop poligono"><i class="material-icons">crop_din</i></span>
-			</div>
+			<div id="texto" class="widget"><i class="material-icons">text_fields</i></div>
+			<div id="imagem" class="widget"><i class="material-icons">photo</i></div>
+			<div id="video" class="widget"><i class="material-icons">movie_creation</i></div>
+			<div id="musica" class="widget"><i class="material-icons">music_note</i></div>
 		</div>
 	</main>
 	<footer>
 		<div id="chao"></div>
 	</footer>
 
-	<div class="modal">
+	<div id="modal-imagem" class="modal">
 		<div class="modal-content">
-		  <h4></h4>
-		  <p></p>
-		  <input type="text">
-		  <button id="modal-close">OK</button>
+		  <h4>Imagem</h4>
+		  <p>https://abrilsuperinteressante.files.wordpress.com/2019/03/nasa-onda-supersonico.png</p>
+		  <form class="formulario-modal">
+			<input type="text">
+		  	<button type="submit">OK</button>
+		  </form>
+		  
+		</div>
+	</div>
+
+	<div id="modal-video" class="modal">
+		<div class="modal-content">
+		  <h4>Video</h4>
+		  <p>http://media.w3.org/2010/05/sintel/trailer.mp4</p>
+		  <form class="formulario-modal">
+			<input type="text">
+		  	<button type="submit">OK</button>
+		  </form>
+		  
+		</div>
+	</div>
+
+	<div id="modal-musica" class="modal">
+		<div class="modal-content">
+		  <h4>Musica</h4>
+		  <p>http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.oga</p>
+		  <form class="formulario-modal">
+			<input type="text">
+		  	<button type="submit">OK</button>
+		  </form>
+		  
 		</div>
 	</div>
 
