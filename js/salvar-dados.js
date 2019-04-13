@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(e) {
   var botao_modo = document.querySelector("#modo-exibicao");
-  var mundo = document.querySelector("#mundo");
-  var chao = document.querySelector("#chao");
   var conteiner_widgets = document.querySelector("#widgets");
   var propriedades = document.querySelector("#propriedades");
   var widget = document.querySelectorAll(".widget");
   var formulario = document.querySelector("#formulario-propriedades");
 
   botao_modo.addEventListener('click', function(e){
+  	var mundo = document.querySelector("#mundo");
+  var chao = document.querySelector("#chao");
   	var objeto = document.querySelectorAll(".objeto");
     if(botao_modo.innerHTML == "Sair"){
       	botao_modo.innerHTML = "Editar";
@@ -19,8 +19,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
 			objeto[i].classList.remove("resize-drag")
 			localStorage.setItem(objeto[i].id+"_html",objeto[i].outerHTML);
 		}
-		localStorage.setItem("mundo_html",mundo.outerHTML);
-		localStorage.setItem("chao_html",chao.outerHTML);
+		let compStyles_mundo = window.getComputedStyle(mundo);
+		let compStyles_chao = window.getComputedStyle(chao);
+
+		localStorage.setItem("mundo_backgroundColor",compStyles_mundo.getPropertyValue('background-color'));
+		localStorage.setItem("chao_backgroundColor",compStyles_chao.getPropertyValue('background-color'));
 
 		conteiner_widgets.style.backgroundColor = "khaki";
 		propriedades.style.backgroundColor = "khaki";
@@ -36,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 		}
 		formulario.style.display = "block";
 		conteiner_widgets.style.backgroundColor = "cornflowerblue"
-		propriedades.style.backgroundColor = "lightgreen"
     }
 
   });

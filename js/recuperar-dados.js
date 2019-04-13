@@ -8,14 +8,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
   	var num_musicas = localStorage.getItem("num_musicas");
 
 
-    if(localStorage.getItem("mundo_html")!=null){
-      mundo.outerHTML = localStorage.getItem("mundo_html");
-      mundo.innerHTML = "";
-      mundo = document.querySelector("#mundo");
+    if(localStorage.getItem("mundo_backgroundColor")!=null){
+      console.log(localStorage.getItem("mundo_backgroundColor"))
+      mundo.style.backgroundColor = localStorage.getItem("mundo_backgroundColor");
     }
 
-    if(localStorage.getItem("chao_html")!=null)
-      chao.outerHTML = localStorage.getItem("chao_html");
+    if(localStorage.getItem("chao_backgroundColor")!=null)
+      chao.style.backgroundColor = localStorage.getItem("chao_backgroundColor");
 
     for (var i = 1; i <= Number(num_imagens); i++) {
       	var objeto = document.createElement("img");
