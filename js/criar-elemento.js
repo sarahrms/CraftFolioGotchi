@@ -13,14 +13,15 @@ function criaObjetoImagem(x){
 
 function criaObjetoVideo(x){
     let objeto;
-    objeto = document.createElement("video");
+    objeto = document.createElement("iframe");
     objeto.classList.add("resize-drag");
     objeto.id="video-"+x;
     objeto.src=document.querySelector("#modal > div > form > input").value;
-    objeto.controls = true;
     objeto.classList.add("objeto");
-    objeto.style.width="100px";
-    objeto.style.height="100px";
+    objeto.width="500";
+    objeto.height="300";
+    objeto.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+    objeto.frameborder = "0";
     mundo.appendChild(objeto);
     objeto.addEventListener('click', criaPropriedades);
 }

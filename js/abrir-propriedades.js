@@ -174,8 +174,18 @@ function lidaAlterar(e){
 function lidaExcluir(e){
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
   let obj = document.querySelector("#"+id);
-  localStorage.removeItem(id+"_html");
+  let ultimo_obj;
+  let id_ultimo_obj;
+
+  switch(obj.id.match("(.*)-.*")[1]){
+        case "imagem": id_ultimo_obj = "imagem-"+num_imagens; num_imagens--; break;
+        case "video": id_ultimo_obj = "video"+num_videos; num_videos--; break;
+        case "musica": id_ultimo_obj = "musica"+num_musicas; num_musicas--; break;
+        case "texto": id_ultimo_obj = "texto"+num_textos;  num_textos--; break;
+  }
   mundo.removeChild(obj);
+  document.querySelector("#"+id_ultimo_obj).id=id;
+  localStorage.removeItem(id_ultimo_obj+"_html");
 }
 
 alterar.addEventListener('click', lidaAlterar);
