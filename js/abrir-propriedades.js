@@ -44,7 +44,8 @@ function inputURL(obj){
    let input_url = document.createElement("input");
    input_url.name="url";
    input_url.type="text";
-   input_url.value=obj.src
+   if(obj.id.startsWith("galeria")) input_url.value=galerias[obj.id].join(" ");
+   else input_url.value=obj.src;
    formulario.insertBefore(input_url,formulario.alterar);
 }
 
@@ -151,6 +152,15 @@ function criaPropriedades(e){
                 alterar.classList.remove("nao-exibir");
                 propriedades.style.backgroundColor = "lightgreen";
                 break;
+            case "galeria":
+                inputId(this);
+                inputURL(this);
+                inputHeight(this); 
+                inputWidth(this);
+                excluir.classList.remove("nao-exibir");
+                alterar.classList.remove("nao-exibir");
+                propriedades.style.backgroundColor = "lightgreen";
+                break;
         }
       }
       else if(this.id == "mundo" || this.id == "chao"){
@@ -206,6 +216,13 @@ function lidaAlterar(e){
             obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
             obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
             break;
+        case "galeria":
+            galerias[obj.id] = document.querySelector("#formulario-propriedades > input[name='url']").value.split(" ");
+            obj.firstElementChild.src=galerias[obj.id][obj.getAttribute("data-value")];
+            console.log(galerias);
+            obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
+            obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
+            break;
     }
   }
   else if(this.id == "mundo" || this.id == "chao"){
@@ -222,15 +239,23 @@ function lidaExcluir(e){
 
   switch(obj.id.match("(.*)-.*")[1]){
         case "imagem": id_ultimo_obj = "imagem-"+num_imagens; num_imagens--; break;
-        case "video": id_ultimo_obj = "video"+num_videos; num_videos--; break;
-        case "musica": id_ultimo_obj = "musica"+num_musicas; num_musicas--; break;
-        case "texto": id_ultimo_obj = "texto"+num_textos;  num_textos--; break;
-        case "galeria": id_ultimo_obj = "galeria"+num_galerias;  num_galerias--; break;
+        case "video": id_ultimo_obj = "video-"+num_videos; num_videos--; break;
+        case "musica": id_ultimo_obj = "musica-"+num_musicas; num_musicas--; break;
+        case "texto": id_ultimo_obj = "texto-"+num_textos;  num_textos--; break;
+        case "galeria": 
+          id_ultimo_obj = "galeria-"+num_galerias;  
+          num_galerias--; 
+          galerias[id] = galerias[id_ultimo_obj];
+          delete galerias[id_ultimo_obj];
+          break;
   }
   mundo.removeChild(obj);
   document.querySelector("#"+id_ultimo_obj).id=id;
-  localStorage.removeItem(id_ultimo_obj+"_html");
+  localStorage.removeItem(id_ultimo_obj+"_outerHTML");
+  localStorage.removeItem(id_ultimo_obj+"_innerHTML");
 }
 
 alterar.addEventListener('click', lidaAlterar);
 excluir.addEventListener('click', lidaExcluir);
+
+

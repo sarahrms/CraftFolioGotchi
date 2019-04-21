@@ -4,6 +4,7 @@ let num_videos = localStorage.getItem("num_videos");
 let num_musicas = localStorage.getItem("num_musicas");
 let num_galerias = localStorage.getItem("num_galerias");
 let galerias = JSON.parse(window.localStorage.getItem("galerias"));
+console.log(galerias);
 
 if (num_imagens==null) { num_imagens = 0; }
 if (num_textos==null) { num_textos = 0; }

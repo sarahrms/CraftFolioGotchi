@@ -55,7 +55,6 @@ function criaObjetoGaleria(x){
     let seta_esquerda;
     let conteiner;
     galerias["galeria-"+x] = document.querySelector("#modal > div > form > input").value.split(" ");
-    console.log(galerias)
 
     conteiner = document.createElement("div");
     conteiner.classList.add("resize-drag");
@@ -63,6 +62,7 @@ function criaObjetoGaleria(x){
     conteiner.classList.add("objeto");
     conteiner.style.width="100px";
     conteiner.style.height="100px";
+    conteiner.setAttribute("data-value",0);
 
     objeto = document.createElement("img");
     objeto.style.objectFit = "fill";
@@ -84,7 +84,10 @@ function criaObjetoGaleria(x){
     conteiner.appendChild(seta_esquerda);
 
     mundo.appendChild(conteiner);
-    objeto.addEventListener('click', criaPropriedades);
+    conteiner.addEventListener('click', criaPropriedades);
+
+    seta_direita.addEventListener('click',proximaImgemDireita);
+    seta_esquerda.addEventListener('click',proximaImgemEsquerda);
 }
 
 
