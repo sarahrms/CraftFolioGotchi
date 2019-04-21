@@ -63,7 +63,7 @@ function inputArredondar(obj){
 }
 
 function inputHeight(obj){
-    let label_height = document.createElement("label");
+   let label_height = document.createElement("label");
    label_height.for="altura";
    label_height.innerHTML ="Altura";
    formulario.insertBefore(label_height,formulario.alterar);
@@ -225,6 +225,7 @@ function lidaExcluir(e){
         case "video": id_ultimo_obj = "video"+num_videos; num_videos--; break;
         case "musica": id_ultimo_obj = "musica"+num_musicas; num_musicas--; break;
         case "texto": id_ultimo_obj = "texto"+num_textos;  num_textos--; break;
+        case "galeria": id_ultimo_obj = "galeria"+num_galerias;  num_galerias--; break;
   }
   mundo.removeChild(obj);
   document.querySelector("#"+id_ultimo_obj).id=id;

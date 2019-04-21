@@ -12,11 +12,12 @@ botao_modo.addEventListener('click', function(e){
 				widget[i].style.display = "none";
 		}
 		for (let i = 0; i < objeto.length; i++) {
-			objeto[i].innerHTML	= objeto[i].value;
+			if(objeto[i].id.startsWith("texto")) objeto[i].innerHTML = objeto[i].value;
 			objeto[i].classList.remove("resize-drag")
-			localStorage.setItem(objeto[i].id+"_html",objeto[i].outerHTML);
+			localStorage.setItem(objeto[i].id+"_outerHTML",objeto[i].outerHTML);
+			localStorage.setItem(objeto[i].id+"_innerHTML",objeto[i].innerHTML);
         }
-
+        localStorage.setItem("galerias",JSON.stringify(galerias));
 		let compStyles_mundo = window.getComputedStyle(mundo);
 		let compStyles_chao = window.getComputedStyle(chao);
 
@@ -27,6 +28,7 @@ botao_modo.addEventListener('click', function(e){
 		localStorage.setItem("num_imagens",num_imagens);
         localStorage.setItem("num_videos",num_videos);
         localStorage.setItem("num_musicas",num_musicas);
+        localStorage.setItem("num_galerias",num_galerias);
 
 		conteiner_widgets.style.backgroundColor = "khaki";
 		propriedades.style.backgroundColor = "khaki";

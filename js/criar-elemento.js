@@ -54,6 +54,8 @@ function criaObjetoGaleria(x){
     let seta_direita;
     let seta_esquerda;
     let conteiner;
+    galerias["galeria-"+x] = document.querySelector("#modal > div > form > input").value.split(" ");
+    console.log(galerias)
 
     conteiner = document.createElement("div");
     conteiner.classList.add("resize-drag");
@@ -64,7 +66,7 @@ function criaObjetoGaleria(x){
 
     objeto = document.createElement("img");
     objeto.style.objectFit = "fill";
-    objeto.src=document.querySelector("#modal > div > form > input").value;
+    objeto.src=galerias["galeria-"+x][0];
     objeto.style.width="100%";
     objeto.style.height="100%";
     conteiner.appendChild(objeto);
@@ -124,7 +126,6 @@ modal.addEventListener('submit', function(event){
         break;
 
     case "galeria":
-    console.log("gaa");
         num_galerias++;
         criaObjetoGaleria(num_galerias);
         break;
