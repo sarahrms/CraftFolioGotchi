@@ -6,11 +6,10 @@ class Vector2D {
 }
 
 class Sprite {
-    constructor(sourcePath, spriteName, format, dimension){
+    constructor(sourcePath, spriteName, format){
         this.sourcePath = sourcePath;
         this.spriteName = spriteName;
         this.format = format;
-        this.dimension = dimension;
     }
 
     getSource() {
@@ -19,14 +18,14 @@ class Sprite {
 }
 
 class AnimatedSprite {
-    constructor(sourcePath, animationName, format, dimension, initialIndex, finalIndex){
+    constructor(sourcePath, animationName, format, initialIndex, finalIndex, active){
         this.sourcePath = sourcePath;
         this.animationName = animationName;
         this.format = format;
-        this.dimension = dimension;
         this.currentIndex = initialIndex;
         this.initialIndex = initialIndex;
         this.finalIndex = finalIndex;
+        this.active = active;
 
         this.sprites = [];
         for (let index of range(initialIndex, finalIndex)){
@@ -35,11 +34,13 @@ class AnimatedSprite {
     }
 
     updateSprite(){
-        if (this.currentIndex < this.finalIndex){
-            this.currentIndex += 1;
-        }
-        else {
-            this.currentIndex = this.initialIndex;
+        if(this.active){
+            if (this.currentIndex < this.finalIndex){
+                this.currentIndex += 1;
+            }
+            else {
+                this.currentIndex = this.initialIndex;
+            }
         }
     }
 

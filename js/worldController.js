@@ -1,44 +1,50 @@
-const deltaTime = 25; //milisegundos//
+const deltaTime = 40; //milisegundos//
 const gravity = 9.8;
 const scale = 0.2;
-const floorHeight = 35;
+const floorHeight = 15;
+/////////////////////////////////////////////////MAIN CHARACTER////////////////////////////////////////////////////
+var mainCharacter = new Character("blue", new Vector2D(300, floorHeight), new Vector2D(75, 150), true, "mainCharacter");
 
-//////////////////////////////////////configurando o personagem principal//////////////////////////////////////////
-let position = new Vector2D(300, floorHeight);
-let velocity = new Vector2D(0, 0);
-let dimension = new Vector2D(100, 200);
-
-var mainCharacter = new Character("blue", position, velocity, dimension);
-
+let idleAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "idle", "png", 1, 5, false);
+mainCharacter.addStateAnimation("idle", idleAnimatedSprite, deltaTime);
 mainCharacter.setInitialState("idle");
+mainCharacter.updateAnimation();
 
-let idleAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "idle", "png",
-             new Vector2D(100, 200), 1, 6);
-mainCharacter.addStateAnimation("idle", idleAnimatedSprite, 1000);
+let turnAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "turn", "png", 1, 3, true);
+mainCharacter.addStateAnimation("turn", turnAnimatedSprite, deltaTime);
 
-let walkAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "walk", "png",
-             new Vector2D(100, 200), 1, 6);
-mainCharacter.addStateAnimation("walk", walkAnimatedSprite, 5000);
+let walkAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "walk", "png", 1, 6, true);
+mainCharacter.addStateAnimation("walk", walkAnimatedSprite, deltaTime);
 
-mainCharacter.addTransition("idle", "LeftArrow", "walk");
+mainCharacter.addTransition("idle", "keydown", LeftArrow, "turn");
+mainCharacter.addTransition("idle", "keydown", RightArrow, "turn");
 
+mainCharacter.addTransition("turn", "", "", "walk");
 
-
-document.addEventListener("keydown", function(event) {
-    animation = mainCharacter.updateState(event.code, clock);
-});
+mainCharacter.addTransition("walk", "keyup", LeftArrow, "idle");
+mainCharacter.addTransition("walk", "keyup", RightArrow, "idle");
 
 /////////////////////////////////////////////////TIMING SHITS//////////////////////////////////////////////////////
-
 ////////////FORBIDDEN ZONE/////////////////FORBIDDEN ZONE/////////////FORBIDDEN ZONE///////////////////////////////
 let physicsClock = setInterval(() => updatePositions(), deltaTime);///////DON'T CHANGE ANYTHING HERE///////////////
-let animationClock = setInterval(() => updateAnimations(), deltaTime);//////////////JUST DON'T/////////////////////
+let mainCharacterClock = setInterval(() => mainCharacter.updateAnimation(), deltaTime);//////////JUST DON'T///////////////
 ///////////////////////////////////JUST KEEP ON MOVING/////////////////////////////////////////////////////////////
 
 function updatePositions(){
     mainCharacter.updatePosition(gravity, scale, floorHeight);
 }
 
-function updateAnimations(){
-    mainCharacter.updateAnimation();
-}
+////////////////////////////////////////////KEYBOARD INPUT SHITS///////////////////////////////////////////////////
+document.addEventListener("keydown", function(event) {
+    mainCharacter.updateAceleration("keydown", event.keyCode);
+    clearInterval(mainCharacterClock);
+    let delta = mainCharacter.verifyTransitions("keydown", event.keyCode);
+    mainCharacterClock = setInterval(() => mainCharacter.updateAnimation(), delta);
+});
+
+document.addEventListener("keyup", function(event) {
+    mainCharacter.updateAceleration("keyup", event.keyCode);
+    clearInterval(mainCharacterClock);
+    let delta = mainCharacter.verifyTransitions("keyup", event.keyCode);
+    mainCharacterClock = setInterval(() => mainCharacter.updateAnimation(), delta);
+});
