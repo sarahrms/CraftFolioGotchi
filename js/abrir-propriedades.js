@@ -193,7 +193,7 @@ function lidaAlterar(e){
   event.preventDefault();
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
   let obj = document.querySelector("#"+id);
-
+  //console.log(obj);
   if(obj.classList.contains("objeto")){
     switch(obj.id.match("(.*)-.*")[1]){
         case "imagem":
@@ -225,8 +225,9 @@ function lidaAlterar(e){
             break;
     }
   }
-  else if(this.id == "mundo" || this.id == "chao"){
+  else if(obj.id == "mundo" || obj.id == "chao"){
     let cor = document.querySelector("#formulario-propriedades > input[name='cor']").value;
+    //console.log(cor);
     obj.style.backgroundColor=cor;
   }
 }
