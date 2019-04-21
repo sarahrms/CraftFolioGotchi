@@ -1,6 +1,8 @@
-const LeftArrow = 39;
-const RightArrow = 37;
+const LeftArrow = 37;
+const RightArrow = 39;
 const UpArrow = 38;
+const WalkVelocity = 10;
+const JumpAceleration = 30;
 
 class Transition {
     constructor(inputState, inputCode, nextState){
@@ -20,34 +22,46 @@ class Animation {
 class Character {
     constructor(color, position, dimension, controllable, htmlElementID){
         this.color = color;
+
         this.position = position;
         this.velocity = new Vector2D(0, 0);
         this.aceleration = new Vector2D(0, 0);
+        this.scale = new Vector2D(1, 1);
         this.dimension = dimension;
-        this.reflect = false;
+
+        this.jumping = false;
         this.controllable = controllable;
+
         this.stateAnimations = []; //[name] = AnimatedSprite, delta;
         this.transitions = [];
 
         this.htmlElement = document.getElementById(htmlElementID);
-        this.htmlElement.style.width = this.dimension.x;
-        this.htmlElement.style.height = this.dimension.y;
+        this.htmlElement.style.width = this.dimension.x + "px";
+        this.htmlElement.style.height = this.dimension.y + "px";
     }
 
     updatePosition(gravity, scale, floorHeight){
+        this.aceleration.y += gravity*scale;
+        this.velocity.x += this.aceleration.x;
+        this.velocity.y += this.aceleration.y;
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
-        this.velocity.x += this.aceleration.x;
-        this.velocity.y += this.velocity.y - gravity*scale;
 
         if(this.position.y < floorHeight){
+            this.jumping = false;
+            this.aceleration.y = 0;
+            this.velocity.y = 0;
             this.position.y = floorHeight;
         }
-        this.htmlElement.style.transform.translate(this.position.x+"px", this.position.y+"px");
+
+        this.htmlElement.style.transform = "translate(" + this.position.x + "px, " + -this.position.y +"px) "
+                  + "scale(" + this.scale.x + ", " + this.scale.y + ")"; //y upside-down//
     }
 
     setInitialState(state){
         this.currentState = state;
+        let deltaTime = this.stateAnimations[this.currentState].deltaTime;
+        this.clock = setInterval(() => this.updateAnimation(), deltaTime);
     }
 
     updateAceleration(inputState, inputCode){
@@ -55,61 +69,59 @@ class Character {
             if(inputState == "keydown"){
                 switch(inputCode){
                     case LeftArrow: {
-
+                        this.velocity.x = -WalkVelocity;
+                        this.scale.x = -1;
                         break;
                     }
                     case RightArrow: {
-
+                        this.velocity.x = WalkVelocity;
+                        this.scale.x = 1;
                         break;
                     }
                     case UpArrow:{
-
+                        if(this.jumping == false) {
+                            this.jumping = true;
+                            this.aceleration.y = JumpAceleration;
+                        }
                         break;
                     }
                 }
             }
             else if(inputState == "keyup"){
-              switch(inputCode){
-                  case LeftArrow: {
-
-                      break;
-                  }
-                  case RightArrow: {
-
-                      break;
-                  }
-                  case UpArrow:{
-
-                      break;
-                  }
-              }
+                switch(inputCode){
+                    case LeftArrow:
+                    case RightArrow: {
+                        this.velocity.x = 0;
+                        break;
+                    }
+                }
             }
         }
     }
 
     verifyTransitions(inputState, inputCode){
         let possibleTransitions = this.transitions[this.currentState];
-        if (typeof(possibleTransitions) !== "undefined"){
-            for (let transition of possibleTransitions){
-                if (transition.inputState == inputState & transition.inputCode == inputCode){
+        if(typeof(possibleTransitions) !== "undefined"){
+            for(let transition of possibleTransitions){
+                if(transition.inputState == inputState & transition.inputCode == inputCode){
                     this.currentState = transition.nextState;
-                    let animation = this.stateAnimations[this.currentState];
-                    return animation.deltaTime;
+                    clearInterval(this.clock);
+                    let deltaTime = this.stateAnimations[this.currentState].deltaTime;
+                    this.clock = setInterval(() => this.updateAnimation(), deltaTime);
                 }
             }
-        }
-        else {
-          return this.stateAnimations[this.currentState].deltaTime;
         }
     }
 
     verifyLambdaTransitions(animation){
         let possibleTransitions = this.transitions[this.currentState];
-        if (typeof(possibleTransitions) !== "undefined"){
-            for (let transition of possibleTransitions){
+        if(typeof(possibleTransitions) !== "undefined"){
+            for(let transition of possibleTransitions){
                 if(transition.inputState == ""){
                     if(animation.animatedSprite.currentIndex == animation.animatedSprite.finalIndex){ //lamba transitions
                         this.currentState = transition.nextState;
+                        clearInterval(this.clock);
+                        this.clock = setInterval(() => this.updateAnimation(), animation.deltaTime);
                     }
                 }
             }
@@ -119,19 +131,17 @@ class Character {
     idleDynamics(animation){
         if(animation.animatedSprite.active == false){
             if(Math.random()*10 > 9.8){ //random blinks//
-              animation.animatedSprite.active = true;
+                animation.animatedSprite.active = true;
             }
         }
-        else {
-            if(animation.animatedSprite.currentIndex == animation.animatedSprite.initialIndex){
-                animation.animatedSprite.active = false;
-            }
+        else if(animation.animatedSprite.currentIndex == animation.animatedSprite.initialIndex){
+            animation.animatedSprite.active = false;
         }
     }
 
     addTransition(previousState, inputState, inputCode, nextState){
         let transition = new Transition(inputState, inputCode, nextState);
-        if (typeof(this.transitions[previousState]) === "undefined"){
+        if(typeof(this.transitions[previousState]) === "undefined"){
             this.transitions[previousState] = [];
         }
         this.transitions[previousState].push(transition);
@@ -144,7 +154,7 @@ class Character {
 
     updateAnimation(){
         let animation = this.stateAnimations[this.currentState];
-        if (this.currentState == "idle") {
+        if(this.currentState == "idle"){
             this.idleDynamics(animation);
         }
         this.verifyLambdaTransitions(animation);

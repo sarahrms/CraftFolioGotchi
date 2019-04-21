@@ -1,9 +1,7 @@
 #mainCharacter {
   position: absolute;
-  left: 500px;
-  bottom: 35px;
-  width: 75px;
-  height: 150px;
+  left: 0px;
+  bottom: 0px;
 }
 
 #computer {
