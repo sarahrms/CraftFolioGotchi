@@ -154,7 +154,6 @@ function criaPropriedades(e){
         }
       }
       else if(this.id == "mundo" || this.id == "chao"){
-
         inputId(this);
         inputCor(this);
 

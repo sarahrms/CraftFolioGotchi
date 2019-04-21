@@ -51,13 +51,37 @@ function criaObjetoTexto(x){
 
 function criaObjetoGaleria(x){
     let objeto;
-    objeto = document.createElement("textarea");
-    objeto.classList.add("resize-drag");
-    objeto.classList.add("objeto");
-    objeto.id="texto-"+x;
-    objeto.style.width="100px";
-    objeto.style.height="100px";
-    mundo.appendChild(objeto);
+    let seta_direita;
+    let seta_esquerda;
+    let conteiner;
+
+    conteiner = document.createElement("div");
+    conteiner.classList.add("resize-drag");
+    conteiner.id="galeria-"+x;
+    conteiner.classList.add("objeto");
+    conteiner.style.width="100px";
+    conteiner.style.height="100px";
+
+    objeto = document.createElement("img");
+    objeto.style.objectFit = "fill";
+    objeto.src=document.querySelector("#modal > div > form > input").value;
+    objeto.style.width="100%";
+    objeto.style.height="100%";
+    conteiner.appendChild(objeto);
+
+    seta_direita = document.createElement("i");
+    seta_direita.classList.add("material-icons");
+    seta_direita.classList.add("seta-direita-galeria");
+    seta_direita.innerHTML = "arrow_forward_ios";
+    conteiner.appendChild(seta_direita);
+
+    seta_esquerda = document.createElement("i");
+    seta_esquerda.classList.add("material-icons");
+    seta_esquerda.classList.add("seta-esquerda-galeria");
+    seta_esquerda.innerHTML = "arrow_back_ios";
+    conteiner.appendChild(seta_esquerda);
+
+    mundo.appendChild(conteiner);
     objeto.addEventListener('click', criaPropriedades);
 }
 
@@ -98,5 +122,12 @@ modal.addEventListener('submit', function(event){
         num_musicas++;
         criaObjetoMusica(num_musicas);
         break;
+
+    case "galeria":
+    console.log("gaa");
+        num_galerias++;
+        criaObjetoGaleria(num_galerias);
+        break;
+
     }
 });

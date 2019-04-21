@@ -2,11 +2,13 @@ let num_imagens = localStorage.getItem("num_imagens");
 let num_textos = localStorage.getItem("num_textos");
 let num_videos = localStorage.getItem("num_videos");
 let num_musicas = localStorage.getItem("num_musicas");
+let num_galerias = localStorage.getItem("num_galerias");
 
 if (num_imagens==null) { num_imagens = 0; }
 if (num_textos==null) { num_textos = 0; }
 if (num_videos==null) { num_videos = 0; }
 if (num_musicas==null) { num_musicas = 0; }
+if (num_galerias==null) { num_galerias = 0; }
 
 if(localStorage.getItem("mundo_backgroundColor")!=null){
 	console.log(localStorage.getItem("mundo_backgroundColor"))
