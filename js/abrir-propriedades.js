@@ -121,11 +121,37 @@ function criaPropriedades(e){
                 inputArredondar(this);
                 inputHeight(this); 
                 inputWidth(this);
+                excluir.classList.remove("nao-exibir");
+                alterar.classList.remove("nao-exibir");
+                propriedades.style.backgroundColor = "lightgreen";
+                break;
+             case "texto":
+                inputId(this);
+                inputHeight(this); 
+                inputWidth(this);
+                excluir.classList.remove("nao-exibir");
+                alterar.classList.remove("nao-exibir");
+                propriedades.style.backgroundColor = "lightgreen";
+                break;
+            case "video":
+                inputId(this);
+                inputURL(this);
+                inputHeight(this); 
+                inputWidth(this);
+                excluir.classList.remove("nao-exibir");
+                alterar.classList.remove("nao-exibir");
+                propriedades.style.backgroundColor = "lightgreen";
+                break;
+            case "musica":
+                inputId(this);
+                inputURL(this);
+                inputHeight(this); 
+                inputWidth(this);
+                excluir.classList.remove("nao-exibir");
+                alterar.classList.remove("nao-exibir");
+                propriedades.style.backgroundColor = "lightgreen";
                 break;
         }
-        excluir.classList.remove("nao-exibir");
-        alterar.classList.remove("nao-exibir");
-        propriedades.style.backgroundColor = "lightgreen";
       }
       else if(this.id == "mundo" || this.id == "chao"){
 
@@ -135,6 +161,10 @@ function criaPropriedades(e){
         alterar.classList.remove("nao-exibir");
         excluir.classList.add("nao-exibir");
         propriedades.style.backgroundColor = "lightgreen"
+      }else{
+        alterar.classList.add("nao-exibir");
+        excluir.classList.add("nao-exibir");
+        propriedades.style.backgroundColor = "khaki"
       }
   }
 }
@@ -154,18 +184,32 @@ function lidaAlterar(e){
   event.preventDefault();
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
   let obj = document.querySelector("#"+id);
-  if(id.startsWith("imagem")){
-    let url = document.querySelector("#formulario-propriedades > input[name='url']").value;
-    let arredondar = document.querySelector("#formulario-propriedades > input[name='arredondar']").value;
-    let altura = document.querySelector("#formulario-propriedades > input[name='altura']").value;
-    let largura = document.querySelector("#formulario-propriedades > input[name='largura']").value;
-    obj.src=url;
-    obj.style.borderRadius=arredondar+"px";
-    obj.style.height=altura+"px";
-    obj.style.width=largura+"px";
 
-   console.log("AKII")
-  }else if (id=="mundo" || id=="chao"){
+  if(obj.classList.contains("objeto")){
+    switch(obj.id.match("(.*)-.*")[1]){
+        case "imagem":
+            obj.src=document.querySelector("#formulario-propriedades > input[name='url']").value;
+            obj.style.borderRadius=document.querySelector("#formulario-propriedades > input[name='arredondar']").value+"px";
+            obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
+            obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
+            break;
+         case "texto":
+            obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
+            obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
+            break;
+        case "video":
+            obj.src=document.querySelector("#formulario-propriedades > input[name='url']").value.replace("watch?v=", "embed/");;
+            obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
+            obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
+            break;
+        case "musica":
+            obj.src=document.querySelector("#formulario-propriedades > input[name='url']").value;
+            obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
+            obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
+            break;
+    }
+  }
+  else if(this.id == "mundo" || this.id == "chao"){
     let cor = document.querySelector("#formulario-propriedades > input[name='cor']").value;
     obj.style.backgroundColor=cor;
   }

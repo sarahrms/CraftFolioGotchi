@@ -16,7 +16,7 @@ function criaObjetoVideo(x){
     objeto = document.createElement("iframe");
     objeto.classList.add("resize-drag");
     objeto.id="video-"+x;
-    objeto.src=document.querySelector("#modal > div > form > input").value.replace("watch?v=", "embed/");;
+    objeto.src=document.querySelector("#modal > div > form > input").value.replace("watch?v=", "embed/");
     objeto.classList.add("objeto");
     objeto.style.width="200px";
     objeto.style.height="100px";
@@ -38,6 +38,18 @@ function criaObjetoMusica(x){
 }
 
 function criaObjetoTexto(x){
+    let objeto;
+    objeto = document.createElement("textarea");
+    objeto.classList.add("resize-drag");
+    objeto.classList.add("objeto");
+    objeto.id="texto-"+x;
+    objeto.style.width="100px";
+    objeto.style.height="100px";
+    mundo.appendChild(objeto);
+    objeto.addEventListener('click', criaPropriedades);
+}
+
+function criaObjetoGaleria(x){
     let objeto;
     objeto = document.createElement("textarea");
     objeto.classList.add("resize-drag");
