@@ -1,50 +1,66 @@
-const deltaTime = 40; //milisegundos//
-const gravity = -9.8;
-const scale = 1;
-const floorHeight = 15;
-/////////////////////////////////////////////////MAIN CHARACTER////////////////////////////////////////////////////
-var mainCharacter = new Character("blue", new Vector2D(300, floorHeight), new Vector2D(75, 150), true, "mainCharacter");
+let myPage = true;
+let userColor = "blue";
+let visitorColor = "blue";
 
-let idleAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "idle", "png", 1, 5, false);
-mainCharacter.addStateAnimation("idle", idleAnimatedSprite, deltaTime);
-mainCharacter.setInitialState("idle");
+///////////////////////////////////////////////CHARACTERS SHITS////////////////////////////////////////////////////
+let userCharacter;
+let visitorCharacter;
+let cow = document.getElementById("cow");
+let audio = new Audio('moo.mp3');
 
-let turnAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "turn", "png", 1, 3, true);
-mainCharacter.addStateAnimation("turn", turnAnimatedSprite, deltaTime);
-
-let walkAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "walk", "png", 1, 6, true);
-mainCharacter.addStateAnimation("walk", walkAnimatedSprite, deltaTime*100);
-
-let jumpAnimatedSprite = new AnimatedSprite("Sprites/alien_" + mainCharacter.color, "jump", "png", 1, 4, true);
-mainCharacter.addStateAnimation("jump", jumpAnimatedSprite, deltaTime);
-
-mainCharacter.addTransition("idle", "keydown", LeftArrow, "turn");
-mainCharacter.addTransition("idle", "keydown", RightArrow, "turn");
-
-mainCharacter.addTransition("turn", "", "", "walk");
-
-mainCharacter.addTransition("walk", "keyup", LeftArrow, "idle");
-mainCharacter.addTransition("walk", "keyup", RightArrow, "idle");
-
-mainCharacter.addTransition("idle", "keydown", UpArrow, "jump");
-mainCharacter.addTransition("walk", "keydown", UpArrow, "jump");
-
-mainCharacter.addTransition("jump", "", "", "idle");
-
+if(myPage){//if i'm on my own page//
+    userCharacter = setAlienCharacter(userColor, new Vector2D(50, FLOORHEIGHT), true, "userCharacter");
+}
+else { //if i'm on another user's page, if i'm a visitor//
+    userCharacter = setAlienCharacter(userColor,  new Vector2D(50, FLOORHEIGHT), false, "userCharacter");
+    visitorCharacter = setAlienCharacter(visitorColor,  new Vector2D(200, FLOORHEIGHT), true, "visitorCharacter");
+    visitorCharacter.htmlElement.style.display = "block";
+}
 /////////////////////////////////////////////////TIMING SHITS//////////////////////////////////////////////////////
-let physicsClock = setInterval(() => updatePositions(), deltaTime);///////DON'T CHANGE ANYTHING HERE///////////////
+let physicsClock = setInterval(() => updatePositions(), DELTATIME);///////DON'T CHANGE ANYTHING HERE///////////////
 
 function updatePositions(){
-    mainCharacter.updatePosition(gravity, scale, floorHeight);
+    userCharacter.updatePosition(GRAVITY, SCALE, FLOORHEIGHT);
+    if(myPage == false){
+        visitorCharacter.updatePosition(GRAVITY, SCALE, FLOORHEIGHT);
+    }
+}
+
+function moo(){
+    if(audio.paused){
+        audio.play();
+    }
 }
 
 ////////////////////////////////////////////KEYBOARD INPUT SHITS///////////////////////////////////////////////////
 document.addEventListener("keydown", function(event) {
-    mainCharacter.updateAceleration("keydown", event.keyCode);
-    mainCharacter.verifyTransitions("keydown", event.keyCode);
+    if(myPage){
+        userCharacter.updateAceleration("keydown", event.keyCode);
+        userCharacter.verifyTransitions("keydown", event.keyCode);
+    }
+    else{
+        visitorCharacter.updateAceleration("keydown", event.keyCode);
+        visitorCharacter.verifyTransitions("keydown", event.keyCode);
+    }
 });
 
 document.addEventListener("keyup", function(event) {
-    mainCharacter.updateAceleration("keyup", event.keyCode);
-    mainCharacter.verifyTransitions("keyup", event.keyCode);
+    if(myPage){
+        userCharacter.updateAceleration("keyup", event.keyCode);
+        userCharacter.verifyTransitions("keyup", event.keyCode);
+    }
+    else{
+        visitorCharacter.updateAceleration("keyup", event.keyCode);
+        visitorCharacter.verifyTransitions("keyup", event.keyCode);
+    }
 });
+
+window.addEventListener("resize", function() {
+    RightLimit = window.screen.width*0.9;
+    //manter proporção no personagem//
+});
+
+cow.addEventListener("click", function() {
+    moo();
+});
+

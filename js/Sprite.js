@@ -6,10 +6,11 @@ class Vector2D {
 }
 
 class Sprite {
-    constructor(sourcePath, spriteName, format){
+    constructor(sourcePath, spriteName, format, size){
         this.sourcePath = sourcePath;
         this.spriteName = spriteName;
         this.format = format;
+        this.size = size;
     }
 
     getSource() {
@@ -17,30 +18,28 @@ class Sprite {
     }
 }
 
-class AnimatedSprite {
-    constructor(sourcePath, animationName, format, initialIndex, finalIndex, active){
+class SpriteSheet {
+    constructor(sourcePath, animationName, format, size, initialIndex, finalIndex){
         this.sourcePath = sourcePath;
         this.animationName = animationName;
         this.format = format;
+        this.size = size;
         this.currentIndex = initialIndex;
         this.initialIndex = initialIndex;
         this.finalIndex = finalIndex;
-        this.active = active;
 
         this.sprites = [];
         for (let index of range(initialIndex, finalIndex)){
-            this.sprites[index] = new Sprite(sourcePath, animationName + "_" + index, format);
+            this.sprites[index] = new Sprite(sourcePath, animationName + "_" + index, format, size);
         }
     }
 
     updateSprite(){
-        if(this.active){
-            if (this.currentIndex < this.finalIndex){
-                this.currentIndex += 1;
-            }
-            else {
-                this.currentIndex = this.initialIndex;
-            }
+        if (this.currentIndex < this.finalIndex){
+            this.currentIndex += 1;
+        }
+        else {
+            this.currentIndex = this.initialIndex;
         }
     }
 

@@ -6,8 +6,8 @@ botao_modo.addEventListener('click', function(e){
   	let objeto = document.querySelectorAll(".objeto");
 
 
-    if(botao_modo.innerHTML == "Sair"){
-      	botao_modo.innerHTML = "Editar";
+    if(botao_modo.style.content == "Sair"){
+      	botao_modo.style.content = "Editar";
 		for (let i = 0; i < widget.length; i++) {
 				widget[i].style.display = "none";
 		}
@@ -33,8 +33,9 @@ botao_modo.addEventListener('click', function(e){
 		conteiner_widgets.style.backgroundColor = "khaki";
 		propriedades.style.backgroundColor = "khaki";
 		formulario.style.display = "none";
-    }else{
-      botao_modo.innerHTML = "Sair";
+    }
+    else{
+      	botao_modo.style.content = "Sair";
 		for (let i = 0; i < widget.length; i++) {
 				widget[i].style.display = "flex";
 		}
@@ -47,4 +48,3 @@ botao_modo.addEventListener('click', function(e){
     }
 
   });
-

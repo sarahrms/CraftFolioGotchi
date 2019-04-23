@@ -1,8 +1,10 @@
-const LeftArrow = 37;
-const RightArrow = 39;
-const UpArrow = 38;
-const WalkVelocity = 10;
-const JumpAceleration = 30;
+const LEFTARROW = 37;
+const RIGHTARROW = 39;
+const UPARROW = 38;
+const WALKVELOCITY = 18;
+const JUMPACELERATION = 30;
+let LeftLimit = 0;
+let RightLimit = window.screen.width;
 
 class Transition {
     constructor(inputState, inputCode, nextState){
@@ -13,44 +15,60 @@ class Transition {
 }
 
 class Animation {
-    constructor(animatedSprite, deltaTime){
-        this.animatedSprite = animatedSprite;
+    constructor(spriteSheet, deltaTime, active){
+        this.spriteSheet = spriteSheet;
         this.deltaTime = deltaTime;
+        this.active = active;
+    }
+
+    updateAnimation(){
+      if(this.active){
+        this.spriteSheet.updateSprite();
+      }
+    }
+
+    restart(){
+      this.spriteSheet.currentIndex = this.spriteSheet.initialIndex;
+      this.active = true;
     }
 }
 
 class Character {
-    constructor(color, position, dimension, controllable, htmlElementID){
+    constructor(color, position, size, controllable, htmlElementID){
         this.color = color;
-
         this.position = position;
         this.velocity = new Vector2D(0, 0);
         this.aceleration = new Vector2D(0, 0);
         this.scale = new Vector2D(1, 1);
-        this.dimension = dimension;
+        this.size = size;
 
         this.jumping = false;
         this.controllable = controllable;
 
-        this.stateAnimations = []; //[name] = AnimatedSprite, delta;
+        this.stateAnimations = [];
         this.transitions = [];
 
         this.htmlElement = document.getElementById(htmlElementID);
-        this.htmlElement.style.width = this.dimension.x + "px";
-        this.htmlElement.style.height = this.dimension.y + "px";
     }
 
     updatePosition(gravity, scale, floorHeight){
+       /* if(this.jumping){
+            this.aceleration.x -= 1;
+        }*/
         this.aceleration.y += gravity*scale;
+
         this.velocity.x += this.aceleration.x;
         this.velocity.y += this.aceleration.y;
-        this.position.x += this.velocity.x;
+
+        if((this.position.x + this.velocity.x) > LeftLimit && (this.position.x + this.velocity.x + this.size.x) < RightLimit){
+            this.position.x += this.velocity.x;
+        }
         this.position.y += this.velocity.y;
 
         if(this.position.y < floorHeight){
             this.jumping = false;
-            this.aceleration.y = 0;
             this.velocity.y = 0;
+            this.aceleration.y = 0;
             this.position.y = floorHeight;
         }
 
@@ -61,27 +79,28 @@ class Character {
     setInitialState(state){
         this.currentState = state;
         let deltaTime = this.stateAnimations[this.currentState].deltaTime;
-        this.clock = setInterval(() => this.updateAnimation(), deltaTime);
+        this.clock = setInterval(() => this.updateAnimations(), deltaTime);
     }
 
     updateAceleration(inputState, inputCode){
         if(this.controllable == true){
             if(inputState == "keydown"){
                 switch(inputCode){
-                    case LeftArrow: {
-                        this.velocity.x = -WalkVelocity;
+                    case LEFTARROW: {
+                        this.velocity.x = -WALKVELOCITY;
                         this.scale.x = -1;
                         break;
                     }
-                    case RightArrow: {
-                        this.velocity.x = WalkVelocity;
+                    case RIGHTARROW: {
+                        this.velocity.x = WALKVELOCITY;
                         this.scale.x = 1;
                         break;
                     }
-                    case UpArrow:{
+                    case UPARROW:{
                         if(this.jumping == false) {
                             this.jumping = true;
-                            this.aceleration.y = JumpAceleration;
+                          //  this.aceleration.x = WALKVELOCITY/4;
+                            this.aceleration.y = JUMPACELERATION;
                         }
                         break;
                     }
@@ -89,8 +108,8 @@ class Character {
             }
             else if(inputState == "keyup"){
                 switch(inputCode){
-                    case LeftArrow:
-                    case RightArrow: {
+                    case LEFTARROW:
+                    case RIGHTARROW: {
                         this.velocity.x = 0;
                         break;
                     }
@@ -105,37 +124,48 @@ class Character {
             for(let transition of possibleTransitions){
                 if(transition.inputState == inputState & transition.inputCode == inputCode){
                     this.currentState = transition.nextState;
+                    let currentAnimation = this.stateAnimations[this.currentState];
+                    currentAnimation.restart();
                     clearInterval(this.clock);
-                    let deltaTime = this.stateAnimations[this.currentState].deltaTime;
-                    this.clock = setInterval(() => this.updateAnimation(), deltaTime);
+                    this.clock = setInterval(() => this.updateAnimations(), currentAnimation.deltaTime);
                 }
             }
         }
     }
 
-    verifyLambdaTransitions(animation){
+    verifyLambdaTransitions(){
+        let animation = this.stateAnimations[this.currentState];
         let possibleTransitions = this.transitions[this.currentState];
         if(typeof(possibleTransitions) !== "undefined"){
             for(let transition of possibleTransitions){
                 if(transition.inputState == ""){
-                    if(animation.animatedSprite.currentIndex == animation.animatedSprite.finalIndex){ //lamba transitions
-                        this.currentState = transition.nextState;
-                        clearInterval(this.clock);
-                        this.clock = setInterval(() => this.updateAnimation(), animation.deltaTime);
+                    if(animation.spriteSheet.currentIndex == animation.spriteSheet.finalIndex){ //lamba transitions
+                        if(animation.active){
+                            animation.active = false;
+                        }
+                        else {
+                          this.currentState = transition.nextState;
+                          let currentAnimation = this.stateAnimations[this.currentState];
+                          currentAnimation.restart();
+                          clearInterval(this.clock);
+                          this.clock = setInterval(() => this.updateAnimations(), currentAnimation.deltaTime);
+                        }
                     }
                 }
             }
         }
     }
 
-    idleDynamics(animation){
-        if(animation.animatedSprite.active == false){
+    idleDynamics(){
+        let animation = this.stateAnimations[this.currentState];
+        if(animation.active == false){
             if(Math.random()*10 > 9.8){ //random blinks//
-                animation.animatedSprite.active = true;
+                animation.active = true;
             }
         }
-        else if(animation.animatedSprite.currentIndex == animation.animatedSprite.initialIndex){
-            animation.animatedSprite.active = false;
+        else if(animation.spriteSheet.currentIndex == animation.spriteSheet.finalIndex){
+            animation.restart();
+            animation.active = false;
         }
     }
 
@@ -147,18 +177,30 @@ class Character {
         this.transitions[previousState].push(transition);
     }
 
-    addStateAnimation(name, animatedSprite, deltaTime){
-        let animation = new Animation(animatedSprite, deltaTime);
+    addStateAnimation(name, animation){
         this.stateAnimations[name] = animation;
     }
 
-    updateAnimation(){
+    updateSize(){
+        let currentAnimation = this.stateAnimations[this.currentState];
+        let idleAnimation = this.stateAnimations["idle"];
+
+        let rx = currentAnimation.spriteSheet.size.x/idleAnimation.spriteSheet.size.x;
+        let ry = currentAnimation.spriteSheet.size.y/idleAnimation.spriteSheet.size.y;
+
+        this.htmlElement.style.width = this.size.x*rx + "%";
+        this.htmlElement.style.height = this.size.y*ry + "%";
+    }
+
+    updateAnimations(){
+        if(this.currentState == "idle"){ this.idleDynamics(); }
+
         let animation = this.stateAnimations[this.currentState];
-        if(this.currentState == "idle"){
-            this.idleDynamics(animation);
-        }
-        this.verifyLambdaTransitions(animation);
-        animation.animatedSprite.updateSprite();
-        this.htmlElement.src = animation.animatedSprite.getSource();
+
+        this.updateSize();
+        this.htmlElement.src = animation.spriteSheet.getSource();
+
+        animation.updateAnimation();
+        this.verifyLambdaTransitions();
     }
 }

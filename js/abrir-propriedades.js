@@ -6,7 +6,7 @@ let excluir = document.querySelector("#excluir");
 let alterar = document.querySelector("#alterar");
 let fora = document.querySelector("#fora");
 let chao = document.querySelector("#chao");
-let botao_modo = document.querySelector("#modo-exibicao");
+let botao_modo = document.querySelector("#computer");
 let widget = document.querySelectorAll(".widget");
 let main = document.querySelectorAll("main");
 
@@ -113,14 +113,14 @@ function criaPropriedades(e){
     e.stopPropagation();
     apagarFormularioAntigo();
 
-    if(botao_modo.innerHTML != "Editar"){
+    if(botao_modo.style.content != "Editar"){
       if(this.classList.contains("objeto")){
         switch(this.id.match("(.*)-.*")[1]){
             case "imagem":
                 inputId(this);
                 inputURL(this);
                 inputArredondar(this);
-                inputHeight(this); 
+                inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
@@ -128,7 +128,7 @@ function criaPropriedades(e){
                 break;
              case "texto":
                 inputId(this);
-                inputHeight(this); 
+                inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
@@ -137,7 +137,7 @@ function criaPropriedades(e){
             case "video":
                 inputId(this);
                 inputURL(this);
-                inputHeight(this); 
+                inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
@@ -146,7 +146,7 @@ function criaPropriedades(e){
             case "musica":
                 inputId(this);
                 inputURL(this);
-                inputHeight(this); 
+                inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
@@ -155,7 +155,7 @@ function criaPropriedades(e){
             case "galeria":
                 inputId(this);
                 inputURL(this);
-                inputHeight(this); 
+                inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
@@ -243,9 +243,9 @@ function lidaExcluir(e){
         case "video": id_ultimo_obj = "video-"+num_videos; num_videos--; break;
         case "musica": id_ultimo_obj = "musica-"+num_musicas; num_musicas--; break;
         case "texto": id_ultimo_obj = "texto-"+num_textos;  num_textos--; break;
-        case "galeria": 
-          id_ultimo_obj = "galeria-"+num_galerias;  
-          num_galerias--; 
+        case "galeria":
+          id_ultimo_obj = "galeria-"+num_galerias;
+          num_galerias--;
           galerias[id] = galerias[id_ultimo_obj];
           delete galerias[id_ultimo_obj];
           break;
@@ -258,5 +258,3 @@ function lidaExcluir(e){
 
 alterar.addEventListener('click', lidaAlterar);
 excluir.addEventListener('click', lidaExcluir);
-
-
