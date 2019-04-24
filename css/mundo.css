@@ -130,47 +130,47 @@ footer{
   right: 0%;  
   bottom: 3%;   
   width: 19%;
-  height: 27%;
+  height: 34%;
 }
 
 #cow { /*ok*/
 	position: absolute;
-	left: 13%;
+	left: 16%;
 	bottom: 3%; 
 	width: 12%;
-  	height: 19%;
+  height: 19%;
 
 }
 
 #bed { /*ok*/
 	position: absolute;
-	left: 13%;
+	left: 16%;
 	bottom: 1%; 
 	width: 12%;
-  	height: 14%;
+  height: 14%;
 
 }
 
 #wardrobe { /*ok*/
 	position: absolute;
-	left: 0.5%;
-	bottom: 5%; 
-	width: 12%;
-  	height: 28%;
+	left: 0.25%;
+	bottom: 4%; 
+	width: 10%;
+  height: 39%;
 }
 
 #poster_1 {
 	position: absolute;
-	left: 13%;
-	bottom: 19%; /*ok*/
-	width: 6%;
-  	height: 14%;
+	left: 13.5%;
+	bottom: 25.5%; /*ok*/
+	width: 5.5%;
+  height: 17%;
 }
 
 #poster_2 {
 	position: absolute;
-	left: 15%;
-	bottom: 10%; /*ok*/
-	width: 6%;
-  	height: 14%;
+	left: 10.5%;
+	bottom: 12%; /*ok*/
+	width: 5.5%;
+  height: 17%;
 }

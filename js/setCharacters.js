@@ -40,3 +40,22 @@ function setAlienCharacter(color, position, controllable, htmlElementID){
 
     return character;
 }
+
+function setCowCharacter(){
+    let cow = new Character("none", new Vector2D(16, 3), new Vector2D(12, 19), false, "cow");
+
+    let idleSpriteSheet = new SpriteSheet("Sprites/cow", "idle", "png", new Vector2D(1767, 1500), 1, 5);
+    let idleAnimation = new Animation(idleSpriteSheet, DELTATIME, false);
+    cow.addStateAnimation("idle", idleAnimation);
+    cow.setInitialState("idle");
+
+    let mooSpriteSheet = new SpriteSheet("Sprites/cow", "moo", "png", new Vector2D(1767, 1500), 1, 8);
+    let mooAnimation = new Animation(mooSpriteSheet, DELTATIME*3, true);
+    cow.addStateAnimation("moo", mooAnimation);
+
+
+    cow.addTransition("idle", "click", "", "moo");
+    cow.addTransition("moo", "", "", "idle");
+
+    return cow;
+}

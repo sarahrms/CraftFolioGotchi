@@ -5,8 +5,8 @@ let visitorColor = "blue";
 ///////////////////////////////////////////////CHARACTERS SHITS////////////////////////////////////////////////////
 let userCharacter;
 let visitorCharacter;
-let cow = document.getElementById("cow");
-let audio = new Audio('moo.mp3');
+let cow = setCowCharacter();
+let mooAudio = new Audio('moo.mp3');
 
 if(myPage){//if i'm on my own page//
     userCharacter = setAlienCharacter(userColor, new Vector2D(50, FLOORHEIGHT), true, "userCharacter");
@@ -26,7 +26,7 @@ function updatePositions(){
     }
 }
 
-function moo(){
+function playAudio(audio){
     if(audio.paused){
         audio.play();
     }
@@ -55,12 +55,12 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
+cow.htmlElement.addEventListener("click", function() {
+    playAudio(mooAudio);
+    cow.verifyTransitions("click", "");
+});
+
 window.addEventListener("resize", function() {
     RightLimit = window.screen.width*0.9;
     //manter proporção no personagem//
 });
-
-cow.addEventListener("click", function() {
-    moo();
-});
-

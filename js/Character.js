@@ -7,8 +7,8 @@ let LeftLimit = 0;
 let RightLimit = window.screen.width;
 
 class Transition {
-    constructor(inputState, inputCode, nextState){
-        this.inputState = inputState;
+    constructor(inputEvent, inputCode, nextState){
+        this.inputEvent = inputEvent;
         this.inputCode = inputCode;
         this.nextState = nextState;
     }
@@ -82,9 +82,9 @@ class Character {
         this.clock = setInterval(() => this.updateAnimations(), deltaTime);
     }
 
-    updateAceleration(inputState, inputCode){
+    updateAceleration(inputEvent, inputCode){
         if(this.controllable == true){
-            if(inputState == "keydown"){
+            if(inputEvent == "keydown"){
                 switch(inputCode){
                     case LEFTARROW: {
                         this.velocity.x = -WALKVELOCITY;
@@ -106,7 +106,7 @@ class Character {
                     }
                 }
             }
-            else if(inputState == "keyup"){
+            else if(inputEvent == "keyup"){
                 switch(inputCode){
                     case LEFTARROW:
                     case RIGHTARROW: {
@@ -118,11 +118,11 @@ class Character {
         }
     }
 
-    verifyTransitions(inputState, inputCode){
+    verifyTransitions(inputEvent, inputCode){
         let possibleTransitions = this.transitions[this.currentState];
         if(typeof(possibleTransitions) !== "undefined"){
             for(let transition of possibleTransitions){
-                if(transition.inputState == inputState & transition.inputCode == inputCode){
+                if(transition.inputEvent == inputEvent & transition.inputCode == inputCode){
                     this.currentState = transition.nextState;
                     let currentAnimation = this.stateAnimations[this.currentState];
                     currentAnimation.restart();
@@ -138,7 +138,7 @@ class Character {
         let possibleTransitions = this.transitions[this.currentState];
         if(typeof(possibleTransitions) !== "undefined"){
             for(let transition of possibleTransitions){
-                if(transition.inputState == ""){
+                if(transition.inputEvent == ""){
                     if(animation.spriteSheet.currentIndex == animation.spriteSheet.finalIndex){ //lamba transitions
                         if(animation.active){
                             animation.active = false;
@@ -169,8 +169,8 @@ class Character {
         }
     }
 
-    addTransition(previousState, inputState, inputCode, nextState){
-        let transition = new Transition(inputState, inputCode, nextState);
+    addTransition(previousState, inputEvent, inputCode, nextState){
+        let transition = new Transition(inputEvent, inputCode, nextState);
         if(typeof(this.transitions[previousState]) === "undefined"){
             this.transitions[previousState] = [];
         }
