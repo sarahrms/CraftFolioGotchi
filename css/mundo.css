@@ -35,7 +35,7 @@ main{
   height: 40%;
   background-color: khaki;
   border-radius: 1vh;
-  margin: 10% 1% 0% 1%;
+  margin: 2% 1% 0% 1%;
   padding: 2%;
 }
 
@@ -173,4 +173,11 @@ footer{
 	bottom: 12%; /*ok*/
 	width: 5.5%;
   height: 17%;
+}
+
+#input{
+  border-radius: 1vh;
+  margin: 0% auto 4% auto;
+  border: 1px solid gray;
+  outline: none;
 }

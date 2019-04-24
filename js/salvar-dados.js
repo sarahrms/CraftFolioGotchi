@@ -5,9 +5,8 @@ botao_modo.addEventListener('click', function(e){
   	let chao = document.querySelector("#chao");
   	let objeto = document.querySelectorAll(".objeto");
 
-
-    if(botao_modo.style.content == "Sair"){
-      	botao_modo.style.content = "Editar";
+    if(botao_modo.getAttribute("data-value") == "Salvar"){
+    	botao_modo.setAttribute("data-value","Editar");
 		for (let i = 0; i < widget.length; i++) {
 				widget[i].style.display = "none";
 		}
@@ -35,7 +34,7 @@ botao_modo.addEventListener('click', function(e){
 		formulario.style.display = "none";
     }
     else{
-      	botao_modo.style.content = "Sair";
+      	botao_modo.setAttribute("data-value","Salvar");
 		for (let i = 0; i < widget.length; i++) {
 				widget[i].style.display = "flex";
 		}
