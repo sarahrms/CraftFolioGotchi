@@ -4,7 +4,7 @@ function criaObjetoImagem(x){
     objeto.classList.add("resize-drag");
     objeto.id="imagem-"+x;
     objeto.classList.add("objeto");
-    objeto.src=document.querySelector("#modal > div > form > input").value;
+    objeto.src=document.querySelector(".input").innerHTML;
     objeto.style.width="100px";
     objeto.style.height="100px";
     mundo.appendChild(objeto);
@@ -13,22 +13,38 @@ function criaObjetoImagem(x){
 
 function criaObjetoVideo(x){
     let objeto;
+    let conteiner, conteiner2;
+
+    conteiner = document.createElement("div");
+    conteiner.classList.add("resize-drag");
+    conteiner.id="video-"+x;
+    conteiner.classList.add("objeto");
+    conteiner.style.width="100px";
+    conteiner.style.height="100px";
+
+    conteiner2 = document.createElement("div");
+    conteiner2.classList.add("div-in");
+    conteiner2.style.width="100%";
+    conteiner2.style.height="100%";
+    conteiner.appendChild(conteiner2);
+
     objeto = document.createElement("iframe");
-    objeto.classList.add("resize-drag");
-    objeto.id="video-"+x;
-    objeto.src=document.querySelector("#modal > div > form > input").value.replace("watch?v=", "embed/");
-    objeto.classList.add("objeto");
-    objeto.style.width="200px";
-    objeto.style.height="100px";
-    mundo.appendChild(objeto);
+    console.log(document.querySelector(".input").innerHTML.replace("watch?v=", "embed/"));
+    objeto.src=document.querySelector(".input").innerHTML.replace("watch?v=", "embed/");
+    objeto.style.width="100%";
+    objeto.style.height="100%";
+    conteiner2.appendChild(objeto);
+
+    mundo.appendChild(conteiner);
+
     objeto.addEventListener('click', criaPropriedades);
 }
 
 function criaObjetoMusica(x){
-    let objeto;
+    let objeto;    
     objeto = document.createElement("audio");
     objeto.id="musica-"+x;
-    objeto.src=document.querySelector("#modal > div > form > input").value;
+    objeto.src=document.querySelector(".input").innerHTML;
     objeto.controls = true;
     objeto.classList.add("objeto");
     objeto.style.width="100px";
@@ -54,7 +70,8 @@ function criaObjetoGaleria(x){
     let seta_direita;
     let seta_esquerda;
     let conteiner;
-    galerias["galeria-"+x] = document.querySelector("#modal > div > form > input").value.split(" ");
+    console.log(document.querySelector(".input").innerHTML.replace(new RegExp("<br></div>", 'g'),"").split("<div>"))
+    galerias["galeria-"+x] = document.querySelector(".input").innerHTML.replace(new RegExp("<br></div>", 'g'),"").split("<div>");
 
     conteiner = document.createElement("div");
     conteiner.classList.add("resize-drag");

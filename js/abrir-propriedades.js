@@ -154,7 +154,6 @@ function criaPropriedades(e){
                 break;
             case "galeria":
                 inputId(this);
-                inputURL(this);
                 inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
@@ -217,9 +216,6 @@ function lidaAlterar(e){
             obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
             break;
         case "galeria":
-            galerias[obj.id] = document.querySelector("#formulario-propriedades > input[name='url']").value.split(" ");
-            obj.firstElementChild.src=galerias[obj.id][obj.getAttribute("data-value")];
-            console.log(galerias);
             obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
             obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
             break;

@@ -175,9 +175,16 @@ footer{
   height: 17%;
 }
 
-#input{
+.input{
   border-radius: 1vh;
   margin: 0% auto 4% auto;
   border: 1px solid gray;
   outline: none;
+  background-color: white;
+  overflow:scroll;
+  max-height: 15vh;
+}
+
+.div-in{
+  position: relative;
 }
