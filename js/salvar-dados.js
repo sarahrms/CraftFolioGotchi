@@ -12,6 +12,9 @@ botao_modo.addEventListener('click', function(e){
 		}
 		for (let i = 0; i < objeto.length; i++) {
 			if(objeto[i].id.startsWith("texto")) objeto[i].innerHTML = objeto[i].value;
+			if(objeto[i].id.startsWith("video")) objeto[i].firstChild.style.pointerEvents = "none";
+			if(objeto[i].id.startsWith("musica")) objeto[i].firstChild.style.pointerEvents = "none";
+
 			objeto[i].classList.remove("resize-drag")
 			localStorage.setItem(objeto[i].id+"_outerHTML",objeto[i].outerHTML);
 			localStorage.setItem(objeto[i].id+"_innerHTML",objeto[i].innerHTML);
@@ -41,6 +44,8 @@ botao_modo.addEventListener('click', function(e){
 
 		for (let i = 0; i < objeto.length; i++) {
 			objeto[i].classList.add("resize-drag");
+			if(objeto[i].id.startsWith("video")) objeto[i].firstChild.style.pointerEvents = "auto";
+			if(objeto[i].id.startsWith("musica")) objeto[i].firstChild.style.pointerEvents = "auto";
 		}
 		formulario.style.display = "block";
 		conteiner_widgets.style.backgroundColor = "cornflowerblue"

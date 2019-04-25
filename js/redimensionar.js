@@ -52,3 +52,13 @@ function dragMoveListener (event) {
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
 }
+
+
+objetos = document.querySelectorAll(".div-in");
+
+objetos.forEach(objeto=>{
+  objeto.addEventListener('click', function(e){
+    e.stopPropagation();
+    console.log("ENTROU");
+  });
+})

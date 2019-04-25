@@ -4,6 +4,7 @@ function criaObjetoImagem(x){
     objeto.classList.add("resize-drag");
     objeto.id="imagem-"+x;
     objeto.classList.add("objeto");
+    console.log(document.querySelector(".input").innerHTML);
     objeto.src=document.querySelector(".input").innerHTML;
     objeto.style.width="100px";
     objeto.style.height="100px";
@@ -33,7 +34,8 @@ function criaObjetoVideo(x){
     objeto.src=document.querySelector(".input").innerHTML.replace("watch?v=", "embed/");
     objeto.style.width="100%";
     objeto.style.height="100%";
-    conteiner2.appendChild(objeto);
+
+    conteiner.appendChild(objeto);
 
     mundo.appendChild(conteiner);
 
@@ -41,15 +43,30 @@ function criaObjetoVideo(x){
 }
 
 function criaObjetoMusica(x){
-    let objeto;    
+    let objeto;
+    let conteiner, conteiner2;
+
+    conteiner = document.createElement("div");
+    conteiner.classList.add("resize-drag");
+    conteiner.id="musica-"+x;
+    conteiner.classList.add("objeto");
+    conteiner.style.width="100px";
+    conteiner.style.height="100px";
+
+    conteiner2 = document.createElement("div");
+    conteiner2.classList.add("div-in");
+    conteiner2.style.width="100%";
+    conteiner2.style.height="100%";
+    conteiner.appendChild(conteiner2);
+
     objeto = document.createElement("audio");
-    objeto.id="musica-"+x;
-    objeto.src=document.querySelector(".input").innerHTML;
+    objeto.src=document.querySelector(".input").innerHTML.replace("<span>","").replace("</span>","");
     objeto.controls = true;
-    objeto.classList.add("objeto");
-    objeto.style.width="100px";
-    objeto.style.height="100px";
-    mundo.appendChild(objeto);
+    objeto.style.width="100%";
+    objeto.style.height="100%";
+    conteiner.appendChild(objeto);
+    mundo.appendChild(conteiner);
+
     objeto.addEventListener('click', criaPropriedades);
 }
 
