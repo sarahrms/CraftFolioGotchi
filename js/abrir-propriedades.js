@@ -44,7 +44,7 @@ function inputURL(obj){
    let input_url = document.createElement("input");
    input_url.name="url";
    input_url.type="text";
-   if(obj.id.startsWith("galeria")) input_url.value=galerias[obj.id].join(" ");
+   if(obj.id.startsWith("video")) input_url.value=obj.firstChild.nextSibling.src;
    else input_url.value=obj.src;
    formulario.insertBefore(input_url,formulario.alterar);
 }
@@ -108,7 +108,6 @@ function inputCor(obj){
 }
 
 //CRIA FORMULARIO DE PROPRIEDADES
-
 function criaPropriedades(e){
     e.stopPropagation();
     apagarFormularioAntigo();
@@ -177,17 +176,14 @@ function criaPropriedades(e){
   }
 }
 
-//main.addEventListener('click', criaPropriedades);
 mundo.addEventListener('click', criaPropriedades);
 chao.addEventListener('click', criaPropriedades);
-console.log(objeto.length)
 for (let i = 0; i < objeto.length; i++) {
   objeto[i].addEventListener('click', criaPropriedades);
 }
 
 
 //LIDA AS POSSIVEIS AÇÕES NO FORMULARIO
-
 function lidaAlterar(e){
   event.preventDefault();
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
@@ -206,7 +202,7 @@ function lidaAlterar(e){
             obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
             break;
         case "video":
-            obj.src=document.querySelector("#formulario-propriedades > input[name='url']").value.replace("watch?v=", "embed/");;
+            obj.firstChild.nextSibling.src=document.querySelector("#formulario-propriedades > input[name='url']").value.replace("watch?v=", "embed/");;
             obj.style.height=document.querySelector("#formulario-propriedades > input[name='altura']").value+"px";
             obj.style.width=document.querySelector("#formulario-propriedades > input[name='largura']").value+"px";
             break;

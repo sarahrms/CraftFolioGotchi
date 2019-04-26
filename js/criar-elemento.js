@@ -38,7 +38,7 @@ function criaObjetoVideo(x){
 
     mundo.appendChild(conteiner);
 
-    objeto.addEventListener('click', criaPropriedades);
+    conteiner.addEventListener('click', criaPropriedades);
 }
 
 function criaObjetoMusica(x){
@@ -147,7 +147,12 @@ for (let i = 0; i < widget.length; i++) {
     });
 }
 
-modal.addEventListener('submit', function(event){
+//AÇÕES NA MODAL
+let botao_modal_ok = document.querySelector("#ok");
+let botao_modal_cancelar = document.querySelector("#cancelar");
+let modal = document.querySelector("#modal");
+
+botao_modal_ok.addEventListener('click', function(event){
   let modal_titulo = document.querySelector("#modal > div > h4");
   let x=1;
   event.preventDefault();
@@ -175,4 +180,8 @@ modal.addEventListener('submit', function(event){
         break;
 
     }
+});
+
+botao_modal_cancelar.addEventListener('click', function(event){
+  modal.style.display = "none";
 });
