@@ -113,7 +113,7 @@ function criaPropriedades(e){
     e.stopPropagation();
     apagarFormularioAntigo();
 
-    if(botao_modo.style.content != "Editar"){
+    if(botao_modo.getAttribute("data-value") != "Editar"){
       if(this.classList.contains("objeto")){
         switch(this.id.match("(.*)-.*")[1]){
             case "imagem":

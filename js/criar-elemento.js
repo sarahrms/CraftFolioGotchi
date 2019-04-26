@@ -4,8 +4,8 @@ function criaObjetoImagem(x){
     objeto.classList.add("resize-drag");
     objeto.id="imagem-"+x;
     objeto.classList.add("objeto");
-    console.log(document.querySelector(".input").innerHTML);
-    objeto.src=document.querySelector(".input").innerHTML;
+    console.log(document.querySelector("#modal > div > form > input").value);
+    objeto.src=document.querySelector("#modal > div > form > input").value;
     objeto.style.width="100px";
     objeto.style.height="100px";
     mundo.appendChild(objeto);
@@ -30,8 +30,7 @@ function criaObjetoVideo(x){
     conteiner.appendChild(conteiner2);
 
     objeto = document.createElement("iframe");
-    console.log(document.querySelector(".input").innerHTML.replace("watch?v=", "embed/"));
-    objeto.src=document.querySelector(".input").innerHTML.replace("watch?v=", "embed/");
+    objeto.src=document.querySelector("#modal > div > form > input").value.replace("watch?v=", "embed/");
     objeto.style.width="100%";
     objeto.style.height="100%";
 
@@ -60,7 +59,7 @@ function criaObjetoMusica(x){
     conteiner.appendChild(conteiner2);
 
     objeto = document.createElement("audio");
-    objeto.src=document.querySelector(".input").innerHTML.replace("<span>","").replace("</span>","");
+    objeto.src=document.querySelector("#modal > div > form > input").value;
     objeto.controls = true;
     objeto.style.width="100%";
     objeto.style.height="100%";
@@ -87,7 +86,6 @@ function criaObjetoGaleria(x){
     let seta_direita;
     let seta_esquerda;
     let conteiner;
-    console.log(document.querySelector(".input").innerHTML.replace(new RegExp("<br></div>", 'g'),"").split("<div>"))
     galerias["galeria-"+x] = document.querySelector(".input").innerHTML.replace(new RegExp("<br></div>", 'g'),"").split("<div>");
 
     conteiner = document.createElement("div");
@@ -134,6 +132,15 @@ for (let i = 0; i < widget.length; i++) {
             
         }else{
           let modal_titulo = document.querySelector("#modal > div > h4");
+          let input_galeria = document.querySelector(".input");
+          let input_outros = document.querySelector("#modal > div > form > input");
+          if(this.id == "galeria"){
+            input_outros.style.display = "none";
+            input_galeria.style.display = "block";
+          }else{
+            input_outros.style.display = "block";
+            input_galeria.style.display = "none";
+          }
           modal_titulo.innerHTML = this.id.toUpperCase();
           modal.style.display = "block";
         }

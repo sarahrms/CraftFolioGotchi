@@ -183,6 +183,7 @@ footer{
   background-color: white;
   overflow:scroll;
   max-height: 15vh;
+  display: none;
 }
 
 .div-in{
