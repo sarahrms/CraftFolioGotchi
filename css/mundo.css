@@ -1,4 +1,5 @@
-body{ 
+body { 
+  position: relative;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -6,7 +7,7 @@ body{
   touch-action: none;
 }
 
-main{
+main {
   display: flex;
   width: 100%;
   height: 100%;
@@ -14,23 +15,26 @@ main{
   padding: 0;
 }
 
-#widgets{
-  background-color: khaki;
+#widgets {
+  visibility: hidden;
+  background-image: url("../Sprites/painel.jpg");
+  background-repeat: round;
   border-radius: 2vh;
-  width: 13%;
+  width: 15%;
   height: 60%;
   margin: 2% 1%;
   padding: 0;
 }
 
-#mundo{
+#mundo {
   width: 68%;
   height: 86%;
   margin: 2% 1% 0% 1%;
-   background-color: ghostwhite;
+  background-color: ghostwhite;
 }
 
-#propriedades{
+#propriedades {
+  visibility: hidden;
   width: 13%;
   height: 40%;
   background-color: khaki;
@@ -39,7 +43,7 @@ main{
   padding: 2%;
 }
 
-.widget{
+.widget {
   color: black;
   transition: background-color 0.3s;
   height: 10%;
@@ -52,7 +56,7 @@ main{
   justify-content: center;
 }
 
-.objeto{
+.objeto {
   box-sizing: border-box;
   position:   absolute;
 }
@@ -76,103 +80,39 @@ input {
   height: 2.5vh;
 }
 
-input[type="color"]{
+input[type="color"] {
   width: 30%;
 }
 
-footer{
+footer {
   width: 100%;
 }
 
-#alterar{
+#alterar {
   margin-top: 10px;
 }
 
-#excluir{
+#excluir {
   background-color: black;
   color: white;
   margin-left: 10px;
   margin-top: 10px;
 }
 
-#formulario-propriedades{
+#formulario-propriedades {
   display: none;
 }
 
-.seta-direita-galeria{
+.seta-direita-galeria {
   position: absolute;
   right: -20px;
   bottom: 0px;
 }
 
-.seta-esquerda-galeria{
+.seta-esquerda-galeria {
   position: absolute;
   left: -15px;
   bottom: 0px;
-}
-
-#userCharacter { /*ok*/
-  position: absolute;
-  left: 0%;    
-  bottom: 1.5%;  
-}
-
-#visitorCharacter { /*ok*/
-  display: none;
-  position: absolute;
-  left: 0%;   
-  bottom: 1.5%;  
-}
-
-#computer{  /*ok*/
-  content: "Editar";
-  position: absolute;
-  right: 0%;  
-  bottom: 3%;   
-  width: 19%;
-  height: 34%;
-}
-
-#cow { /*ok*/
-	position: absolute;
-	left: 16%;
-	bottom: 3%; 
-	width: 12%;
-  height: 19%;
-
-}
-
-#bed { /*ok*/
-	position: absolute;
-	left: 16%;
-	bottom: 1%; 
-	width: 12%;
-  height: 14%;
-
-}
-
-#wardrobe { /*ok*/
-	position: absolute;
-	left: 0.25%;
-	bottom: 4%; 
-	width: 10%;
-  height: 39%;
-}
-
-#poster_1 {
-	position: absolute;
-	left: 13.5%;
-	bottom: 25.5%; /*ok*/
-	width: 5.5%;
-  height: 17%;
-}
-
-#poster_2 {
-	position: absolute;
-	left: 10.5%;
-	bottom: 12%; /*ok*/
-	width: 5.5%;
-  height: 17%;
 }
 
 .input{

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="css/comum.css">
 	<link rel="stylesheet" href="css/mundo.css">
+	<link rel="stylesheet" href="css/cena.css">
 </head>
 <body id="fora">
 	<main>
@@ -39,31 +40,38 @@
 		</div>
 	</div>
 
+	<div id="scene"> 
+		<img src="Sprites\poster_1.jpg" id="poster_1">
+		<img src="Sprites\poster_2.jpg" id="poster_2">
+		<img src="Sprites\wardrobe.png" id="wardrobe">
+		<img src="Sprites\bed.png" id="bed">
+		<img src="Sprites\cow\idle_1.png" id="cow">
+		<img src="Sprites\computer.png" id="computer" data-value="Editar">
+		<img src="" id="userCharacter">
+		<img src="" id="visitorCharacter">
+	</div>
 
-	<img src="Sprites\poster_1.jpg" id="poster_1">
-	<img src="Sprites\poster_2.jpg" id="poster_2">
-
-	<img src="Sprites\wardrobe.png" id="wardrobe">
-	<img src="Sprites\bed.png" id="bed">
-	<img src="Sprites\cow\idle_1.png" id="cow">
-	<img src="Sprites\computer.png" id="computer" data-value="Editar">
-	<img src="" id="userCharacter">
-	<img src="" id="visitorCharacter">
-
-	<script type="text/javascript" src="js/recuperarDados.js"></script>
-
-	<script type="text/javascript" src="js/Sprite.js"></script>
-	<script type="text/javascript" src="js/Character.js"></script>
-	<script type="text/javascript" src="js/setCharacters.js"></script>
-	<script type="text/javascript" src="js/worldController.js"></script>
+	<div id="alien_color_selector" data-value="disabled">
+		<h6>Escolha a cor do alien: </h6>
+		<div id="container">
+			<div id="op1" data-value="dark_gray"></div>
+			<div id="op2" data-value="gray"></div>
+			<div id="op3" data-value="blue"></div>
+			<div id="op4" data-value="green"></div>
+			<div id="op5" data-value="red"></div>
+		</div>
+	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/interactjs@next/dist/interact.min.js"></script>
+
+	<script type="module" src="js/sceneController.js"></script>	
+	<script type="module" src="js/painelController.js"></script>	
+
+
 	<script type="text/javascript" src="js/galeria.js"></script>
 	<script type="text/javascript" src="js/propriedades.js"></script>
 	<script type="text/javascript" src="js/redimensionar.js"></script>
 	<script type="text/javascript" src="js/elemento.js"></script>
-	
-	<script type="text/javascript" src="js/salvarDados.js"></script>
 
 </body>
 </html>

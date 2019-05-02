@@ -1,6 +1,6 @@
 let objeto = document.querySelectorAll(".objeto");
 let propriedades = document.querySelector("#propriedades");
-let mundo = document.querySelector("#mundo");
+
 let formulario = document.querySelector("#formulario-propriedades");
 let excluir = document.querySelector("#excluir");
 let alterar = document.querySelector("#alterar");
