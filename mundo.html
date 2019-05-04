@@ -4,9 +4,9 @@
 	<title>Mundo</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="css/comum.css">
-	<link rel="stylesheet" href="css/mundo.css">
-	<link rel="stylesheet" href="css/cena.css">
+	<link rel="stylesheet" href="./css/comum.css">
+	<link rel="stylesheet" href="./css/mundo.css">
+	<link rel="stylesheet" href="./css/cena.css">
 </head>
 <body id="fora">
 	<main>
@@ -41,19 +41,19 @@
 	</div>
 
 	<div id="scene"> 
-		<img src="Sprites\poster_1.jpg" id="poster_1">
-		<img src="Sprites\poster_2.jpg" id="poster_2">
-		<img src="Sprites\wardrobe.png" id="wardrobe">
-		<img src="Sprites\bed.png" id="bed">
-		<img src="Sprites\cow\idle_1.png" id="cow">
-		<img src="Sprites\computer.png" id="computer" data-value="Editar">
+		<img src="./Sprites/poster_1.jpg" id="poster_1">
+		<img src="./Sprites/poster_2.jpg" id="poster_2">
+		<img src="./Sprites/wardrobe.png" id="wardrobe">
+		<img src="./Sprites/bed.png" id="bed">
+		<img src="./Sprites/cow/idle_1.png" id="cow">
+		<img src="./Sprites/computer.png" id="computer" data-value="Editar">
 		<img src="" id="userCharacter">
 		<img src="" id="visitorCharacter">
 	</div>
 
-	<div id="alien_color_selector" data-value="disabled">
+	<div class="color_selector" id="alien_color_selector" data-value="disabled">
 		<h6>Escolha a cor do alien: </h6>
-		<div id="container">
+		<div class="color_container">
 			<div id="op1" data-value="dark_gray"></div>
 			<div id="op2" data-value="gray"></div>
 			<div id="op3" data-value="blue"></div>
@@ -64,14 +64,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/interactjs@next/dist/interact.min.js"></script>
 
-	<script type="module" src="js/sceneController.js"></script>	
-	<script type="module" src="js/painelController.js"></script>	
-
-
-	<script type="text/javascript" src="js/galeria.js"></script>
-	<script type="text/javascript" src="js/propriedades.js"></script>
-	<script type="text/javascript" src="js/redimensionar.js"></script>
-	<script type="text/javascript" src="js/elemento.js"></script>
-
+	<script type="module" src="./js/sceneController.js"></script>	
+	<script type="module" src="./js/painelController.js"></script>	
 </body>
 </html>

@@ -1,7 +1,7 @@
-import * from "./Vector2D.js";
-import * from "./Character.js";
-import * from "./SpriteSheet.js";
-import * from "./Animation.js";
+import {Vector2D} from "./classes/Vector2D.js";
+import {Character, LEFTARROW, RIGHTARROW, UPARROW } from "./classes/Character.js";
+import {SpriteSheet} from "./classes/SpriteSheet.js";
+import {Animation} from "./classes/Animation.js";
 
 export const DELTATIME = 40; //milisegundos//
 export const GRAVITY = -9.8;

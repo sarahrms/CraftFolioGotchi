@@ -1,4 +1,4 @@
-import Sprite from "./Sprite.js";
+import {Sprite} from "./Sprite.js";
 
 export class SpriteSheet {
     constructor(sourcePath, animationName, format, size, initialIndex, finalIndex){
@@ -11,8 +11,16 @@ export class SpriteSheet {
         this.finalIndex = finalIndex;
 
         this.sprites = [];
-        for (let index of range(initialIndex, finalIndex)){
+        for (let index of range(this.initialIndex, this.finalIndex)){
             this.sprites[index] = new Sprite(sourcePath, animationName + "_" + index, format, size);
+        }
+    }
+
+    updateSourcePath(sourcePath){
+        this.sourcePath = sourcePath;
+        console.log(this.sprites);
+        for(let index of range(this.initialIndex, this.finalIndex)){
+            this.sprites[index].updateSourcePath(sourcePath);
         }
     }
 

@@ -1,4 +1,9 @@
-function criaObjetoImagem(x){
+import {proximaImgemDireita, proximaImgemEsquerda} from "./galeria.js"; 
+import {criaPropriedades} from "./propriedades.js";
+
+let mundo = document.querySelector("#mundo");
+
+export function criaObjetoImagem(x){
     let objeto;
     objeto = document.createElement("img");
     objeto.classList.add("resize-drag");
@@ -12,64 +17,64 @@ function criaObjetoImagem(x){
     objeto.addEventListener('click', criaPropriedades);
 }
 
-function criaObjetoVideo(x){
+export function criaObjetoVideo(x){
     let objeto;
-    let conteiner, conteiner2;
+    let conteiner1, conteiner2;
 
-    conteiner = document.createElement("div");
-    conteiner.classList.add("resize-drag");
-    conteiner.id="video-"+x;
-    conteiner.classList.add("objeto");
-    conteiner.style.width="100px";
-    conteiner.style.height="100px";
+    conteiner1 = document.createElement("div");
+    conteiner1.classList.add("resize-drag");
+    conteiner1.id="video-"+x;
+    conteiner1.classList.add("objeto");
+    conteiner1.style.width="100px";
+    conteiner1.style.height="100px";
 
     conteiner2 = document.createElement("div");
     conteiner2.classList.add("div-in");
     conteiner2.style.width="100%";
     conteiner2.style.height="100%";
-    conteiner.appendChild(conteiner2);
+    conteiner1.appendChild(conteiner2);
 
     objeto = document.createElement("iframe");
     objeto.src=document.querySelector("#modal > div > form > input").value.replace("watch?v=", "embed/");
     objeto.style.width="100%";
     objeto.style.height="100%";
 
-    conteiner.appendChild(objeto);
+    conteiner1.appendChild(objeto);
 
-    mundo.appendChild(conteiner);
+    mundo.appendChild(conteiner1);
 
-    conteiner.addEventListener('click', criaPropriedades);
+   conteiner1.addEventListener('click', criaPropriedades);
 }
 
-function criaObjetoMusica(x){
+export function criaObjetoMusica(x){
     let objeto;
     let conteiner, conteiner2;
 
     conteiner = document.createElement("div");
-    conteiner.classList.add("resize-drag");
-    conteiner.id="musica-"+x;
-    conteiner.classList.add("objeto");
-    conteiner.style.width="100px";
-    conteiner.style.height="100px";
+    conteiner1.classList.add("resize-drag");
+    conteiner1.id="musica-"+x;
+    conteiner1.classList.add("objeto");
+    conteiner1.style.width="100px";
+    conteiner1.style.height="100px";
 
     conteiner2 = document.createElement("div");
     conteiner2.classList.add("div-in");
     conteiner2.style.width="100%";
     conteiner2.style.height="100%";
-    conteiner.appendChild(conteiner2);
+    conteiner1.appendChild(conteiner2);
 
     objeto = document.createElement("audio");
     objeto.src=document.querySelector("#modal > div > form > input").value;
     objeto.controls = true;
     objeto.style.width="100%";
     objeto.style.height="100%";
-    conteiner.appendChild(objeto);
-    mundo.appendChild(conteiner);
+    conteiner1.appendChild(objeto);
+    mundo.appendChild(conteiner1);
 
     objeto.addEventListener('click', criaPropriedades);
 }
 
-function criaObjetoTexto(x){
+export function criaObjetoTexto(x){
     let objeto;
     objeto = document.createElement("textarea");
     objeto.classList.add("resize-drag");
@@ -81,7 +86,7 @@ function criaObjetoTexto(x){
     objeto.addEventListener('click', criaPropriedades);
 }
 
-function criaObjetoGaleria(x){
+export function criaObjetoGaleria(x){
     let objeto;
     let seta_direita;
     let seta_esquerda;
@@ -98,7 +103,7 @@ function criaObjetoGaleria(x){
 
     objeto = document.createElement("img");
     objeto.style.objectFit = "fill";
-    objeto.src=galerias["galeria-"+x][0];
+    objeto.src = galerias["galeria-"+x][0];
     objeto.style.width="100%";
     objeto.style.height="100%";
     conteiner.appendChild(objeto);
@@ -121,67 +126,3 @@ function criaObjetoGaleria(x){
     seta_direita.addEventListener('click',proximaImgemDireita);
     seta_esquerda.addEventListener('click',proximaImgemEsquerda);
 }
-
-
-//ABRE MODAL
-for (let i = 0; i < widget.length; i++) {
-    widget[i].addEventListener('click', function(e){
-        if(this.id == "texto"){
-            num_textos++;
-            criaObjetoTexto(num_textos);
-            
-        }else{
-          let modal_titulo = document.querySelector("#modal > div > h4");
-          let input_galeria = document.querySelector(".input");
-          let input_outros = document.querySelector("#modal > div > form > input");
-          if(this.id == "galeria"){
-            input_outros.style.display = "none";
-            input_galeria.style.display = "block";
-          }else{
-            input_outros.style.display = "block";
-            input_galeria.style.display = "none";
-          }
-          modal_titulo.innerHTML = this.id.toUpperCase();
-          modal.style.display = "block";
-        }
-    });
-}
-
-//AÇÕES NA MODAL
-let botao_modal_ok = document.querySelector("#ok");
-let botao_modal_cancelar = document.querySelector("#cancelar");
-let modal = document.querySelector("#modal");
-
-botao_modal_ok.addEventListener('click', function(event){
-  let modal_titulo = document.querySelector("#modal > div > h4");
-  let x=1;
-  event.preventDefault();
-  modal.style.display = "none";
-
-  switch(modal_titulo.innerHTML.toLowerCase()){
-    case "imagem":
-        num_imagens++;
-        criaObjetoImagem(num_imagens);
-        break;
-
-    case "video":
-        num_videos++;
-        criaObjetoVideo(num_videos);
-        break;
-
-    case "musica":
-        num_musicas++;
-        criaObjetoMusica(num_musicas);
-        break;
-
-    case "galeria":
-        num_galerias++;
-        criaObjetoGaleria(num_galerias);
-        break;
-
-    }
-});
-
-botao_modal_cancelar.addEventListener('click', function(event){
-  modal.style.display = "none";
-});

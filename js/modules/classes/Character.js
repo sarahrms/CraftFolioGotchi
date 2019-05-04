@@ -1,13 +1,11 @@
-import * from "./Vector2D.js";
-import * from "./Transition.js";
+import {Vector2D} from "./Vector2D.js";
+import {Transition} from "./Transition.js";
 
 export const LEFTARROW = 37;
 export const RIGHTARROW = 39;
 export const UPARROW = 38;
 export const WALKVELOCITY = 18;
 export const JUMPACELERATION = 30;
-export let LeftLimit = 0;
-export let RightLimit = document.body.clientWidth;
 
 export class Character {
     constructor(color, position, size, controllable, htmlElementID){
@@ -24,6 +22,8 @@ export class Character {
         this.stateAnimations = [];
         this.transitions = [];
 
+        this.LeftLimit = 0;
+        this.RightLimit = document.body.clientWidth;
         this.htmlElement = document.getElementById(htmlElementID);
     }
 
@@ -33,7 +33,7 @@ export class Character {
         this.velocity.x += this.aceleration.x;
         this.velocity.y += this.aceleration.y;
 
-        if((this.position.x + this.velocity.x) > LeftLimit && ((this.position.x + this.velocity.x) + this.size.x*RightLimit/100) < RightLimit){
+        if((this.position.x + this.velocity.x) > this.LeftLimit && ((this.position.x + this.velocity.x) + this.size.x*this.RightLimit/100) < this.RightLimit){
             this.position.x += this.velocity.x;
         }
         this.position.y += this.velocity.y;
@@ -56,6 +56,14 @@ export class Character {
         this.currentState = state;
         let deltaTime = this.stateAnimations[this.currentState].deltaTime;
         this.clock = setInterval(() => this.updateAnimations(), deltaTime);
+    }
+
+    updateColor(colorSourcePath, color){
+        this.color = color;
+        for(let state in this.stateAnimations){
+            let animation = this.stateAnimations[state];
+            animation.spriteSheet.updateSourcePath(colorSourcePath);
+        }
     }
 
     updateAceleration(inputEvent, inputCode){

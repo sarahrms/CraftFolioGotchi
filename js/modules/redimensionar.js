@@ -42,7 +42,16 @@ interact('.resize-drag')
   });
 
 
-function dragMoveListener (event) {
+objetos = document.querySelectorAll(".div-in");
+
+objetos.forEach(objeto=>{
+  objeto.addEventListener('click', function(e){
+    e.stopPropagation();
+    console.log("ENTROU");
+  });
+})
+
+export function dragMoveListener (event) {
   var target = event.target,
       x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
       y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
@@ -52,13 +61,3 @@ function dragMoveListener (event) {
   target.setAttribute('data-x', x);
   target.setAttribute('data-y', y);
 }
-
-
-objetos = document.querySelectorAll(".div-in");
-
-objetos.forEach(objeto=>{
-  objeto.addEventListener('click', function(e){
-    e.stopPropagation();
-    console.log("ENTROU");
-  });
-})

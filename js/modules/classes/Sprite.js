@@ -9,4 +9,8 @@ export class Sprite {
     getSource() {
         return this.sourcePath + "/" + this.spriteName + "." + this.format;
     }
+
+    updateSourcePath(sourcePath){
+    	this.sourcePath = sourcePath;
+    }
 }

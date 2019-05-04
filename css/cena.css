@@ -72,42 +72,42 @@
   bottom: 45%; 
 }
 
-#alien_color_selector h6 {
+.color_selector h6 {
   margin: auto;
   padding: 2px;
   width: 100%;
   height: 25%;
 }
 
-#alien_color_selector #container {  
+.color_container {  
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 75%;
 }
 
-#alien_color_selector #container div {
+.color_container div {
   margin: auto;
   width: 15%;
   height: 90%;
 }
 
-#alien_color_selector #container #op1{
+#alien_color_selector .color_container #op1{
   background-color: #474141;
 }
 
-#alien_color_selector #container #op2{
+#alien_color_selector .color_container #op2{
   background-color: #9e9292;
 }
 
-#alien_color_selector #container #op3{
+#alien_color_selector .color_container #op3{
   background-color: #6d8dff;
 }
 
-#alien_color_selector #container #op4{
+#alien_color_selector .color_container #op4{
   background-color: #95c020;
 }
 
-#alien_color_selector #container #op5{
+#alien_color_selector .color_container #op5{
   background-color: #ff6e37;
 }

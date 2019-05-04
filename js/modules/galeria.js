@@ -1,5 +1,4 @@
-export let direita;
-export let esquerda;
+let direita, esquerda;
 
 export function initGaleria(){
 	direita = document.querySelectorAll(".seta-direita-galeria");
