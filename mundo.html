@@ -4,12 +4,14 @@
 	<title>Mundo</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link 
 	<link rel="stylesheet" href="./css/comum.css">
 	<link rel="stylesheet" href="./css/mundo.css">
 	<link rel="stylesheet" href="./css/cena.css">
 </head>
 <body id="fora">
 	<main>
+		<div id="fundo"></div>
 		<div id="propriedades">
 			<form id="formulario-propriedades">
 				<button id="alterar" type="submit" class="botao-propriedades nao-exibir">Alterar</button>
@@ -18,11 +20,14 @@
 		</div>
 		<div id="mundo" class="resize-container"></div>
 		<div id="widgets">
-			<button  id="texto" class="widget"><i class="material-icons">text_fields</i></button >
-			<button  id="imagem" class="widget"><i class="material-icons">photo</i></button >
-			<button  id="video" class="widget"><i class="material-icons">movie_creation</i></button >
-			<button  id="musica" class="widget"><i class="material-icons">music_note</i></button >
-			<button  id="galeria" class="widget"><i class="material-icons">collections</i></button >
+			<div class="widgets_container" id="widgets_container">
+				<button  id="texto" class="widget"><i class="material-icons">text_fields</i></button >
+				<button  id="imagem" class="widget"><i class="material-icons">photo</i></button >
+				<button  id="video" class="widget"><i class="material-icons">movie_creation</i></button >
+				<button  id="musica" class="widget"><i class="material-icons">music_note</i></button >
+				<button  id="galeria" class="widget"><i class="material-icons">collections</i></button >
+			</div>
+			<button id=salvar_alteracoes>Salvar</button>
 		</div>
 	</main>
 	<footer id="chao"></footer>
@@ -41,29 +46,57 @@
 	</div>
 
 	<div id="scene"> 
+		<button id="botao_fundo"><i class="material-icons">format_paint</i></button>
 		<img src="./Sprites/poster_1.jpg" id="poster_1">
 		<img src="./Sprites/poster_2.jpg" id="poster_2">
 		<img src="./Sprites/wardrobe.png" id="wardrobe">
 		<img src="./Sprites/bed.png" id="bed">
 		<img src="./Sprites/cow/idle_1.png" id="cow">
-		<img src="./Sprites/computer.png" id="computer" data-value="Editar">
+		<img src="./Sprites/computer.png" id="computer" data-value="Editar">	
+
+		<div class="option_selector" id="alien_color_selector" data-value="disabled">
+			<h6>Escolha uma cor para o alien: </h6>
+			<div class="option_container">
+				<div id="op1" data-value="dark_gray"></div>
+				<div id="op2" data-value="gray"></div>
+				<div id="op3" data-value="blue"></div>
+				<div id="op4" data-value="green"></div>
+				<div id="op5" data-value="red"></div>
+			</div>
+			<button>Salvar</button>
+		</div>
+
+		<div class="option_selector" id="floor_option_selector" data-value="disabled">
+			<h6>Escolha uma textura para o chão: </h6>
+			<div class="option_container">
+				<div id="opt1" data-value="text_1.jpg"></div>
+				<div id="opt2" data-value="text_2.jpg"></div>
+				<div id="opt3" data-value="text_3.jpg"></div>
+				<div id="opt4" data-value="text_4.jpg"></div>
+				<div id="opt5" data-value="text_5.jpg"></div>
+			</div>
+			<button>Salvar</button>
+		</div>
+
+		<div class="option_selector" id="background_option_selector" data-value="disabled">
+			<h6>Escolha uma textura ou cor para o fundo: </h6>
+			<div class="option_container">
+				<div id="optc1" data-value="text_1.jpg"></div>
+				<div id="optc2" data-value="text_2.jpg"></div>
+				<div id="optc3" data-value="text_3.jpg"></div>
+				<div id="optc4" data-value="text_4.jpg"></div>
+				<div id="optc5" data-value="text_5.jpg"></div>
+			</div>
+			<input type=color>
+			<button>Salvar</button>
+		</div>
+
 		<img src="" id="userCharacter">
 		<img src="" id="visitorCharacter">
-	</div>
-
-	<div class="color_selector" id="alien_color_selector" data-value="disabled">
-		<h6>Escolha a cor do alien: </h6>
-		<div class="color_container">
-			<div id="op1" data-value="dark_gray"></div>
-			<div id="op2" data-value="gray"></div>
-			<div id="op3" data-value="blue"></div>
-			<div id="op4" data-value="green"></div>
-			<div id="op5" data-value="red"></div>
-		</div>
-	</div>
+	</div>	
 
 	<script src="https://cdn.jsdelivr.net/npm/interactjs@next/dist/interact.min.js"></script>
-
+	<script src="./js/redimensionar.js"></script>	
 	<script type="module" src="./js/sceneController.js"></script>	
 	<script type="module" src="./js/painelController.js"></script>	
 </body>

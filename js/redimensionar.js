@@ -51,7 +51,7 @@ objetos.forEach(objeto=>{
   });
 })
 
-export function dragMoveListener (event) {
+function dragMoveListener (event) {
   var target = event.target,
       x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
       y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;

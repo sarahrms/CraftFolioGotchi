@@ -21,16 +21,24 @@ export function recuperarDados(){
 	if (Dados.userColor==null) { Dados.userColor = "blue"; }
 	if (Dados.visitorColor==null){ Dados.visitorColor = "green"; }
 
+	Dados.backgroundTexture = localStorage.getItem("backgroundTexture");	
 	Dados.backgroundColor = localStorage.getItem("backgroundColor");
-	if(Dados.backgroundColor!=null){
-		let background = document.querySelector("body");
+
+	if(Dados.backgroundTexture != null && Dados.backgroundColor == null){
+		let background = document.querySelector("#fundo");
+		background.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.floorTexture + "\")";
+		background.style.backgroundColor = "white";
+	}
+	else if(Dados.backgroundTexture == null && Dados.backgroundColor != null){
+		let background = document.querySelector("#fundo");
+		background.style.backgroundImage = "";
 		background.style.backgroundColor = Dados.backgroundColor;
 	}
 
-	Dados.floorColor = localStorage.getItem("floorColor");
-	if(Dados.floorColor!=null){	
-		let chao = document.querySelector("#chao");
-		chao.style.backgroundColor = Dados.floorColor;
+	Dados.floorTexture = localStorage.getItem("floorTexture");
+	if(Dados.floorTexture !=null){	
+		let chao = document.getElementById("chao");
+		chao.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.floorTexture + "\")";
 	}
 
 	let mundo = document.querySelector("#mundo");

@@ -18,7 +18,6 @@ export class SpriteSheet {
 
     updateSourcePath(sourcePath){
         this.sourcePath = sourcePath;
-        console.log(this.sprites);
         for(let index of range(this.initialIndex, this.finalIndex)){
             this.sprites[index].updateSourcePath(sourcePath);
         }

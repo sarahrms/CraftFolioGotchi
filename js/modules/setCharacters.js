@@ -54,7 +54,7 @@ export function setCowCharacter(){
     cow.addStateAnimation("idle", idleAnimation);
     cow.setInitialState("idle");
 
-    let mooSpriteSheet = new SpriteSheet("Sprites/cow", "moo", "png", new Vector2D(1767, 1500), 1, 8);
+    let mooSpriteSheet = new SpriteSheet("Sprites/cow", "moo", "png", new Vector2D(1767, 1500), 1, 12);
     let mooAnimation = new Animation(mooSpriteSheet, DELTATIME*3, true);
     cow.addStateAnimation("moo", mooAnimation);
 

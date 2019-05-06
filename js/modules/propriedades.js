@@ -1,8 +1,7 @@
 let objeto = document.querySelectorAll(".objeto");
 let propriedades = document.querySelector("#propriedades");
 let formulario = document.querySelector("#formulario-propriedades");
-let excluir = document.querySelector("#excluir");
-let alterar = document.querySelector("#alterar");
+
 let fora = document.querySelector("#fora");
 let main = document.querySelectorAll("main");
 
@@ -103,10 +102,11 @@ function inputCor(obj){
 }
 
 //CRIA FORMULARIO DE PROPRIEDADES
-export function criaPropriedades(e){
+export function criarPropriedades(e){
     e.stopPropagation();
     apagarFormularioAntigo();
 
+    let botao_modo = document.querySelector("#computer");
     if(botao_modo.getAttribute("data-value") != "Editar"){
       if(this.classList.contains("objeto")){
         switch(this.id.match("(.*)-.*")[1]){
@@ -118,25 +118,18 @@ export function criaPropriedades(e){
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
-                propriedades.style.backgroundColor = "lightgreen";
+                propriedades.style.visibility = "visible";
                 break;
              case "texto":
+             case "galeria":
                 inputId(this);
                 inputHeight(this);
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
-                propriedades.style.backgroundColor = "lightgreen";
+                propriedades.style.visibility = "visible";
                 break;
             case "video":
-                inputId(this);
-                inputURL(this);
-                inputHeight(this);
-                inputWidth(this);
-                excluir.classList.remove("nao-exibir");
-                alterar.classList.remove("nao-exibir");
-                propriedades.style.backgroundColor = "lightgreen";
-                break;
             case "musica":
                 inputId(this);
                 inputURL(this);
@@ -144,38 +137,20 @@ export function criaPropriedades(e){
                 inputWidth(this);
                 excluir.classList.remove("nao-exibir");
                 alterar.classList.remove("nao-exibir");
-                propriedades.style.backgroundColor = "lightgreen";
-                break;
-            case "galeria":
-                inputId(this);
-                inputHeight(this);
-                inputWidth(this);
-                excluir.classList.remove("nao-exibir");
-                alterar.classList.remove("nao-exibir");
-                propriedades.style.backgroundColor = "lightgreen";
+                propriedades.style.visibility = "visible";
                 break;
         }
       }
-      else if(this.id == "mundo" || this.id == "chao"){
-        inputId(this);
-        inputCor(this);
-
-        alterar.classList.remove("nao-exibir");
-        excluir.classList.add("nao-exibir");
-        propriedades.style.backgroundColor = "lightgreen"
-      }else{
+      else{
         alterar.classList.add("nao-exibir");
         excluir.classList.add("nao-exibir");
-        propriedades.style.backgroundColor = "khaki"
+        propriedades.style.visibility = "hidden";
       }
   }
 }
 
-alterar.addEventListener('click', lidaAlterar);
-excluir.addEventListener('click', lidaExcluir);
-
 //LIDA AS POSSIVEIS AÇÕES NO FORMULARIO
-function lidaAlterar(e){
+export function lidaAlterar(e){
   event.preventDefault();
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
   let obj = document.querySelector("#"+id);
@@ -210,7 +185,7 @@ function lidaAlterar(e){
   }
 }
 
-function lidaExcluir(e){
+export function lidaExcluir(e){
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
   let obj = document.querySelector("#"+id);
   let ultimo_obj;

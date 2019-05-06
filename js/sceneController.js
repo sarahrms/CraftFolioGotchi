@@ -13,7 +13,6 @@ if(Dados.myPage){//if i'm on my own page//
     userCharacter = setAlienCharacter(Dados.userColor, new Vector2D(50, FLOORHEIGHT), true, "userCharacter");
 }
 else { //if i'm on another user's page, if i'm a visitor//
-    console.log(Dados.myPage);
     userCharacter = setAlienCharacter(Dados.userColor,  new Vector2D(50, FLOORHEIGHT), false, "userCharacter");
     visitorCharacter = setAlienCharacter(Dados.visitorColor,  new Vector2D(200, FLOORHEIGHT), true, "visitorCharacter");
     visitorCharacter.htmlElement.style.display = "block";

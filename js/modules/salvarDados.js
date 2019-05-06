@@ -23,8 +23,16 @@ export function salvarDadosPortifolio(Dados){
 }
 
 export function salvarDadosCena(Dados){
-	localStorage.setItem("backgroundColor",Dados.backgroundColor);
-	localStorage.setItem("floorColor", Dados.floorColor);
+	if(Dados.backgroundTexture != null && Dados.backgroundColor == null){
+		localStorage.setItem("backgroundTexture", Dados.backgroundTexture);
+		localStorage.setItem("backgroundColor", null);
+	}
+	else if(Dados.backgroundTexture == null && Dados.backgroundColor != null){
+		localStorage.setItem("backgroundTexture", null);
+		localStorage.setItem("backgroundColor", Dados.backgroundColor);
+	}
+
+	localStorage.setItem("floorTexture", Dados.floorTexture);
 	localStorage.setItem("myPage", Dados.myPage);
 	localStorage.setItem("userColor", Dados.userColor);
 	localStorage.setItem("visitorColor", Dados.visitorColor);

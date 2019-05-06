@@ -1,5 +1,5 @@
 import {proximaImgemDireita, proximaImgemEsquerda} from "./galeria.js"; 
-import {criaPropriedades} from "./propriedades.js";
+import {criarPropriedades} from "./propriedades.js";
 
 let mundo = document.querySelector("#mundo");
 
@@ -14,7 +14,7 @@ export function criaObjetoImagem(x){
     objeto.style.width="100px";
     objeto.style.height="100px";
     mundo.appendChild(objeto);
-    objeto.addEventListener('click', criaPropriedades);
+    objeto.addEventListener('click', criarPropriedades);
 }
 
 export function criaObjetoVideo(x){
@@ -43,14 +43,14 @@ export function criaObjetoVideo(x){
 
     mundo.appendChild(conteiner1);
 
-   conteiner1.addEventListener('click', criaPropriedades);
+   conteiner1.addEventListener('click', criarPropriedades);
 }
 
 export function criaObjetoMusica(x){
     let objeto;
     let conteiner, conteiner2;
 
-    conteiner = document.createElement("div");
+    conteiner1 = document.createElement("div");
     conteiner1.classList.add("resize-drag");
     conteiner1.id="musica-"+x;
     conteiner1.classList.add("objeto");
@@ -71,7 +71,7 @@ export function criaObjetoMusica(x){
     conteiner1.appendChild(objeto);
     mundo.appendChild(conteiner1);
 
-    objeto.addEventListener('click', criaPropriedades);
+    objeto.addEventListener('click', criarPropriedades);
 }
 
 export function criaObjetoTexto(x){
@@ -83,7 +83,7 @@ export function criaObjetoTexto(x){
     objeto.style.width="100px";
     objeto.style.height="100px";
     mundo.appendChild(objeto);
-    objeto.addEventListener('click', criaPropriedades);
+    objeto.addEventListener('click', criarPropriedades);
 }
 
 export function criaObjetoGaleria(x){
@@ -121,7 +121,7 @@ export function criaObjetoGaleria(x){
     conteiner.appendChild(seta_esquerda);
 
     mundo.appendChild(conteiner);
-    conteiner.addEventListener('click', criaPropriedades);
+    conteiner.addEventListener('click', criarPropriedades);
 
     seta_direita.addEventListener('click',proximaImgemDireita);
     seta_esquerda.addEventListener('click',proximaImgemEsquerda);
