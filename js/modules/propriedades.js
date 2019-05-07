@@ -185,26 +185,38 @@ export function lidaAlterar(e){
   }
 }
 
-export function lidaExcluir(e){
+export function lidaExcluir(Dados){
   let id = document.querySelector("#formulario-propriedades > input.nao-exibir").value;
   let obj = document.querySelector("#"+id);
   let ultimo_obj;
   let id_ultimo_obj;
 
   switch(obj.id.match("(.*)-.*")[1]){
-        case "imagem": id_ultimo_obj = "imagem-"+num_imagens; num_imagens--; break;
-        case "video": id_ultimo_obj = "video-"+num_videos; num_videos--; break;
-        case "musica": id_ultimo_obj = "musica-"+num_musicas; num_musicas--; break;
-        case "texto": id_ultimo_obj = "texto-"+num_textos;  num_textos--; break;
+        case "imagem": 
+          id_ultimo_obj = "imagem-"+Dados.num_imagens; 
+          Dados.num_imagens--; 
+          break;
+        case "video": 
+          id_ultimo_obj = "video-"+Dados.num_videos; 
+          Dados.num_videos--; 
+          break;
+        case "musica": 
+          id_ultimo_obj = "musica-"+Dados.num_musicas; 
+          Dados.num_musicas--; 
+          break;
+        case "texto": 
+          id_ultimo_obj = "texto-"+Dados.num_textos;  
+          Dados.num_textos--; 
+          break;
         case "galeria":
-          id_ultimo_obj = "galeria-"+num_galerias;
-          num_galerias--;
-          galerias[id] = galerias[id_ultimo_obj];
-          delete galerias[id_ultimo_obj];
+          id_ultimo_obj = "galeria-"+Dados.num_galerias;
+          Dados.num_galerias--;
+          Dados.galerias[id] = Dados.galerias[id_ultimo_obj];
+          delete Dados.galerias[id_ultimo_obj];
           break;
   }
   mundo.removeChild(obj);
-  document.querySelector("#"+id_ultimo_obj).id=id;
+  document.querySelector("#"+id_ultimo_obj).id = id;
   localStorage.removeItem(id_ultimo_obj+"_outerHTML");
   localStorage.removeItem(id_ultimo_obj+"_innerHTML");
 }

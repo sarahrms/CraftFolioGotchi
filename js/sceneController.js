@@ -1,8 +1,8 @@
 import {setAlienCharacter, setCowCharacter, DELTATIME, GRAVITY, SCALE, FLOORHEIGHT} from "./modules/setCharacters.js";
-import {recuperarDados} from "./modules/recuperarDados.js";
+import {recuperarDadosCena} from "./modules/recuperarDados.js";
 import {Vector2D} from "./modules/classes/Vector2D.js";
 
-let Dados = recuperarDados();
+let Dados = recuperarDadosCena();
 ///////////////////////////////////////////////CHARACTERS SHITS////////////////////////////////////////////////////
 let userCharacter;
 let visitorCharacter;

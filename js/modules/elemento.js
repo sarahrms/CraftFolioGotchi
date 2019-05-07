@@ -10,7 +10,7 @@ export function criaObjetoImagem(x){
     objeto.id="imagem-"+x;
     objeto.classList.add("objeto");
     console.log(document.querySelector("#modal > div > form > input").value);
-    objeto.src=document.querySelector("#modal > div > form > input").value;
+    objeto.src = document.querySelector("#modal > div > form > input").value;
     objeto.style.width="100px";
     objeto.style.height="100px";
     mundo.appendChild(objeto);
@@ -43,12 +43,12 @@ export function criaObjetoVideo(x){
 
     mundo.appendChild(conteiner1);
 
-   conteiner1.addEventListener('click', criarPropriedades);
+    conteiner1.addEventListener('click', criarPropriedades);
 }
 
 export function criaObjetoMusica(x){
     let objeto;
-    let conteiner, conteiner2;
+    let conteiner1, conteiner2;
 
     conteiner1 = document.createElement("div");
     conteiner1.classList.add("resize-drag");
@@ -86,11 +86,12 @@ export function criaObjetoTexto(x){
     objeto.addEventListener('click', criarPropriedades);
 }
 
-export function criaObjetoGaleria(x){
+export function criaObjetoGaleria(x, minhasGalerias){
     let objeto;
     let seta_direita;
     let seta_esquerda;
     let conteiner;
+    let galerias = minhasGalerias;
     galerias["galeria-"+x] = document.querySelector(".input").innerHTML.replace(new RegExp("<br></div>", 'g'),"").split("<div>");
 
     conteiner = document.createElement("div");

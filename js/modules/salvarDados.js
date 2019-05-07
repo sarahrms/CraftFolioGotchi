@@ -1,3 +1,4 @@
+
 export function salvarDadosPortifolio(Dados){
 	let widgets = document.querySelector("#widgets");
 	let objeto = document.querySelectorAll(".objeto");
@@ -20,18 +21,18 @@ export function salvarDadosPortifolio(Dados){
     localStorage.setItem("num_videos",Dados.num_videos);
     localStorage.setItem("num_musicas",Dados.num_musicas);
     localStorage.setItem("num_galerias",Dados.num_galerias);
+    localStorage.setItem("icon",Dados.icon);
 }
 
 export function salvarDadosCena(Dados){
-	if(Dados.backgroundTexture != null && Dados.backgroundColor == null){
-		localStorage.setItem("backgroundTexture", Dados.backgroundTexture);
-		localStorage.setItem("backgroundColor", null);
+	if (Dados.userColor == null || Dados.userColor == "undefined") { 
+		Dados.userColor = "blue"; 
 	}
-	else if(Dados.backgroundTexture == null && Dados.backgroundColor != null){
-		localStorage.setItem("backgroundTexture", null);
-		localStorage.setItem("backgroundColor", Dados.backgroundColor);
+	if (Dados.visitorColor == null || Dados.visitorColor == "undefined"){ 
+		Dados.visitorColor = "green"; 
 	}
-
+	localStorage.setItem("backgroundTexture", Dados.backgroundTexture);
+	localStorage.setItem("backgroundColor", Dados.backgroundColor);
 	localStorage.setItem("floorTexture", Dados.floorTexture);
 	localStorage.setItem("myPage", Dados.myPage);
 	localStorage.setItem("userColor", Dados.userColor);

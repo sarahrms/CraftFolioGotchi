@@ -32,15 +32,15 @@
   content: "Editar";
   position: absolute;
   right: 0%;  
-  bottom: 3%;   
-  width: 19%;
-  height: 34%;
+  bottom: 1.5%;   
+  width: 20%;
+  height: 37%;
 }
 
 #cow { 
 	position: absolute;
 	left: 16%;
-	bottom: 3%; 
+	bottom: 3.5%; 
 	width: 12%;
   height: 19%;
 
@@ -87,153 +87,4 @@
   width: 100%;
   height: 93%;
   position: absolute;
-}
-
-#botao_fundo {
-  position: absolute;
-  width: 3%;
-  height: 6%;
-  top: 2%;
-  left: 1%;
-}
-
-.option_selector {
-  visibility: hidden; 
-  border-radius: 5px;
-  background-color: white;
-  position: absolute;
-  width: 20%;
-  height: 17%;
-}
-
-#alien_color_selector {   
-  left: 1%;
-  bottom: 45%; 
-}
-
-#floor_option_selector { 
-  left: 30%;
-  bottom: 8%; 
-}
-
-#background_option_selector { 
-  width: 22.5%;
-  height: 25%;
-  left: 1%;
-  bottom: 65%; 
-}
-
-.option_selector h6 {  
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3%;
-  margin-bottom: 1%;
-  padding-left: 3%;
-  width: 95%;
-  height: 15%;
-  box-sizing: border-box;
-}
-
-.option_container { 
-  margin-left: auto;   
-  margin-right: auto; 
-  margin-top: 0%; 
-  margin-bottom: 0%; 
-  padding: 0%;
-  display: flex;
-  flex-direction: row;
-  width: 95%;
-  height: 45%;
-}
-
-#background_option_selector .option_container{
-  height: 40%;
-}
-
-.option_selector button{
-  margin-top: 1%;
-  margin-bottom: 1%;
-  margin-right: 4%;
-  float: right;
-  padding: 0px;
-  width: 35%;
-  height: 20%;
-}
-
-#background_option_selector  input {
-  height: 17%;
-}
-
-#background_option_selector  button{
-  height: 17%;
-}
-
-.option_container div {
-  border-radius: 5px;
-  box-shadow: 1px 2px gray;
-  margin-top: 0%;
-  margin-bottom: 2.5%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0%;
-  width: 15%;
-  height: 90%;
-}
-
-#op1{
-  background-color: #474141;
-}
-#op2{
-  background-color: #9e9292;
-}
-#op3{
-  background-color: #6d8dff;
-}
-#op4{
-  background-color: #95c020;
-}
-#op5{
-  background-color: #ff6e37;
-}
-
-#opt1{
-  background-image: url("../Sprites/floor_textures/text_1.jpg");
-  background-repeat: round;
-}
-#opt2{
-  background-image: url("../Sprites/floor_textures/text_2.jpg");
-   background-repeat: round;
-}
-#opt3{
-  background-image: url("../Sprites/floor_textures/text_3.jpg");
-   background-repeat: round;
-}
-#opt4{
-  background-image: url("../Sprites/floor_textures/text_4.jpg");
-   background-repeat: round;
-}
-#opt5{
-  background-image: url("../Sprites/floor_textures/text_5.jpg");
-   background-repeat: round;
-}
-
-#optc1{
-  background-image: url("../Sprites/floor_textures/text_1.jpg");
-  background-repeat: round;
-}
-#optc2{
-  background-image: url("../Sprites/floor_textures/text_2.jpg");
-   background-repeat: round;
-}
-#optc3{
-  background-image: url("../Sprites/floor_textures/text_3.jpg");
-   background-repeat: round;
-}
-#optc4{
-  background-image: url("../Sprites/floor_textures/text_4.jpg");
-   background-repeat: round;
-}
-#optc5{
-  background-image: url("../Sprites/floor_textures/text_5.jpg");
-   background-repeat: round;
 }

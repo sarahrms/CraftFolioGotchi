@@ -1,0 +1,160 @@
+#botoes {
+  position: absolute;
+  left: 0%;
+  bottom: 4%; 
+  width: 7%;
+  height: 39%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#botoes button {
+  margin: auto;
+  display: block;
+  background-color: gray;
+  background-image: none;
+  border: none;
+  width: 55%;
+  height: 18%;
+}
+
+#seletores {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  display: none;
+}
+
+.option_selector {
+  visibility: hidden; 
+  box-shadow: 2px 2px grey;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  position: absolute;
+  width: 20%;
+  height: 17%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#alien_color_selector {   
+  left: 1%;
+  bottom: 45%; 
+}
+
+#floor_option_selector { 
+  left: 30%;
+  bottom: 8%; 
+}
+
+#background_option_selector { 
+  width: 22.5%;
+  height: 25%;
+  left: 1%;
+  bottom: 65%; 
+}
+
+#icon_selector {
+  position: absolute;
+  width: 20%;
+  height: 17%;
+}
+
+.option_selector h6 {  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  margin-bottom: 1%;
+  padding-left: 3%;
+  width: 95%;
+  height: 15%;
+  box-sizing: border-box;
+}
+
+.option_container { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 95%;
+  height: 45%;
+}
+
+#background_option_selector .option_container{
+  height: 40%;
+}
+
+#background_option_selector  input {
+  display: inline-flex;
+  margin: auto;
+  height: 15%;
+}
+
+.option_selector button{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-right: 4%;
+  float: right;
+  padding: 0px;
+  width: 35%;
+  height: 27%;
+}
+
+#background_option_selector  button {
+  margin: auto;
+  display: inline-block;
+  height: 15%;
+}
+
+#aplicar_cor {
+  width: 50%;
+}
+
+.option_container div {
+  border-radius: 5px;
+  box-shadow: 1px 2px gray;
+  padding: 0%;
+  width: 15%;
+  height: 90%;
+}
+
+#op1{
+  background-color: #474141;
+}
+#op2{
+  background-color: #9e9292;
+}
+#op3{
+  background-color: #6d8dff;
+}
+#op4{
+  background-color: #95c020;
+}
+#op5{
+  background-color: #ff6e37;
+}
+
+#opt1, #optc1{
+  background-image: url("../Sprites/floor_textures/text_1.jpeg");
+  background-repeat: repeat-x;
+}
+#opt2, #optc2{
+  background-image: url("../Sprites/floor_textures/text_2.jpeg");
+   background-repeat: repeat-x;
+}
+#opt3, #optc3{
+  background-image: url("../Sprites/floor_textures/text_3.jpeg");
+   background-repeat: repeat-x;
+}
+#opt4, #optc4{
+  background-image: url("../Sprites/floor_textures/text_4.jpeg");
+   background-repeat: repeat-x;
+}
+#opt5, #optc5{
+  background-image: url("../Sprites/floor_textures/text_5.jpeg");
+   background-repeat: repeat-x;
+}
+
