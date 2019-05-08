@@ -25,12 +25,6 @@ export function salvarDadosPortifolio(Dados){
 }
 
 export function salvarDadosCena(Dados){
-	if (Dados.userColor == null || Dados.userColor == "undefined") { 
-		Dados.userColor = "blue"; 
-	}
-	if (Dados.visitorColor == null || Dados.visitorColor == "undefined"){ 
-		Dados.visitorColor = "green"; 
-	}
 	localStorage.setItem("backgroundTexture", Dados.backgroundTexture);
 	localStorage.setItem("backgroundColor", Dados.backgroundColor);
 	localStorage.setItem("floorTexture", Dados.floorTexture);

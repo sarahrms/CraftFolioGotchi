@@ -37,24 +37,27 @@ export function recuperarDadosPainel(){
 		Dados.galerias = {}; 
 	}
 
+	console.log((Dados));
 	Dados.backgroundTexture = localStorage.getItem("backgroundTexture");	
 	Dados.backgroundColor = localStorage.getItem("backgroundColor");
 
-	if(Dados.backgroundTexture != null && Dados.backgroundTexture != "undefined"){
+	if(Dados.backgroundTexture != null && Dados.backgroundTexture != "null" && Dados.backgroundTexture != "undefined"){
 		let background = document.querySelector("#fundo");
 		background.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.backgroundTexture + "\")";
 		background.style.backgroundColor = "none";
 	}
-	else if(Dados.backgroundColor != null && Dados.backgroundColor != "undefined"){
+	
+	if(Dados.backgroundColor != null && Dados.backgroundColor != "null" && Dados.backgroundColor != "undefined"){
 		let background = document.querySelector("#fundo");
 		background.style.backgroundImage = "none";
 		background.style.backgroundColor = Dados.backgroundColor;
 	}
 
 	Dados.floorTexture = localStorage.getItem("floorTexture");
-	if(Dados.floorTexture!=null && Dados.floorTexture != "undefined"){	
+	if(Dados.floorTexture != null && Dados.floorTexture != "undefined"){	
 		let chao = document.getElementById("chao");
 		chao.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.floorTexture + "\")";
+		console.log("chao");
 	}
 
 	let mundo = document.querySelector("#mundo");
@@ -95,12 +98,18 @@ export function recuperarDadosPainel(){
 	}
 
 	Dados.myPage = localStorage.getItem("myPage");
-	if (Dados.myPage==null || Dados.myPage == "undefined") { 
+	if (Dados.myPage == null || Dados.myPage == "undefined") { 
 		Dados.myPage = true; 		
+	}
+	else if (Dados.myPage == "true"){
+		Dados.myPage = true; 
+	}
+	else if (Dados.myPage == "false"){
+		Dados.myPage = false; 
 	}
 
 	if(Dados.myPage){
-		if(Dados.icon != null && Dados.icon != "undefined"){
+		if(Dados.icon != null && Dados.icon != "null" && Dados.icon != "undefined"){
 			setPageIcon(Dados.icon);
 		}
 	}
