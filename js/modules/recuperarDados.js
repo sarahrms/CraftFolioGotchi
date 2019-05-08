@@ -37,7 +37,6 @@ export function recuperarDadosPainel(){
 		Dados.galerias = {}; 
 	}
 
-	console.log((Dados));
 	Dados.backgroundTexture = localStorage.getItem("backgroundTexture");	
 	Dados.backgroundColor = localStorage.getItem("backgroundColor");
 
@@ -57,7 +56,6 @@ export function recuperarDadosPainel(){
 	if(Dados.floorTexture != null && Dados.floorTexture != "null" && Dados.floorTexture != "undefined"){	
 		let chao = document.getElementById("chao");
 		chao.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.floorTexture + "\")";
-		console.log("chao");
 	}
 
 	let mundo = document.querySelector("#mundo");
