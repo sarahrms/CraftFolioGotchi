@@ -97,15 +97,20 @@ input[type="color"] {
 }
 
 #alterar {
-  margin-top: 10px;
-  height: 15%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 12%;
 }
 
-#excluir {
-  height: 10%;
+#excluir {  
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 12%;
+  width: 50%;
   background-color: black;
   color: white;
-  margin: auto;
 }
 
 #formulario-propriedades {
