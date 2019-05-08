@@ -54,7 +54,7 @@ export function recuperarDadosPainel(){
 	}
 
 	Dados.floorTexture = localStorage.getItem("floorTexture");
-	if(Dados.floorTexture != null && Dados.floorTexture != "undefined"){	
+	if(Dados.floorTexture != null && Dados.floorTexture != "null" && Dados.floorTexture != "undefined"){	
 		let chao = document.getElementById("chao");
 		chao.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.floorTexture + "\")";
 		console.log("chao");
