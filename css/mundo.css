@@ -98,10 +98,11 @@ input[type="color"] {
 
 #alterar {
   margin-top: 10px;
-  height: 20%;
+  height: 15%;
 }
 
 #excluir {
+  height: 10%;
   background-color: black;
   color: white;
   margin: auto;
@@ -110,6 +111,8 @@ input[type="color"] {
 #formulario-propriedades {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
 }
 
 .seta-direita-galeria {

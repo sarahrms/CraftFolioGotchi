@@ -132,9 +132,9 @@ function setIconeOptions(){
 		selector_icone.style.visibility = "visible";
 		setLayerSeletoresVisible();
 	});
-	let salvar_icone = selector_icone.children[1];
+	let salvar_icone = selector_icone.children[2];
 	salvar_icone.addEventListener('click', function(){
-		let input = selector_icone.children[0];		
+		let input = selector_icone.children[1];		
 		Dados.icon = input.value;
 		setPageIcon(Dados.icon);
 		selector_icone.style.visibility = "hidden";		
@@ -157,9 +157,9 @@ if(Dados.myPage){
 	}
 
 	alterar.addEventListener('click', lidaAlterar);
-	excluir.addEventListener('click', function(){
-		lidaExcluir(Dados);
+	excluir.addEventListener('click', function(e){		
 		propriedades.style.visibility = "hidden";
+		lidaExcluir(Dados);
 	});
 
 	botao_modo.addEventListener('click', function(){

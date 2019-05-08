@@ -71,7 +71,7 @@ export function criaObjetoMusica(x){
     conteiner1.appendChild(objeto);
     mundo.appendChild(conteiner1);
 
-    objeto.addEventListener('click', criarPropriedades);
+    conteiner1.addEventListener('click', criarPropriedades);
 }
 
 export function criaObjetoTexto(x){

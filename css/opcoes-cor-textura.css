@@ -61,7 +61,11 @@
 #icon_selector {
   position: absolute;
   width: 20%;
-  height: 17%;
+  height: 20%;
+}
+
+#icon_selector input {
+  width: 90%;
 }
 
 .option_selector h6 {  
