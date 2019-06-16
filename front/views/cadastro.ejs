@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CraftFolioGotchi</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./static/css/comum.css">
+	<link rel="stylesheet" href="./static/css/tela-inicial.css">
+	<link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Germania+One|Roboto+Condensed" rel="stylesheet">
+</head>
+<body>
+
+	<header>
+		<h1>CraftFolioGotchi</h1>
+	</header>
+
+	<main>
+		<div id="sobre">
+			O CraftFolioGotchi® é um sistema Web que dá a seus usuários a (a) possibilidade de criar e personalizar uma (e apenas uma)
+				página/mundo. Nela, ele pode colocar (b) textos e galerias de imagens mostrando os seus trabalhos, ou seja, seu portfolio.
+				Além disso, cada usuário possui (a,c) um personagem/avatar que pode ser controlado por ele e pode: andar no seu próprio mundo
+				ou visitar o mundo de outros usuários.
+		</div>
+
+		<div id="cadastrar" class="exibir">
+			<form action="/cadastrar" method="POST">
+				<label for="email">E-mail</label>
+				<input id="email" type="email" name="email">
+				<label for="usuario" >Usuario</label>
+				<input id="usuario" type="text"  name="usuario">
+				<label for="senha">Senha</label>
+				<input id="senha" type="password" name="senha">
+			  <button type="submit" >Cadastrar</button>
+			</form>
+			<span id="tem-cadastro" >
+				Já tem uma conta?
+				<button><a href="/login">Logar</a></button>
+			</span>
+		</div>
+	</main>
+
+	<footer>
+		<div id="chao"></div>
+	</footer>
+	<script type="text/javascript" src="./static/js/logarCadastrar.js"></script>
+</body>
+</html>

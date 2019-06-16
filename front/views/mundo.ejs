@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mundo</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<link rel="icon" href="icon.png" type="../static/image/png" id="#icon">
+	<link rel="stylesheet" href="../static/css/comum.css">
+	<link rel="stylesheet" href="../static/css/mundo.css">
+	<link rel="stylesheet" href="../static/css/cena.css">
+	<link rel="stylesheet" href="../static/css/opcoes-cor-textura.css">
+</head>
+<body id="fora">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		
+	<main>
+		<div id="fundo"></div>
+		<div id="propriedades">
+			<form id="formulario-propriedades">
+				<button id="alterar" type="submit" class="botao-propriedades nao-exibir">Aplicar Alterações</button>
+				<button id="excluir" type="button" class="botao-propriedades nao-exibir">Excluir</button>
+			</form>
+		</div>
+		<div id="mundo" class="resize-container"></div>
+		<div id="widgets">
+			<div class="widgets_container" id="widgets_container">
+				<button  id="texto" class="widget"><i class="material-icons">text_fields</i></button >
+				<button  id="imagem" class="widget"><i class="material-icons">photo</i></button >
+				<button  id="video" class="widget"><i class="material-icons">movie_creation</i></button >
+				<button  id="musica" class="widget"><i class="material-icons">music_note</i></button >
+				<button  id="galeria" class="widget"><i class="material-icons">collections</i></button >
+			</div>
+			<button id="salvar_alteracoes">Salvar Alterações</button>
+		</div>
+		<footer id="chao"></footer>
+	</main>
+
+	<div id="modal">
+		<div class="modal-content">
+		  <h4>Titulo</h4>
+		  <form class="formulario-modal">
+		  	<p>Digite a URL(s)</p>
+		  	<input type="text">
+			<div class="input" contentEditable="true"></div>
+		  	<button type="button" id="ok">OK</button>
+		  	<button type="button" id="cancelar">CANCELAR</button>
+		  </form>
+		</div>
+	</div>
+
+	<div id="scene"> 		
+		<img src="../static/Sprites/poster_1.jpg" id="poster_1">
+		<img src="../static/Sprites/poster_2.jpg" id="poster_2">
+		<img src="../static/Sprites/wardrobe.png" id="wardrobe">
+		<img src="../static/Sprites/bed.png" id="bed">
+		<img src="../static/Sprites/cow/idle_1.png" id="cow">
+		<img src="../static/Sprites/computer.png" id="computer" data-value="Editar">	
+	</div>	
+
+	<div id="botoes">
+		<button id="botao_fundo"><i class="material-icons">format_paint</i></button>
+		<button id="botao_icone"><i class="material-icons">stars</i></button>
+		<button id="botao_chao"><i class="material-icons">format_color_fill</i></button>
+		<button id="botao_alien"><i class="material-icons">accessibility</i></button>
+	</div>
+
+	<div id="seletores">
+		<div class="option_selector" id="icon_selector"> 
+			<h6>Insira uma URL para o ícone da página: </h6>
+			<input type="text">
+			<button id="salvar_icone">Salvar</button>
+		</div>
+
+		<div class="option_selector" id="alien_color_selector" data-value="disabled">
+			<h6>Escolha uma cor para o alien: </h6>
+			<div class="option_container">
+				<div id="op1" data-value="dark_gray"></div>
+				<div id="op2" data-value="gray"></div>
+				<div id="op3" data-value="blue"></div>
+				<div id="op4" data-value="green"></div>
+				<div id="op5" data-value="red"></div>
+			</div>
+			<button>Salvar</button>
+		</div>
+
+		<div class="option_selector" id="floor_option_selector" data-value="disabled">
+			<h6>Escolha uma textura para o chão: </h6>
+			<div class="option_container">
+				<div id="opt1" data-value="text_1.jpeg"></div>
+				<div id="opt2" data-value="text_2.jpeg"></div>
+				<div id="opt3" data-value="text_3.jpeg"></div>
+				<div id="opt4" data-value="text_4.jpeg"></div>
+				<div id="opt5" data-value="text_5.jpeg"></div>
+			</div>
+			<button>Salvar</button>
+		</div>
+
+		<div class="option_selector" id="background_option_selector" data-value="disabled">
+			<h6>Escolha uma textura ou cor para o fundo: </h6>
+			<div class="option_container">
+				<div id="optc1" data-value="text_1.jpeg"></div>
+				<div id="optc2" data-value="text_2.jpeg"></div>
+				<div id="optc3" data-value="text_3.jpeg"></div>
+				<div id="optc4" data-value="text_4.jpeg"></div>
+				<div id="optc5" data-value="text_5.jpeg"></div>
+			</div>
+			<input type=color>
+			<button id="aplicar_cor">Aplicar cor</button>
+			<button>Salvar</button>
+		</div>
+	</div>
+	
+	<img src="" id="userCharacter">
+	<img src="" id="visitorCharacter">	
+	<a href="/logout">SAIR</a>
+	<script src="https://cdn.jsdelivr.net/npm/interactjs@next/dist/interact.min.js"></script>
+	<script src="../static/js/redimensionar.js"></script>	
+	<script type="module" src="../static/js/sceneController.js"></script>	
+	<script type="module" src="../static/js/painelController.js"></script>	
+</body>
+</html>

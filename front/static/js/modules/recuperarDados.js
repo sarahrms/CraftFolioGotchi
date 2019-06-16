@@ -117,18 +117,40 @@ export function recuperarDadosPainel(){
 
 export function recuperarDadosCena(){
 	let Dados = new Object();
-	Dados.myPage = localStorage.getItem("myPage");
-	Dados.userColor = localStorage.getItem("userColor");
-	Dados.visitorColor = localStorage.getItem("visitorColor");
-
-	if (Dados.myPage == null || Dados.myPage == "undefined") { 
-		Dados.myPage = true; 
+	let cookie=document.cookie.split(";")
+	console.log(cookie)
+	let user;
+	var idUsuario=-1;
+	var CorAlienUsuario="";
+	var CorAlienMundo="";
+	for (var i =cookie.length - 1; i >= 0; i--) {
+		if(cookie[i].indexOf("usuario=")==1){
+			user=cookie[i].split("*")
+			idUsuario=user[1]
+			console.log("USER ATUAL: "+idUsuario)
+			CorAlienUsuario=user[2]
+		}
+		if(cookie[i].indexOf("alienMundo=")==1){
+			CorAlienMundo=cookie[i].split("=")[1]
+		}
 	}
-	if (Dados.userColor == null || Dados.userColor == "undefined") { 
-		Dados.userColor = "blue"; 
+	let url= window.location.href.split("/")
+	let idMundo=url[url.length-1]
+	console.log("ID MUNDO:"+idMundo)
+	Dados.userColor=CorAlienUsuario;
+	console.log("Cor ATUAL: "+CorAlienUsuario)
+	if(idUsuario==-1||idUsuario==undefined){
+		Dados.userColor=CorAlienMundo;
+		Dados.visitorColor = "green";
+		Dados.myPage=false;
 	}
-	if (Dados.visitorColor == null || Dados.visitorColor == "undefined"){ 
-		Dados.visitorColor = "green"; 
+	else if(idUsuario==idMundo){
+		Dados.visitorColor = null;
+		Dados.myPage=true;
+	}else{
+		Dados.userColor=CorAlienMundo;
+		Dados.visitorColor=CorAlienUsuario;
+		Dados.myPage=false;
 	}
 
 	return Dados;

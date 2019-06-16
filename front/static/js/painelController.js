@@ -35,7 +35,7 @@ function setChaoOptions(){
 			if(seletor_textura_chao.getAttribute("data-value") == "enabled"){				
 				let textura = opc.getAttribute("data-value");
 				Dados.floorTexture = textura;
-				chao.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.floorTexture + "\")";				
+				chao.style.backgroundImage = "url(\"../static/Sprites/floor_textures/" + Dados.floorTexture + "\")";				
 			}
 		});
 	}
@@ -68,7 +68,7 @@ function setBackgroundOptions(){
 				let textura = opc.getAttribute("data-value");
 				Dados.backgroundTexture = textura;
 				Dados.backgroundColor = null;     
-				background.style.backgroundImage = "url(\"Sprites/floor_textures/" + Dados.backgroundTexture + "\")";				
+				background.style.backgroundImage = "url(\"../static/Sprites/floor_textures/" + Dados.backgroundTexture + "\")";				
 				background.style.backgroundColor = "white";
 			}
 		});
