@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_URL_CONECTION": "mongodb://CraftFolioGotchi:K0fi6XEETJBMpVuj@cluster0-shard-00-00-nsutw.mongodb.net:27017,cluster0-shard-00-01-nsutw.mongodb.net:27017,cluster0-shard-00-02-nsutw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "JWT_KEY": "testando"
+  }
+}

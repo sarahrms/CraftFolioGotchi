@@ -1,6 +1,6 @@
 # Projeto (TP1 + TP2) - CraftFolioGotchi®
 
-Uma árvore do jogo minecraft somada a uma mala com um porfolio somada a um tamagotchi
+![Uma árvore do jogo minecraft somada a uma mala com um porfolio somada a um tamagotchi](images/craftfoliogotchi.png)
 
 :microphone: "O que acontece quando a (a) liberdade de se construir um mundinho
 virtual se une à possibilidade de se (b) mostrar suas habilidades
@@ -119,7 +119,7 @@ extras para implementar, limitado a uma nota percentual total de 120%:
       texto (ou, talvez, um HTML) que vai aparecer quando um visitante clica na
       plaquinha, dentro de uma janela modal
 
-      Plaquinha de madeira que pode ser fincada no chão
+      ![Plaquinha de madeira que pode ser fincada no chão](images/sign-plaque.png)
     - (4%) _widget_ de **contador de visitas** - que pode ser posicionado pelo
       usuário e deve registrar em `localStorage` a quantidade de visitas
       recebidas (no TP2 isso será adaptado para persistir no banco de dados)
@@ -197,66 +197,64 @@ _framework_ web - por exemplo, Node.js + Hapi, Node.js + Sails, Meteor. Se
 estiver em dúvidas quanto a poder usar uma tecnologia ou não, consulte
 o professor.
 
-- [ ] O sistema (_back_ + _front_) deve permitir o cadastro de usuários. 
-- [ ] Uma página de um usuário pode ser visualizada por qualquer usuário, 
-- [ ] mas a edição deve ser permitida apenas para o usuário dono. Logo, é necessário que o usuário
+O sistema (_back_ + _front_) deve permitir o cadastro de usuários. Uma
+página de um usuário pode ser visualizada por qualquer usuário, mas a edição
+deve ser permitida apenas para o usuário dono. Logo, é necessário que o usuário
 faça login e que algumas funcionalides (eg, edição, movimentar o avatar)
 sejam possíveis apenas em alguns casos (dono do mundo visualizando-o).
 
-- [ ] Cada mundo tem uma URL única (eg, `/world/87497`) para que uma pessoa possa
-mostrá-lo para outras. 
-- [ ] Se um usuário que está logado acessa o mundo de outra
+Cada mundo tem uma URL única (eg, `/world/87497`) para que uma pessoa possa
+mostrá-lo para outras. Se um usuário que está logado acessa o mundo de outra
 pessoa, o avatar do visitante deve ser exibido, além do avatar do dono
-do mundo.
-- [ ] O visitante logado pode controlar seu avatar, no mundo visitado.
+do mundo. O visitante logado pode controlar seu avatar, no mundo visitado.
 
-- [ ] A informação de todos os mundos deve ser persistida em um banco de dados
+A informação de todos os mundos deve ser persistida em um banco de dados
 (eg, mysql, mongodb) de forma que seja possível reconstruir o mundo com
 todas suas _widgets_ configuradas, além do avatar.
 
-- [ ] Quando um usuário logado altera alguma coisa em seu mundo (exceto pela posição)
+Quando um usuário logado altera alguma coisa em seu mundo (exceto pela posição)
 do avatar, uma requisição AJAX deve ser enviada para o _back-end_ persistir
 essa alteração.
 
 A implementação dessas funcionalidades vale 70% da nota do TP2. Para
 conseguir mais pontos, o grupo pode implementar alguns itens opcionais:
 
-- [ ] :star2: (12%) **upload de arquivos** para possibilitar o usuário enviar
+- :star2: (12%) **upload de arquivos** para possibilitar o usuário enviar
   suas próprias imagens (pelo menos), músicas etc.
-  - [ ] Deve ser criada uma página para que o usuário logado faça upload
+  - Deve ser criada uma página para que o usuário logado faça upload
     de arquivos, e mostre todos os arquivos que ele já enviou
-    - [ ] (+2%) **enviar via AJAX** mostrando o progresso, em vez de
+    - (+2%) **enviar via AJAX** mostrando o progresso, em vez de
       uma requisição síncrona (envio de formulário tradicional)
-  - [ ] As _widgets_ que envolvem imagens, músicas, vídeos devem ser
+  - As _widgets_ que envolvem imagens, músicas, vídeos devem ser
     alteradas para possibilitar o uso dos arquivos do usuário
-- [ ] :star2: (12%) um usuário vê os **personagens dos outros em tempo real**
+- :star2: (12%) um usuário vê os **personagens dos outros em tempo real**
   (_e.g._, posição x,y) graças ao uso de :star: WebSockets
-- [ ] (5%) **envio de emails** para o usuário quando ele cadastra e em outras
+- (5%) **envio de emails** para o usuário quando ele cadastra e em outras
   oportunidades importantes (e.g, o mundo dele recebeu 10/100/1000 visitas)
-- [ ] (4%) **Contador de visualizações**: toda "visualização única" a uma página
+- (4%) **Contador de visualizações**: toda "visualização única" a uma página
   deve ser registrada e exibida em algum cantinho da página
-  - [ ] (+8%) Criar uma **máquina de estados no _back-end_** (persistida no banco)
+  - (+8%) Criar uma **máquina de estados no _back-end_** (persistida no banco)
     que representa a situação do avatar (tipo Tamagotchi)
-    - [ ] O avatar começa "sadio", mas deve ter "fome", que vai sendo
+    - O avatar começa "sadio", mas deve ter "fome", que vai sendo
       saciada a cada visita
-      - [ ] Se a fome fica alta por muito tempo, ele fica "doente"
-      - [ ] Se "doente" por muito tempo, "morto"
-    - [ ] Toda vez que algum usuário entrar em uma página, o _back-end_ deve
+      - Se a fome fica alta por muito tempo, ele fica "doente"
+      - Se "doente" por muito tempo, "morto"
+    - Toda vez que algum usuário entrar em uma página, o _back-end_ deve
       consultar o estado do avatar dono do mundo da página visitada e
       atualizar o estado (digamos, verificar quando foi a última visita a ela,
       "adicionar fome" relativa ao tempo que se passou e "saciar um pouquinho a fome" - referente a esta visita)
-    - [ ] (+8%) Em vez de fazer o processamento de "adicionar fome" a cada visita,
+    - (+8%) Em vez de fazer o processamento de "adicionar fome" a cada visita,
       fazer isso de maneira agendada, em um **serviço que deve ser agendado**
       no sistema operacional (no Linux, um _cron job_)
-- [ ] (6%) Usar um serviço de **autenticação de terceiros** como Google, Facebook,
+- (6%) Usar um serviço de **autenticação de terceiros** como Google, Facebook,
   Twitter, Github etc.
-- [ ] (7% ou 10%) Acesso aos dados do servidor exclusivamente por meio de um
+- (7% ou 10%) Acesso aos dados do servidor exclusivamente por meio de um
   _web service_ usando **arquitetura RESTful** ou **arquitetura GraphQL**
   - Observação: requer um tipo de autenticação diferente (eg, JWT)
 
 ### Entrega
 
-- [ ] O projeto final deve ser disponibilizado publicamente em algum serviço de
+O projeto final deve ser disponibilizado publicamente em algum serviço de
 hospedagem gratuito e apresentado em sala de aula em data combinada
 no cronograma (Moodle).
 

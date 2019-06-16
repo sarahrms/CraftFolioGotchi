@@ -7,7 +7,7 @@ let Dados = recuperarDadosCena();
 let userCharacter;
 let visitorCharacter;
 let cow = setCowCharacter();
-let mooAudio = new Audio('moo.mp3');
+let mooAudio = new Audio('../static/moo.mp3');
 
 if(Dados.myPage){//if i'm on my own page//
     userCharacter = setAlienCharacter(Dados.userColor, new Vector2D(50, FLOORHEIGHT), true, "userCharacter");
@@ -22,7 +22,7 @@ let physicsClock = setInterval(() => updatePositions(), DELTATIME);///////DON'T 
 
 export function updateCharacterColor(color){
     if(Dados.myPage){
-        userCharacter.updateColor("Sprites/alien_"+ color, color);
+        userCharacter.updateColor("../static/Sprites/alien_"+ color, color);
     }
 }
 

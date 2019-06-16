@@ -11,20 +11,20 @@ export const FLOORHEIGHT = 0;
 export function setAlienCharacter(color, position, controllable, htmlElementID){
     let character = new Character(color, position, new Vector2D(7, 28), controllable, htmlElementID);
 
-    let idleSpriteSheet = new SpriteSheet("Sprites/alien_" + character.color, "idle", "png", new Vector2D(235, 440), 1, 5);
+    let idleSpriteSheet = new SpriteSheet("../static/Sprites/alien_" + character.color, "idle", "png", new Vector2D(235, 440), 1, 5);
     let idleAnimation = new Animation(idleSpriteSheet, DELTATIME, false);
     character.addStateAnimation("idle", idleAnimation);
     character.setInitialState("idle");
 
-    let turnSpriteSheet = new SpriteSheet("Sprites/alien_" + character.color, "turn", "png", new Vector2D(235, 440), 1, 3);
+    let turnSpriteSheet = new SpriteSheet("../static/Sprites/alien_" + character.color, "turn", "png", new Vector2D(235, 440), 1, 3);
     let turnAnimation = new Animation(turnSpriteSheet, DELTATIME*0.8, true);
     character.addStateAnimation("turn", turnAnimation);
 
-    let walkSpriteSheet = new SpriteSheet("Sprites/alien_" + character.color, "walk", "png", new Vector2D(235, 440), 1, 6);
+    let walkSpriteSheet = new SpriteSheet("../static/Sprites/alien_" + character.color, "walk", "png", new Vector2D(235, 440), 1, 6);
     let walkAnimation = new Animation(walkSpriteSheet, DELTATIME*0.9, true);
     character.addStateAnimation("walk", walkAnimation);
 
-    let jumpSpriteSheet = new SpriteSheet("Sprites/alien_" + character.color, "jump", "png", new Vector2D(331, 462), 1, 4);
+    let jumpSpriteSheet = new SpriteSheet("../static/Sprites/alien_" + character.color, "jump", "png", new Vector2D(331, 462), 1, 4);
     let jumpAnimation = new Animation(jumpSpriteSheet, DELTATIME*2, true);
     character.addStateAnimation("jump", jumpAnimation);
 
@@ -49,12 +49,12 @@ export function setAlienCharacter(color, position, controllable, htmlElementID){
 export function setCowCharacter(){
     let cow = new Character("none", new Vector2D(16, 3), new Vector2D(12, 19), false, "cow");
 
-    let idleSpriteSheet = new SpriteSheet("Sprites/cow", "idle", "png", new Vector2D(1767, 1500), 1, 5);
+    let idleSpriteSheet = new SpriteSheet("../static/Sprites/cow", "idle", "png", new Vector2D(1767, 1500), 1, 5);
     let idleAnimation = new Animation(idleSpriteSheet, DELTATIME, false);
     cow.addStateAnimation("idle", idleAnimation);
     cow.setInitialState("idle");
 
-    let mooSpriteSheet = new SpriteSheet("Sprites/cow", "moo", "png", new Vector2D(1767, 1500), 1, 12);
+    let mooSpriteSheet = new SpriteSheet("../static/Sprites/cow", "moo", "png", new Vector2D(1767, 1500), 1, 12);
     let mooAnimation = new Animation(mooSpriteSheet, DELTATIME*3, true);
     cow.addStateAnimation("moo", mooAnimation);
 
